@@ -1,15 +1,16 @@
 from __future__ import annotations
 
 import logging
+import re
 from dataclasses import dataclass, field
 from pathlib import Path
 
 from .canvas import SvgCanvas
 from .config import DEFAULT_EXPORT_SCALE, DEFAULT_MAX_OUTPUT_TOKENS, DEFAULT_THINKING_BUDGET
 from .prompt import build_system_prompt
-from .providers.base import DrawingRequest, LLMProvider
+from .providers.base import DrawingRequest, DrawingResponse, LLMProvider
 from .renderer import render_svg_to_png, render_svg_to_png_base64, save_png, save_svg
-from .response_parser import parse_response
+from .response_parser import ParsedResponse, parse_response
 
 log = logging.getLogger(__name__)
 
@@ -32,22 +33,110 @@ class DrawingSession:
     total_cache_creation_tokens: int = field(default=0, init=False)
 
 
+class SessionLogger:
+    """Unified logger that writes to both a file and stderr (via logging)."""
+
+    def __init__(self, path: Path, verbose: bool):
+        self._path = path
+        self._verbose = verbose
+        # Truncate log file at start of session
+        self._path.write_text("", encoding="utf-8")
+
+    def write(self, msg: str) -> None:
+        """Write to the log file, and to stderr if verbose."""
+        with open(self._path, "a", encoding="utf-8") as f:
+            f.write(msg + "\n")
+        if self._verbose:
+            log.info(msg)
+
+    def log_session_start(self, session: DrawingSession) -> None:
+        self.write(f"Prompt: {session.prompt}")
+        self.write(f"Provider: {session.provider.name} (model: {session.provider.default_model})")
+        self.write(f"Canvas: {session.canvas.width}x{session.canvas.height}, bg={session.canvas.background}")
+        self.write(f"Max iterations: {session.max_iterations}")
+        if session.thinking_enabled:
+            self.write(f"Thinking: enabled (budget: {session.thinking_budget})")
+        self.write("")
+
+    def log_iteration_start(self, iteration: int) -> None:
+        self.write(f"{'=' * 60}")
+        self.write(f"== Iteration {iteration}")
+        self.write(f"{'=' * 60}")
+
+    def log_api_response(self, response: DrawingResponse) -> None:
+        # Provider debug messages (cache status, etc.)
+        for msg in response.provider_log:
+            self.write(f"[provider] {msg}")
+        self.write(f"Model: {response.model}")
+        parts = [
+            f"in={response.input_tokens}",
+            f"out={response.output_tokens}",
+        ]
+        if response.cache_read_tokens:
+            parts.append(f"cache_read={response.cache_read_tokens}")
+        if response.cache_creation_tokens:
+            parts.append(f"cache_create={response.cache_creation_tokens}")
+        if response.thinking_tokens:
+            parts.append(f"thinking={response.thinking_tokens}")
+        self.write(f"Tokens: {', '.join(parts)}")
+
+    def log_parsed_response(self, parsed: ParsedResponse) -> None:
+        if parsed.notes:
+            self.write(f"\nArtist notes:\n{parsed.notes}\n")
+        if parsed.background:
+            self.write(f"Background changed to {parsed.background}")
+        if parsed.replace_layer_id:
+            self.write(f"Replace layer: {parsed.replace_layer_id}")
+        if parsed.svg_elements:
+            # Count elements and estimate complexity
+            element_count = len(re.findall(r"<(?!/)[a-zA-Z]", parsed.svg_elements))
+            has_defs = bool(parsed.defs_elements and parsed.defs_elements.strip())
+            self.write(f"New SVG: ~{element_count} elements" + (" + defs" if has_defs else ""))
+        elif not parsed.replace_layer_id:
+            self.write("WARNING: No SVG elements in response")
+        self.write(f"Status: {parsed.status}")
+
+    def log_canvas_update(self, msg: str) -> None:
+        self.write(msg)
+
+    def log_session_end(self, session: DrawingSession) -> None:
+        self.write("")
+        self.write(f"{'=' * 60}")
+        self.write("== Session complete")
+        self.write(f"{'=' * 60}")
+        self.write(f"Iterations: {session.iteration}")
+        self.write(f"Layers: {session.canvas.get_layer_summary()}")
+        self.write(
+            f"Total tokens: in={session.total_input_tokens}"
+            f", out={session.total_output_tokens}"
+            + (f", thinking={session.total_thinking_tokens}" if session.total_thinking_tokens else "")
+        )
+        if session.total_cache_read_tokens:
+            self.write(f"Total cache read tokens: {session.total_cache_read_tokens}")
+        if session.total_cache_creation_tokens:
+            self.write(f"Total cache creation tokens: {session.total_cache_creation_tokens}")
+        self.write(f"Output: {session.output_dir}")
+
+
 def run_drawing_session(session: DrawingSession, verbose: bool = False) -> Path:
     session.output_dir.mkdir(parents=True, exist_ok=True)
+
+    slog = SessionLogger(session.output_dir / "artist-log.txt", verbose)
+    slog.log_session_start(session)
 
     system_prompt = build_system_prompt(session.canvas.width, session.canvas.height, session.max_iterations)
     empty_streak = 0
 
     while session.iteration < session.max_iterations:
         session.iteration += 1
-        log.info(f"--- Iteration {session.iteration} ---")
+        slog.log_iteration_start(session.iteration)
 
         # Render current canvas to PNG
         svg_string = session.canvas.to_svg()
         try:
             canvas_b64 = render_svg_to_png_base64(svg_string)
         except Exception as e:
-            log.error(f"Failed to render canvas: {e}")
+            slog.write(f"ERROR: Failed to render canvas: {e}")
             break
 
         # Build and send request
@@ -66,7 +155,7 @@ def run_drawing_session(session: DrawingSession, verbose: bool = False) -> Path:
         try:
             response = session.provider.send_drawing_request(request)
         except Exception as e:
-            log.error(f"API call failed: {e}")
+            slog.write(f"ERROR: API call failed: {e}")
             break
 
         # Track tokens
@@ -76,62 +165,38 @@ def run_drawing_session(session: DrawingSession, verbose: bool = False) -> Path:
         session.total_cache_read_tokens += response.cache_read_tokens
         session.total_cache_creation_tokens += response.cache_creation_tokens
 
-        if verbose:
-            log.info(
-                f"Tokens — in: {response.input_tokens}, out: {response.output_tokens}"
-                f", cache_read: {response.cache_read_tokens}"
-                f", cache_create: {response.cache_creation_tokens}"
-                + (f", thinking: {response.thinking_tokens}" if response.thinking_tokens else "")
-            )
+        slog.log_api_response(response)
 
         # Parse response
         parsed = parse_response(response.raw_text)
         if parsed.notes:
             session.notes_history.append(parsed.notes)
 
-        # Append to artist log
-        log_path = session.output_dir / "artist-log.txt"
-        with open(log_path, "a", encoding="utf-8") as f:
-            f.write(f"== Iteration {session.iteration} ==\n")
-            f.write(f"Tokens: in={response.input_tokens}, out={response.output_tokens}\n")
-            if parsed.notes:
-                f.write(f"\n{parsed.notes}\n")
-            if parsed.svg_elements:
-                element_count = parsed.svg_elements.count("<")
-                f.write(f"\n[Added ~{element_count} SVG elements]\n")
-            if parsed.replace_layer_id:
-                f.write(f"[Replaced {parsed.replace_layer_id}]\n")
-            if parsed.background:
-                f.write(f"[Background -> {parsed.background}]\n")
-            f.write(f"[Status: {parsed.status}]\n\n")
-
-        if verbose and parsed.notes:
-            log.info(f"Artist notes: {parsed.notes[:200]}...")
+        slog.log_parsed_response(parsed)
 
         # Update background if requested
         if parsed.background:
             session.canvas.background = parsed.background
-            log.info(f"Background changed to {parsed.background}")
 
         # Handle layer replacement
         if parsed.replace_layer_id and parsed.replace_elements:
             try:
                 session.canvas.replace_layer(parsed.replace_layer_id, parsed.replace_elements)
-                log.info(f"Replaced {parsed.replace_layer_id}")
+                slog.log_canvas_update(f"Replaced {parsed.replace_layer_id}")
             except KeyError:
-                log.warning(f"Cannot replace {parsed.replace_layer_id}: not found")
+                slog.log_canvas_update(f"WARNING: Cannot replace {parsed.replace_layer_id}: not found")
 
         # Add new layer
         if parsed.svg_elements:
             layer_id = session.canvas.add_layer(parsed.svg_elements, parsed.defs_elements or None)
-            log.info(f"Added {layer_id}")
+            slog.log_canvas_update(f"Added {layer_id}")
 
             # Verify the new SVG renders without errors
             new_svg = session.canvas.to_svg()
             try:
                 render_svg_to_png(new_svg)
             except Exception as e:
-                log.warning(f"Layer {layer_id} caused render error, removing: {e}")
+                slog.log_canvas_update(f"WARNING: {layer_id} caused render error, removing: {e}")
                 del session.canvas.layers[layer_id]
                 if layer_id in session.canvas.defs:
                     del session.canvas.defs[layer_id]
@@ -139,13 +204,12 @@ def run_drawing_session(session: DrawingSession, verbose: bool = False) -> Path:
             else:
                 empty_streak = 0
         elif not parsed.replace_layer_id:
-            log.warning("No SVG elements in response")
             empty_streak += 1
         else:
             empty_streak = 0
 
         if empty_streak >= 3:
-            log.warning("3 consecutive iterations with no new content, stopping.")
+            slog.write("STOPPING: 3 consecutive iterations with no new content.")
             break
 
         # Save intermediate files
@@ -156,14 +220,14 @@ def run_drawing_session(session: DrawingSession, verbose: bool = False) -> Path:
             png_bytes = render_svg_to_png(current_svg)
             save_png(png_bytes, session.output_dir / f"{iter_stem}.png")
         except Exception as e:
-            log.warning(f"Could not save intermediate PNG: {e}")
+            slog.write(f"WARNING: Could not save intermediate PNG: {e}")
 
         # Check if done
         if parsed.status == "done":
-            log.info("Artist signaled done.")
+            slog.write("Artist signaled done.")
             break
     else:
-        log.info(f"Reached max iterations ({session.max_iterations}).")
+        slog.write(f"Reached max iterations ({session.max_iterations}).")
 
     # Save final outputs at higher quality
     final_svg = session.canvas.to_svg()
@@ -174,14 +238,8 @@ def run_drawing_session(session: DrawingSession, verbose: bool = False) -> Path:
         final_png = render_svg_to_png(final_svg, scale=DEFAULT_EXPORT_SCALE)
         save_png(final_png, session.output_dir / "final.png")
     except Exception as e:
-        log.warning(f"Could not save final PNG: {e}")
+        slog.write(f"WARNING: Could not save final PNG: {e}")
 
-    # Summary
-    log.info(
-        f"Done! {session.iteration} iterations. "
-        f"Total tokens — in: {session.total_input_tokens}, out: {session.total_output_tokens}"
-        + (f", thinking: {session.total_thinking_tokens}" if session.total_thinking_tokens else "")
-    )
-    log.info(f"Output: {session.output_dir}")
+    slog.log_session_end(session)
 
     return final_svg_path

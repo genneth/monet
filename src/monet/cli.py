@@ -82,15 +82,18 @@ def main(
     """Create art with an LLM. Provide an art PROMPT to get started."""
     load_dotenv()
 
-    # Set up logging
+    # Set up logging — only our own output, suppress noisy SDKs
     level = logging.INFO if verbose else logging.WARNING
     logging.basicConfig(
         level=level,
         format="%(message)s",
         stream=sys.stderr,
     )
-    log = logging.getLogger("monet")
-    log.setLevel(level)
+    logging.getLogger("monet").setLevel(level)
+    logging.getLogger("httpx").setLevel(logging.WARNING)
+    logging.getLogger("httpcore").setLevel(logging.WARNING)
+    logging.getLogger("google").setLevel(logging.WARNING)
+    logging.getLogger("anthropic").setLevel(logging.WARNING)
 
     # Output directory
     if output:
@@ -103,13 +106,6 @@ def main(
     # Build components
     llm = _make_provider(provider, model)
     canvas = SvgCanvas(width=width, height=height, background=background)
-
-    log.info(f"Prompt: {prompt}")
-    log.info(f"Provider: {llm.name} ({model or llm.default_model})")
-    log.info(f"Canvas: {width}x{height}, bg={background}")
-    log.info(f"Output: {output_dir}")
-    if thinking:
-        log.info(f"Thinking enabled (budget: {thinking_budget})")
 
     session = DrawingSession(
         prompt=prompt,

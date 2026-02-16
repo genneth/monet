@@ -26,6 +26,7 @@ class DrawingResponse:
     cache_creation_tokens: int = 0
     thinking_tokens: int = 0
     model: str = ""
+    provider_log: list[str] = field(default_factory=list)
 
 
 class LLMProvider(ABC):

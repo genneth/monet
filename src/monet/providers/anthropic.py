@@ -16,9 +16,11 @@ class AnthropicProvider(LLMProvider):
 
     @property
     def default_model(self) -> str:
-        return "claude-sonnet-4-5-20250929"
+        return "claude-sonnet-4-5"
 
     def send_drawing_request(self, request: DrawingRequest) -> DrawingResponse:
+        provider_log: list[str] = []
+
         system = [
             {
                 "type": "text",
@@ -61,9 +63,15 @@ class AnthropicProvider(LLMProvider):
             current_lines.append("This is the blank canvas. Begin your artwork.")
         user_parts.append({"type": "text", "text": "\n".join(current_lines)})
 
+        # budget_tokens must be strictly less than max_tokens, and both budgets
+        # need room — so add them together.
+        max_tokens = request.max_output_tokens
+        if request.thinking_enabled:
+            max_tokens = request.thinking_budget + request.max_output_tokens
+
         kwargs: dict = {
             "model": self._model,
-            "max_tokens": request.max_output_tokens,
+            "max_tokens": max_tokens,
             "system": system,
             "messages": [{"role": "user", "content": user_parts}],
         }
@@ -73,25 +81,44 @@ class AnthropicProvider(LLMProvider):
                 "type": "enabled",
                 "budget_tokens": request.thinking_budget,
             }
+            provider_log.append(f"Thinking enabled (budget={request.thinking_budget}, max_tokens={max_tokens})")
 
         response = self._client.messages.create(**kwargs)
 
-        # Extract text from response blocks
+        # Extract text from response blocks.
+        # ThinkingBlock has .thinking (str) and .signature, but no token count.
+        # Claude 4 returns summarised thinking; billed tokens (in usage.output_tokens)
+        # include the full thinking cost, so we estimate from the summary text.
         raw_text = ""
         thinking_tokens = 0
         for block in response.content:
             if block.type == "text":
                 raw_text += block.text
             elif block.type == "thinking":
-                thinking_tokens += getattr(block, "tokens", 0)
+                thinking_tokens += len(block.thinking) // 4  # rough char-to-token estimate
 
         usage = response.usage
+        cache_read = getattr(usage, "cache_read_input_tokens", 0) or 0
+        cache_create = getattr(usage, "cache_creation_input_tokens", 0) or 0
+
+        if cache_read:
+            provider_log.append(f"Cache hit: {cache_read}/{usage.input_tokens} input tokens from cache")
+        elif cache_create:
+            provider_log.append(f"Cache primed: {cache_create} tokens written to cache")
+
+        if thinking_tokens:
+            provider_log.append(
+                f"Thinking: ~{thinking_tokens} summary tokens"
+                f" (billed as part of {usage.output_tokens} output tokens)"
+            )
+
         return DrawingResponse(
             raw_text=raw_text,
             input_tokens=usage.input_tokens,
             output_tokens=usage.output_tokens,
-            cache_read_tokens=getattr(usage, "cache_read_input_tokens", 0) or 0,
-            cache_creation_tokens=getattr(usage, "cache_creation_input_tokens", 0) or 0,
+            cache_read_tokens=cache_read,
+            cache_creation_tokens=cache_create,
             thinking_tokens=thinking_tokens,
             model=response.model,
+            provider_log=provider_log,
         )
