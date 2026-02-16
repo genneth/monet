@@ -1,0 +1,32 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "monet"
+version = "0.1.0"
+description = "LLM-powered iterative SVG art generator"
+requires-python = ">=3.14"
+dependencies = [
+    "click",
+    "anthropic",
+    "google-genai",
+    "Pillow",
+    "resvg-py",
+    "python-dotenv",
+]
+
+[project.scripts]
+monet = "monet.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "ruff",
+]
+
+[tool.ruff]
+line-length = 120
