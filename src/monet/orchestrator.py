@@ -14,6 +14,23 @@ from .response_parser import ParsedResponse, parse_response
 
 log = logging.getLogger(__name__)
 
+PLANNING_INSTRUCTION = """\
+This is iteration 0 — the planning phase. Study the blank canvas dimensions and think through \
+your artistic approach before drawing anything.
+
+Plan the following:
+
+1. **Composition** — Layout, focal points, foreground vs background, how you'll use the canvas space
+2. **Color palette** — Specific hex colors and their roles in the piece
+3. **Iteration sequence** — What to draw in early, middle, and late iterations, pacing relative to \
+the {max_iterations} drawing iterations you'll have
+4. **SVG techniques** — Which SVG features to use (gradients, filters, clip paths, paths, shapes, \
+text, etc.) and where
+5. **Potential challenges** — Tricky aspects of the subject and how to handle them in SVG
+
+Output ONLY `<notes>` and `<status>continue</status>`. Do NOT output `<svg-elements>`, `<defs>`, \
+or `<background>` — this is planning only."""
+
 
 @dataclass
 class DrawingSession:
@@ -126,6 +143,53 @@ def run_drawing_session(session: DrawingSession, verbose: bool = False) -> Path:
 
     system_prompt = build_system_prompt(session.canvas.width, session.canvas.height, session.max_iterations)
     empty_streak = 0
+
+    # --- Iteration 0: Planning phase (always uses thinking) ---
+    slog.log_iteration_start(0)
+    slog.write("Planning phase — thinking through artistic approach...")
+
+    try:
+        plan_svg = session.canvas.to_svg()
+        plan_b64 = render_svg_to_png_base64(plan_svg)
+
+        plan_request = DrawingRequest(
+            system_prompt=system_prompt,
+            canvas_png_base64=plan_b64,
+            original_prompt=session.prompt,
+            iteration=0,
+            layer_summary=session.canvas.get_layer_summary(),
+            notes_history=[],
+            max_output_tokens=DEFAULT_MAX_OUTPUT_TOKENS,
+            iteration_message=PLANNING_INSTRUCTION.format(max_iterations=session.max_iterations),
+            thinking_enabled=True,
+            thinking_budget=session.thinking_budget,
+        )
+
+        plan_response = session.provider.send_drawing_request(plan_request)
+
+        # Track tokens
+        session.total_input_tokens += plan_response.input_tokens
+        session.total_output_tokens += plan_response.output_tokens
+        session.total_thinking_tokens += plan_response.thinking_tokens
+        session.total_cache_read_tokens += plan_response.cache_read_tokens
+        session.total_cache_creation_tokens += plan_response.cache_creation_tokens
+
+        slog.log_api_response(plan_response)
+
+        plan_parsed = parse_response(plan_response.raw_text)
+        if plan_parsed.notes:
+            session.notes_history.append(f"[Artistic Plan]\n{plan_parsed.notes}")
+        slog.log_parsed_response(plan_parsed)
+
+        # Warn if the LLM produced SVG during planning
+        if plan_parsed.svg_elements:
+            slog.write("WARNING: Planning phase produced SVG elements — ignoring them.")
+        if plan_parsed.defs_elements:
+            slog.write("WARNING: Planning phase produced defs — ignoring them.")
+        if plan_parsed.background:
+            slog.write("WARNING: Planning phase changed background — ignoring it.")
+    except Exception as e:
+        slog.write(f"WARNING: Planning phase failed ({e}), continuing without plan.")
 
     while session.iteration < session.max_iterations:
         session.iteration += 1

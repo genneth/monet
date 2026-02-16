@@ -13,6 +13,7 @@ class DrawingRequest:
     layer_summary: str
     notes_history: list[str] = field(default_factory=list)
     max_output_tokens: int = 4096
+    iteration_message: str | None = None
     thinking_enabled: bool = False
     thinking_budget: int = 4096
 

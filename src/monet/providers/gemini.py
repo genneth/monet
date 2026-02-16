@@ -71,7 +71,9 @@ class GeminiProvider(LLMProvider):
 
         # Current iteration context
         current_lines = [f"Iteration: {request.iteration}", f"Layers: {request.layer_summary}"]
-        if not request.notes_history:
+        if request.iteration_message:
+            current_lines.append(request.iteration_message)
+        elif not request.notes_history:
             current_lines.append("This is the blank canvas. Begin your artwork.")
         parts.append(types.Part.from_text(text="\n".join(current_lines)))
 

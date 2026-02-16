@@ -59,7 +59,9 @@ class AnthropicProvider(LLMProvider):
 
         # 4. Current iteration context (changes every iteration)
         current_lines = [f"Iteration: {request.iteration}", f"Layers: {request.layer_summary}"]
-        if not request.notes_history:
+        if request.iteration_message:
+            current_lines.append(request.iteration_message)
+        elif not request.notes_history:
             current_lines.append("This is the blank canvas. Begin your artwork.")
         user_parts.append({"type": "text", "text": "\n".join(current_lines)})
 

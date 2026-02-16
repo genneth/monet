@@ -49,12 +49,13 @@ Output goes to `output/<timestamp>_<slug>/` with:
 |--------|--------|
 | *"a pond of water lilies in the style of Claude Monet"* | ![lilies](examples/lilies.png) |
 | *"a self-portrait of your inner experience"* | ![self-portrait](examples/self-portrait.png) |
+| *"ginger cat in the style of picasso"* | ![picasso-cat](examples/picasso-cat.png) |
 
 ## Cost estimates
 
-A typical artwork takes 10-15 iterations. Each iteration uses ~1500-3000 input tokens (system prompt + notes + image) and ~1000-1500 output tokens. Both providers support caching, which reduces repeat input costs significantly.
+A typical artwork takes 10-15 drawing iterations, plus a planning iteration (iteration 0) that runs before drawing begins. The planning iteration always uses extended thinking to reason through composition, color palette, and iteration strategy. Each drawing iteration uses ~1500-3000 input tokens (system prompt + notes + image) and ~1000-1500 output tokens. Both providers support caching, which reduces repeat input costs significantly.
 
-Estimates below are for a **15-iteration session** (~45K input, ~22K output tokens total, with caching):
+Estimates below are for a **15-iteration session** (~45K input, ~22K output tokens total, with caching) plus the planning overhead (1 extra API call with thinking tokens):
 
 | Model | Input cost | Output cost | Total | Notes |
 |-------|-----------|-------------|-------|-------|
