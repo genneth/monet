@@ -16,7 +16,7 @@ class AnthropicProvider(LLMProvider):
 
     @property
     def default_model(self) -> str:
-        return "claude-sonnet-4-5"
+        return "claude-sonnet-4-6"
 
     def send_drawing_request(self, request: DrawingRequest) -> DrawingResponse:
         provider_log: list[str] = []
