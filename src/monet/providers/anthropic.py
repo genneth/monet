@@ -32,11 +32,13 @@ class AnthropicProvider(LLMProvider):
         user_parts: list[dict] = []
 
         # 1. Stable text: art prompt (prefix-cacheable, breakpoint 2 of 4)
-        user_parts.append({
-            "type": "text",
-            "text": f"Art prompt: {request.original_prompt}",
-            "cache_control": {"type": "ephemeral"},
-        })
+        user_parts.append(
+            {
+                "type": "text",
+                "text": f"Art prompt: {request.original_prompt}",
+                "cache_control": {"type": "ephemeral"},
+            }
+        )
 
         # 2. Notes history — each note as its own content block for incremental caching.
         #    Anthropic allows max 4 cache breakpoints. We use:
@@ -45,13 +47,11 @@ class AnthropicProvider(LLMProvider):
         #      3. Second-to-last note (matches previous call's last-note cache → read)
         #      4. Last note (creates cache for next call)
         if request.notes_history:
+            note_texts = request.format_notes()
             note_blocks: list[dict] = []
-            for i, note in enumerate(request.notes_history):
+            for i, text in enumerate(note_texts):
                 prefix = "Your notes from previous iterations:\n\n" if i == 0 else ""
-                note_blocks.append({
-                    "type": "text",
-                    "text": f"{prefix}== Iteration {i + 1} notes ==\n{note}",
-                })
+                note_blocks.append({"type": "text", "text": f"{prefix}{text}"})
             # Cache breakpoints on last 2 notes (breakpoints 3-4 of max 4).
             if len(note_blocks) >= 2:
                 note_blocks[-2]["cache_control"] = {"type": "ephemeral"}
@@ -71,12 +71,7 @@ class AnthropicProvider(LLMProvider):
         )
 
         # 4. Current iteration context (changes every iteration)
-        current_lines = [f"Iteration: {request.iteration}", f"Layers: {request.layer_summary}"]
-        if request.iteration_message:
-            current_lines.append(request.iteration_message)
-        elif not request.notes_history:
-            current_lines.append("This is the blank canvas. Begin your artwork.")
-        user_parts.append({"type": "text", "text": "\n".join(current_lines)})
+        user_parts.append({"type": "text", "text": request.format_context_lines()})
 
         # budget_tokens must be strictly less than max_tokens, and both budgets
         # need room — so add them together.
@@ -123,8 +118,7 @@ class AnthropicProvider(LLMProvider):
 
         if thinking_tokens:
             provider_log.append(
-                f"Thinking: ~{thinking_tokens} summary tokens"
-                f" (billed as part of {usage.output_tokens} output tokens)"
+                f"Thinking: ~{thinking_tokens} summary tokens (billed as part of {usage.output_tokens} output tokens)"
             )
 
         return DrawingResponse(

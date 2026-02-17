@@ -204,6 +204,7 @@ def run_drawing_session(session: DrawingSession, verbose: bool = False) -> Path:
             break
 
         # Build and send request
+        remaining = session.max_iterations - session.iteration
         request = DrawingRequest(
             system_prompt=system_prompt,
             canvas_png_base64=canvas_b64,
@@ -212,6 +213,7 @@ def run_drawing_session(session: DrawingSession, verbose: bool = False) -> Path:
             layer_summary=session.canvas.get_layer_summary(),
             notes_history=list(session.notes_history),
             max_output_tokens=DEFAULT_MAX_OUTPUT_TOKENS,
+            iteration_message=f"Iterations remaining: {remaining}/{session.max_iterations}.",
             thinking_enabled=session.thinking_enabled,
             thinking_budget=session.thinking_budget,
         )

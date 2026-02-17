@@ -52,9 +52,7 @@ class GeminiProvider(LLMProvider):
 
         # 2. Notes history (grows but prefix is stable — cacheable)
         if request.notes_history:
-            notes_text = "\n\n".join(
-                f"== Iteration {i + 1} notes ==\n{note}" for i, note in enumerate(request.notes_history)
-            )
+            notes_text = "\n\n".join(request.format_notes())
             parts.append(types.Part.from_text(text=f"Your notes from previous iterations:\n\n{notes_text}"))
 
         # 3. Canvas image (changes every iteration — never cached)
@@ -62,12 +60,7 @@ class GeminiProvider(LLMProvider):
         parts.append(types.Part.from_bytes(data=image_bytes, mime_type="image/png"))
 
         # 4. Current iteration context (changes every iteration)
-        current_lines = [f"Iteration: {request.iteration}", f"Layers: {request.layer_summary}"]
-        if request.iteration_message:
-            current_lines.append(request.iteration_message)
-        elif not request.notes_history:
-            current_lines.append("This is the blank canvas. Begin your artwork.")
-        parts.append(types.Part.from_text(text="\n".join(current_lines)))
+        parts.append(types.Part.from_text(text=request.format_context_lines()))
 
         config = types.GenerateContentConfig(
             system_instruction=request.system_prompt,
@@ -78,6 +71,17 @@ class GeminiProvider(LLMProvider):
             config.thinking_config = types.ThinkingConfig(
                 thinking_budget=request.thinking_budget,
             )
+        else:
+            # Gemini 2.5+ models think by default — explicitly disable.
+            # Gemini 3 models don't support thinking_budget=0; use thinking_level instead.
+            if "gemini-3" in self._model:
+                config.thinking_config = types.ThinkingConfig(
+                    thinking_level=types.ThinkingLevel.MINIMAL,
+                )
+            else:
+                config.thinking_config = types.ThinkingConfig(
+                    thinking_budget=0,
+                )
 
         response = self._client.models.generate_content(
             model=self._model,
