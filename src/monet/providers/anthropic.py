@@ -73,25 +73,17 @@ class AnthropicProvider(LLMProvider):
         # 4. Current iteration context (changes every iteration)
         user_parts.append({"type": "text", "text": request.format_context_lines()})
 
-        # budget_tokens must be strictly less than max_tokens, and both budgets
-        # need room — so add them together.
-        max_tokens = request.max_output_tokens
-        if request.thinking_enabled:
-            max_tokens = request.thinking_budget + request.max_output_tokens
-
         kwargs: dict = {
             "model": self._model,
-            "max_tokens": max_tokens,
+            "max_tokens": 16_000 if request.thinking_enabled else request.max_output_tokens,
             "system": system,
             "messages": [{"role": "user", "content": user_parts}],
         }
 
         if request.thinking_enabled:
-            kwargs["thinking"] = {
-                "type": "enabled",
-                "budget_tokens": request.thinking_budget,
-            }
-            provider_log.append(f"Thinking enabled (budget={request.thinking_budget}, max_tokens={max_tokens})")
+            kwargs["thinking"] = {"type": "adaptive"}
+            kwargs["output_config"] = {"effort": "high"}
+            provider_log.append("Adaptive thinking enabled (effort=high)")
 
         response = self._client.messages.create(**kwargs)
 

@@ -8,7 +8,7 @@
 
 ## Architecture
 
-Iteration 0 is a planning phase: the LLM sees the blank canvas and thinks through composition, color palette, iteration sequence, and SVG techniques. Planning always enables thinking (even when `--thinking` is off) and produces only `<notes>`, which are prepended to `notes_history` with an `[Artistic Plan]` marker. No SVG output is accepted during planning.
+Iteration 0 is a planning phase: the LLM sees the blank canvas and thinks through composition, color palette, iteration sequence, and SVG techniques. Planning is the only phase that enables thinking — the drawing iterations run without it, letting the artist work intuitively. Planning produces only `<notes>`, which are prepended to `notes_history` with an `[Artistic Plan]` marker. No SVG output is accepted during planning.
 
 After planning, the stateless draw-look loop begins: each iteration renders the canvas to PNG, sends it to an LLM with artist notes, parses XML-tagged response for new SVG elements, and appends them as a layer. No conversation history accumulates — continuity comes from the rendered image + artist notes only.
 

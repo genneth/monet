@@ -259,8 +259,8 @@ def test_planning_api_failure_graceful():
         assert "Planning phase failed" in log_text
 
 
-def test_planning_always_enables_thinking():
-    """Planning request should have thinking_enabled=True even when session has it off."""
+def test_thinking_only_during_planning():
+    """Planning request should have thinking_enabled=True, drawing requests should not."""
     responses = [
         PLAN_RESPONSE,
         """<notes>Done.</notes>
@@ -276,7 +276,6 @@ def test_planning_always_enables_thinking():
             canvas=SvgCanvas(),
             output_dir=Path(tmp),
             max_iterations=5,
-            thinking_enabled=False,
         )
         run_drawing_session(session)
 
@@ -286,7 +285,7 @@ def test_planning_always_enables_thinking():
         assert plan_request.thinking_enabled is True
         assert plan_request.iteration == 0
 
-        # Drawing call (second) should respect session setting (False)
+        # Drawing call (second) should never have thinking
         draw_call = provider.send_drawing_request.call_args_list[1]
         draw_request = draw_call[0][0]
         assert draw_request.thinking_enabled is False

@@ -6,7 +6,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from .canvas import SvgCanvas
-from .config import DEFAULT_EXPORT_SCALE, DEFAULT_MAX_OUTPUT_TOKENS, DEFAULT_THINKING_BUDGET
+from .config import DEFAULT_EXPORT_SCALE, DEFAULT_MAX_OUTPUT_TOKENS
 from .prompt import build_system_prompt
 from .providers.base import DrawingRequest, DrawingResponse, LLMProvider
 from .renderer import render_svg_to_png, render_svg_to_png_base64, save_png, save_svg
@@ -39,8 +39,6 @@ class DrawingSession:
     canvas: SvgCanvas
     output_dir: Path
     max_iterations: int = 25
-    thinking_enabled: bool = False
-    thinking_budget: int = DEFAULT_THINKING_BUDGET
     iteration: int = field(default=0, init=False)
     notes_history: list[str] = field(default_factory=list, init=False)
     total_input_tokens: int = field(default=0, init=False)
@@ -71,8 +69,6 @@ class SessionLogger:
         self.write(f"Provider: {session.provider.name} (model: {session.provider.default_model})")
         self.write(f"Canvas: {session.canvas.width}x{session.canvas.height}, bg={session.canvas.background}")
         self.write(f"Max iterations: {session.max_iterations}")
-        if session.thinking_enabled:
-            self.write(f"Thinking: enabled (budget: {session.thinking_budget})")
         self.write("")
 
     def log_iteration_start(self, iteration: int) -> None:
@@ -162,7 +158,6 @@ def run_drawing_session(session: DrawingSession, verbose: bool = False) -> Path:
             max_output_tokens=DEFAULT_MAX_OUTPUT_TOKENS,
             iteration_message=PLANNING_INSTRUCTION.format(max_iterations=session.max_iterations),
             thinking_enabled=True,
-            thinking_budget=session.thinking_budget,
         )
 
         plan_response = session.provider.send_drawing_request(plan_request)
@@ -214,8 +209,6 @@ def run_drawing_session(session: DrawingSession, verbose: bool = False) -> Path:
             notes_history=list(session.notes_history),
             max_output_tokens=DEFAULT_MAX_OUTPUT_TOKENS,
             iteration_message=f"Iterations remaining: {remaining}/{session.max_iterations}.",
-            thinking_enabled=session.thinking_enabled,
-            thinking_budget=session.thinking_budget,
         )
 
         try:

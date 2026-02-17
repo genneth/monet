@@ -69,19 +69,12 @@ class GeminiProvider(LLMProvider):
 
         if request.thinking_enabled:
             config.thinking_config = types.ThinkingConfig(
-                thinking_budget=request.thinking_budget,
+                thinking_level=types.ThinkingLevel.HIGH,
             )
         else:
-            # Gemini 2.5+ models think by default — explicitly disable.
-            # Gemini 3 models don't support thinking_budget=0; use thinking_level instead.
-            if "gemini-3" in self._model:
-                config.thinking_config = types.ThinkingConfig(
-                    thinking_level=types.ThinkingLevel.MINIMAL,
-                )
-            else:
-                config.thinking_config = types.ThinkingConfig(
-                    thinking_budget=0,
-                )
+            config.thinking_config = types.ThinkingConfig(
+                thinking_level=types.ThinkingLevel.MINIMAL,
+            )
 
         response = self._client.models.generate_content(
             model=self._model,

@@ -15,7 +15,6 @@ from .config import (
     DEFAULT_HEIGHT,
     DEFAULT_MAX_ITERATIONS,
     DEFAULT_PROVIDER,
-    DEFAULT_THINKING_BUDGET,
     DEFAULT_WIDTH,
 )
 from .orchestrator import DrawingSession, run_drawing_session
@@ -59,13 +58,6 @@ def _make_provider(provider_name: str, model: str | None) -> LLMProvider:
 @click.option("--background", default=DEFAULT_BACKGROUND, show_default=True, help="Background color.")
 @click.option("-o", "--output", default=None, type=click.Path(), help="Output directory.")
 @click.option("-v", "--verbose", is_flag=True, help="Verbose logging.")
-@click.option("--thinking", is_flag=True, help="Enable extended thinking.")
-@click.option(
-    "--thinking-budget",
-    default=DEFAULT_THINKING_BUDGET,
-    show_default=True,
-    help="Thinking token budget.",
-)
 def main(
     prompt: str,
     provider: str,
@@ -76,8 +68,6 @@ def main(
     background: str,
     output: str | None,
     verbose: bool,
-    thinking: bool,
-    thinking_budget: int,
 ) -> None:
     """Create art with an LLM. Provide an art PROMPT to get started."""
     load_dotenv()
@@ -113,8 +103,6 @@ def main(
         canvas=canvas,
         output_dir=output_dir,
         max_iterations=max_iterations,
-        thinking_enabled=thinking,
-        thinking_budget=thinking_budget,
     )
 
     final_path = run_drawing_session(session, verbose=verbose)

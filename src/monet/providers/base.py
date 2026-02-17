@@ -15,7 +15,6 @@ class DrawingRequest:
     max_output_tokens: int = 4096
     iteration_message: str | None = None
     thinking_enabled: bool = False
-    thinking_budget: int = 4096
 
     def format_notes(self) -> list[str]:
         """Return formatted note strings, one per iteration."""
