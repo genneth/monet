@@ -31,19 +31,32 @@ class AnthropicProvider(LLMProvider):
 
         user_parts: list[dict] = []
 
-        # 1. Stable text: art prompt (prefix-cacheable)
-        user_parts.append({"type": "text", "text": f"Art prompt: {request.original_prompt}"})
+        # 1. Stable text: art prompt (prefix-cacheable, breakpoint 2 of 4)
+        user_parts.append({
+            "type": "text",
+            "text": f"Art prompt: {request.original_prompt}",
+            "cache_control": {"type": "ephemeral"},
+        })
 
-        # 2. Notes history (grows but prefix is stable — cacheable)
+        # 2. Notes history — each note as its own content block for incremental caching.
+        #    Anthropic allows max 4 cache breakpoints. We use:
+        #      1. System prompt (always)
+        #      2. Art prompt (always)
+        #      3. Second-to-last note (matches previous call's last-note cache → read)
+        #      4. Last note (creates cache for next call)
         if request.notes_history:
-            notes_text = "\n\n".join(
-                f"== Iteration {i + 1} notes ==\n{note}" for i, note in enumerate(request.notes_history)
-            )
-            user_parts.append({
-                "type": "text",
-                "text": f"Your notes from previous iterations:\n\n{notes_text}",
-                "cache_control": {"type": "ephemeral"},
-            })
+            note_blocks: list[dict] = []
+            for i, note in enumerate(request.notes_history):
+                prefix = "Your notes from previous iterations:\n\n" if i == 0 else ""
+                note_blocks.append({
+                    "type": "text",
+                    "text": f"{prefix}== Iteration {i + 1} notes ==\n{note}",
+                })
+            # Cache breakpoints on last 2 notes (breakpoints 3-4 of max 4).
+            if len(note_blocks) >= 2:
+                note_blocks[-2]["cache_control"] = {"type": "ephemeral"}
+            note_blocks[-1]["cache_control"] = {"type": "ephemeral"}
+            user_parts.extend(note_blocks)
 
         # 3. Canvas image (changes every iteration — never cached)
         user_parts.append(

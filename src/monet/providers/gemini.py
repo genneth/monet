@@ -7,7 +7,24 @@ from google.genai import types
 
 from .base import DrawingRequest, DrawingResponse, LLMProvider
 
-CACHE_TTL = "1200s"  # 20 minutes
+
+def _format_token_details(details: object) -> str:
+    """Format a token details object (list of ModalityTokenCount or similar) for logging."""
+    if not details:
+        return ""
+    # Details may be a list of objects with modality/token_count attrs, or something else.
+    # Log whatever we get for visibility.
+    if isinstance(details, list):
+        parts = []
+        for entry in details:
+            modality = getattr(entry, "modality", None)
+            token_count = getattr(entry, "token_count", None)
+            if modality and token_count:
+                parts.append(f"{modality}={token_count}")
+            else:
+                parts.append(str(entry))
+        return ", ".join(parts)
+    return str(details)
 
 
 class GeminiProvider(LLMProvider):
@@ -23,53 +40,28 @@ class GeminiProvider(LLMProvider):
     def default_model(self) -> str:
         return "gemini-3-flash-preview"
 
-    def _build_cached_contents(self, request: DrawingRequest) -> list[types.Content]:
-        """Build the stable content parts that should be cached (art prompt + notes history)."""
+    def send_drawing_request(self, request: DrawingRequest) -> DrawingResponse:
+        provider_log: list[str] = []
+
+        # Build content parts — stable prefix first for implicit caching.
+        # Gemini automatically caches repeated prefixes across requests.
         parts: list[types.Part] = []
+
+        # 1. Stable text: art prompt (prefix-cacheable)
         parts.append(types.Part.from_text(text=f"Art prompt: {request.original_prompt}"))
+
+        # 2. Notes history (grows but prefix is stable — cacheable)
         if request.notes_history:
             notes_text = "\n\n".join(
                 f"== Iteration {i + 1} notes ==\n{note}" for i, note in enumerate(request.notes_history)
             )
             parts.append(types.Part.from_text(text=f"Your notes from previous iterations:\n\n{notes_text}"))
-        return [types.Content(role="user", parts=parts)]
 
-    def send_drawing_request(self, request: DrawingRequest) -> DrawingResponse:
-        provider_log: list[str] = []
-
-        # Try to create cache with stable content
-        cache_name = None
-        try:
-            cache = self._client.caches.create(
-                model=self._model,
-                config=types.CreateCachedContentConfig(
-                    system_instruction=request.system_prompt,
-                    contents=self._build_cached_contents(request),
-                    ttl=CACHE_TTL,
-                ),
-            )
-            cache_name = cache.name
-            provider_log.append(f"Cache created: {cache_name}")
-        except Exception as e:
-            provider_log.append(f"Cache creation failed (proceeding without): {e}")
-
-        # Build per-request content (image + current iteration context)
-        parts: list[types.Part] = []
-
-        if not cache_name:
-            # Cache failed — include everything inline
-            parts.append(types.Part.from_text(text=f"Art prompt: {request.original_prompt}"))
-            if request.notes_history:
-                notes_text = "\n\n".join(
-                    f"== Iteration {i + 1} notes ==\n{note}" for i, note in enumerate(request.notes_history)
-                )
-                parts.append(types.Part.from_text(text=f"Your notes from previous iterations:\n\n{notes_text}"))
-
-        # Canvas image (always per-request, never cached)
+        # 3. Canvas image (changes every iteration — never cached)
         image_bytes = base64.standard_b64decode(request.canvas_png_base64)
         parts.append(types.Part.from_bytes(data=image_bytes, mime_type="image/png"))
 
-        # Current iteration context
+        # 4. Current iteration context (changes every iteration)
         current_lines = [f"Iteration: {request.iteration}", f"Layers: {request.layer_summary}"]
         if request.iteration_message:
             current_lines.append(request.iteration_message)
@@ -78,13 +70,9 @@ class GeminiProvider(LLMProvider):
         parts.append(types.Part.from_text(text="\n".join(current_lines)))
 
         config = types.GenerateContentConfig(
+            system_instruction=request.system_prompt,
             max_output_tokens=request.max_output_tokens,
         )
-
-        if cache_name:
-            config.cached_content = cache_name
-        else:
-            config.system_instruction = request.system_prompt
 
         if request.thinking_enabled:
             config.thinking_config = types.ThinkingConfig(
@@ -98,23 +86,40 @@ class GeminiProvider(LLMProvider):
         )
 
         raw_text = ""
-        thinking_tokens = 0
         if response.candidates:
             for part in response.candidates[0].content.parts:
-                if part.thought:
-                    thinking_tokens += len(part.text) // 4  # rough estimate
-                else:
+                if not part.thought:
                     raw_text += part.text
 
+        # Extract token counts from usage metadata
         usage = response.usage_metadata
-        cached_token_count = getattr(usage, "cached_content_token_count", 0) or 0
         prompt_tokens = getattr(usage, "prompt_token_count", 0) or 0
         output_token_count = getattr(usage, "candidates_token_count", 0) or 0
+        cached_token_count = getattr(usage, "cached_content_token_count", 0) or 0
+        thinking_tokens = getattr(usage, "thoughts_token_count", 0) or 0
 
+        # Log cache status
         if cached_token_count:
             provider_log.append(f"Cache hit: {cached_token_count}/{prompt_tokens} input tokens from cache")
-        elif cache_name:
-            provider_log.append("Cache created but no tokens read from it (unexpected)")
+        else:
+            provider_log.append("No cache hit")
+
+        # Log thinking tokens
+        if thinking_tokens:
+            provider_log.append(f"Thinking: {thinking_tokens} tokens")
+
+        # Log token details breakdowns if available
+        prompt_details = getattr(usage, "prompt_tokens_details", None)
+        if prompt_details:
+            provider_log.append(f"Prompt details: [{_format_token_details(prompt_details)}]")
+
+        cache_details = getattr(usage, "cache_tokens_details", None)
+        if cache_details:
+            provider_log.append(f"Cache details: [{_format_token_details(cache_details)}]")
+
+        candidates_details = getattr(usage, "candidates_tokens_details", None)
+        if candidates_details:
+            provider_log.append(f"Output details: [{_format_token_details(candidates_details)}]")
 
         return DrawingResponse(
             raw_text=raw_text,

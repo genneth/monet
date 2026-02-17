@@ -53,18 +53,27 @@ Output goes to `output/<timestamp>_<slug>/` with:
 
 ## Cost estimates
 
-A typical artwork takes 10-15 drawing iterations, plus a planning iteration (iteration 0) that runs before drawing begins. The planning iteration always uses extended thinking to reason through composition, color palette, and iteration strategy. Each drawing iteration uses ~1500-3000 input tokens (system prompt + notes + image) and ~1000-1500 output tokens. Both providers support caching, which reduces repeat input costs significantly.
+A typical artwork takes 10-15 drawing iterations, plus a planning iteration (iteration 0) that runs before drawing begins. The planning iteration always uses extended thinking to reason through composition, color palette, and iteration strategy. Each drawing iteration uses ~1500-3000 input tokens (system prompt + notes + image) and ~1000-1500 output tokens.
+
+Both providers support prompt caching to reduce repeat input costs. Anthropic uses explicit `cache_control` breakpoints with a sliding window over note blocks — each iteration reads the previous call's cached prefix and only writes the newest note. Gemini uses automatic implicit prefix caching (no code needed, but hit rates vary by model).
 
 Estimates below are for a **15-iteration session** (~45K input, ~22K output tokens total, with caching) plus the planning overhead (1 extra API call with thinking tokens):
+
+### Gemini
 
 | Model | Input cost | Output cost | Total | Notes |
 |-------|-----------|-------------|-------|-------|
 | **Gemini 2.5 Flash** | ~$0.01 | ~$0.06 | **~$0.07** | Cheapest option. |
 | **Gemini 3 Flash Preview** | ~$0.02 | ~$0.07 | **~$0.09** | Default Gemini model. |
-| **Claude Haiku 4.5** | ~$0.05 | ~$0.11 | **~$0.16** | Fast and cheap on Anthropic. |
 | **Gemini 2.5 Pro** | ~$0.06 | ~$0.22 | **~$0.28** | Better quality, still reasonable. |
 | **Gemini 3 Pro Preview** | ~$0.09 | ~$0.26 | **~$0.35** | Best Gemini quality. |
-| **Claude Sonnet 4.5** | ~$0.14 | ~$0.33 | **~$0.47** | Default Anthropic model. |
+
+### Anthropic
+
+| Model | Input cost | Output cost | Total | Notes |
+|-------|-----------|-------------|-------|-------|
+| **Claude Haiku 4.5** | ~$0.05 | ~$0.11 | **~$0.16** | Fast and cheap. |
+| **Claude Sonnet 4.5** | ~$0.14 | ~$0.33 | **~$0.47** | Default model. |
 | **Claude Opus 4.6** | ~$0.23 | ~$0.55 | **~$0.78** | Best quality. Under $1 per artwork. |
 
 With `--thinking` enabled, expect 2-3x the output token cost due to thinking tokens. Extended thinking generally produces better spatial reasoning and more coherent compositions.
