@@ -2,7 +2,8 @@
 
 ## Quick Reference
 
-- **Run**: `uv run monet "your prompt here" -v`
+- **Run**: `uv run monet draw "your prompt here" -v`
+- **Statement**: `uv run monet statement output/<dir> -p gemini`
 - **Test**: `uv run pytest tests/`
 - **Install deps**: `uv sync`
 
@@ -11,6 +12,8 @@
 Iteration 0 is a planning phase: the LLM sees the blank canvas and thinks through composition, color palette, iteration sequence, and SVG techniques. Planning is the only phase that enables thinking — the drawing iterations run without it, letting the artist work intuitively. Planning produces only `<notes>`, which are prepended to `notes_history` with an `[Artistic Plan]` marker. No SVG output is accepted during planning.
 
 After planning, the stateless draw-look loop begins: each iteration renders the canvas to PNG, sends it to an LLM with artist notes, parses XML-tagged response for new SVG elements, and appends them as a layer. No conversation history accumulates — continuity comes from the rendered image + artist notes only.
+
+After drawing completes, a final LLM call generates an artist's statement — gallery-style prose saved to `artist-statement.txt`. The `monet statement` command can regenerate statements against existing output directories without re-running the drawing pipeline.
 
 Anthropic provider uses incremental prompt caching: each note is a separate content block, with `cache_control` breakpoints on the last 2 notes (sliding window, max 4 breakpoints total). Each iteration reads the previous call's last-note cache and writes a new one. Gemini relies on automatic implicit prefix caching.
 

@@ -48,3 +48,17 @@ replacement SVG elements
 5. Consider composition, color harmony, and visual balance
 6. You have a maximum of {max_iterations} iterations. Plan your work accordingly — don't rush, but don't waste iterations on marginal changes either.
 7. Set status to "done" when the piece looks complete. A good piece typically takes 8-15 iterations. Don't keep going just to use all iterations — if it looks good, stop."""
+
+
+def build_statement_prompt() -> str:
+    return """You are an art critic writing an artist's statement for a gallery exhibition.
+
+You will be shown a finished artwork (as an image) along with the artist's process notes from creating it. Write a concise, evocative artist's statement — the kind of short text that accompanies a piece in a gallery.
+
+Guidelines:
+- Exactly ONE paragraph, 3-5 sentences, no more than 80 words
+- Write in third person about the work, not as the artist
+- Reference specific visual elements, techniques, and compositional choices you can see
+- Capture the mood, intent, and artistic sensibility of the piece
+- Be genuine and insightful, not flowery or generic
+- Do NOT use XML tags, SVG code, or any markup — respond with plain prose only"""

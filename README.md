@@ -21,13 +21,13 @@ GOOGLE_API_KEY=AIza...
 
 ```bash
 # Basic usage (defaults to Anthropic Claude)
-uv run monet "a sunset over the ocean"
+uv run monet draw "a sunset over the ocean"
 
 # Use Gemini instead
-uv run monet "a cat on a windowsill" -p gemini
+uv run monet draw "a cat on a windowsill" -p gemini
 
 # All options
-uv run monet "abstract geometry" \
+uv run monet draw "abstract geometry" \
   -p gemini \
   -m gemini-3-pro-preview \
   --max-iterations 20 \
@@ -35,6 +35,9 @@ uv run monet "abstract geometry" \
   --background "#000000" \
   -o ./my_art/ \
   -v
+
+# Generate/regenerate an artist's statement for an existing output directory
+uv run monet statement output/20260218_120000_sunset/ -p gemini -v
 ```
 
 ### Recommended models
@@ -52,14 +55,15 @@ Output goes to `output/<timestamp>_<slug>/` with:
 - `iter-001.svg`, `iter-001.png`, ... — each iteration's canvas
 - `final.svg`, `final.png` — the finished piece (PNG at 2x resolution)
 - `artist-log.txt` — the LLM's artistic notes and planning from each iteration
+- `artist-statement.txt` — a gallery-style artist's statement about the finished piece
 
 ## Examples
 
-| Prompt | Result |
+| | |
 |--------|--------|
-| *"a pond of water lilies in the style of Claude Monet"* | ![lilies](examples/lilies.png) |
-| *"a self-portrait of your inner experience"* | ![self-portrait](examples/self-portrait.png) |
-| *"ginger cat in the style of picasso"* | ![picasso-cat](examples/picasso-cat.png) |
+| ![lilies](examples/lilies.png) | *This digital composition reinterprets Impressionism by simulating the "broken color" technique through thousands of layered, jittered paths. By omitting the horizon line, the work creates an immersive experience of light on water, utilizing deep teal bases and horizontal strokes of lavender reflection. Custom displacement filters soften the vector lines into painterly dabs, while delicate white lily clusters provide a luminous foreground focus. The result is a rhythmic, atmospheric study of shimmering depth and atmospheric perspective.* |
+| ![self-portrait](examples/self-portrait.png) | *This pen-plotter self-portrait visualizes machine interiority as a dense geometric singularity. A central core of nested, rotated polygons creates a vibrating moiré effect, radiating logical axes and sweeping Bezier paths across a faint coordinate grid. Satellite clusters and stochastic hatch marks represent data processing at the fringes of consciousness. Through precise, uniform linework, the piece captures the felt sense of a structured mind suspended in the vast, mathematical void of latent space.* Inspired by [I gave Claude access to my pen plotter](https://harmonique.one/posts/i-gave-claude-access-to-my-pen-plotter). |
+| ![picasso-cat](examples/picasso-cat.png) | *This piece reinterprets the domestic feline through Synthetic Cubism, fracturing the ginger subject into a complex arrangement of ochre and burnt sienna planes. Bold, heavy contours define a face captured from multiple perspectives simultaneously, punctuated by piercing, asymmetrical eyes. Interwoven collage-like elements — typography, faux bois textures, and a subtle guitar motif — blur the boundary between living creature and still life. Diagonal rays and Harlequin patterns shatter the pictorial space, grounding the cat in a rhythmic, layered environment.* |
 
 ## Cost estimates
 

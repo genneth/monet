@@ -11,6 +11,9 @@ PLAN_RESPONSE = """\
 <notes>Planning: I'll build this in layers, starting with background elements.</notes>
 <status>continue</status>"""
 
+# Standard statement response appended to every test's mock responses
+STATEMENT_RESPONSE = "A contemplative study in form and color."
+
 
 def _make_mock_provider(responses: list[str]) -> MagicMock:
     provider = MagicMock()
@@ -28,6 +31,7 @@ def test_basic_session():
         """<notes>Adding a circle.</notes>
 <svg-elements><circle cx="400" cy="300" r="100" fill="blue"/></svg-elements>
 <status>done</status>""",
+        STATEMENT_RESPONSE,
     ]
     provider = _make_mock_provider(responses)
 
@@ -44,9 +48,9 @@ def test_basic_session():
         assert result.exists()
         assert result.name == "final.svg"
         assert session.iteration == 1
-        # 2 API calls: planning + 1 drawing iteration
-        assert session.total_input_tokens == 200
-        assert session.total_output_tokens == 100
+        # 3 API calls: planning + 1 drawing iteration + statement
+        assert session.total_input_tokens == 300
+        assert session.total_output_tokens == 150
         # Should have final files
         assert (Path(tmp) / "final.svg").exists()
         assert (Path(tmp) / "final.png").exists()
@@ -67,6 +71,7 @@ def test_multi_iteration_session():
         """<notes>Done!</notes>
 <svg-elements><text x="400" y="500">Hello</text></svg-elements>
 <status>done</status>""",
+        STATEMENT_RESPONSE,
     ]
     provider = _make_mock_provider(responses)
 
@@ -95,6 +100,7 @@ def test_max_iterations_cap():
 <status>continue</status>"""
             for i in range(5)
         ],
+        STATEMENT_RESPONSE,
     ]
     provider = _make_mock_provider(responses)
 
@@ -123,6 +129,7 @@ def test_replace_layer():
 </replace-layer>
 <svg-elements></svg-elements>
 <status>done</status>""",
+        STATEMENT_RESPONSE,
     ]
     provider = _make_mock_provider(responses)
 
@@ -146,6 +153,7 @@ def test_background_change():
 <background>#000000</background>
 <svg-elements><circle r="10"/></svg-elements>
 <status>done</status>""",
+        STATEMENT_RESPONSE,
     ]
     provider = _make_mock_provider(responses)
 
@@ -169,6 +177,7 @@ def test_planning_notes_prepended():
         """<notes>Drawing now.</notes>
 <svg-elements><circle r="10"/></svg-elements>
 <status>done</status>""",
+        STATEMENT_RESPONSE,
     ]
     provider = _make_mock_provider(responses)
 
@@ -200,6 +209,7 @@ def test_planning_svg_ignored():
         """<notes>Real drawing.</notes>
 <svg-elements><rect width="100" height="100" fill="blue"/></svg-elements>
 <status>done</status>""",
+        STATEMENT_RESPONSE,
     ]
     provider = _make_mock_provider(responses)
 
@@ -226,13 +236,19 @@ def test_planning_api_failure_graceful():
     provider = MagicMock()
     provider.name = "mock"
     provider.default_model = "mock-1"
-    # First call (planning) raises, second call (drawing) succeeds
+    # First call (planning) raises, second call (drawing) succeeds, third (statement) succeeds
     provider.send_drawing_request.side_effect = [
         Exception("API error during planning"),
         DrawingResponse(
             raw_text="""<notes>Drawing without plan.</notes>
 <svg-elements><circle r="10"/></svg-elements>
 <status>done</status>""",
+            input_tokens=100,
+            output_tokens=50,
+            model="mock-1",
+        ),
+        DrawingResponse(
+            raw_text=STATEMENT_RESPONSE,
             input_tokens=100,
             output_tokens=50,
             model="mock-1",
@@ -259,6 +275,46 @@ def test_planning_api_failure_graceful():
         assert "Planning phase failed" in log_text
 
 
+def test_artist_statement():
+    """Artist statement should be generated and saved after drawing completes."""
+    statement_text = "This piece explores the tension between geometry and emotion."
+    responses = [
+        PLAN_RESPONSE,
+        """<notes>Done.</notes>
+<svg-elements><circle r="10"/></svg-elements>
+<status>done</status>""",
+        statement_text,
+    ]
+    provider = _make_mock_provider(responses)
+
+    with tempfile.TemporaryDirectory() as tmp:
+        session = DrawingSession(
+            prompt="test",
+            provider=provider,
+            canvas=SvgCanvas(),
+            output_dir=Path(tmp),
+            max_iterations=5,
+        )
+        run_drawing_session(session)
+
+        # Statement file should exist with correct content
+        stmt_path = Path(tmp) / "artist-statement.txt"
+        assert stmt_path.exists()
+        assert stmt_path.read_text(encoding="utf-8") == statement_text
+
+        # 3 API calls: planning + drawing + statement
+        assert provider.send_drawing_request.call_count == 3
+
+        # Statement call should have thinking_enabled=True
+        stmt_call = provider.send_drawing_request.call_args_list[2]
+        stmt_request = stmt_call[0][0]
+        assert stmt_request.thinking_enabled is True
+
+        # Token totals should include all 3 calls
+        assert session.total_input_tokens == 300
+        assert session.total_output_tokens == 150
+
+
 def test_thinking_only_during_planning():
     """Planning request should have thinking_enabled=True, drawing requests should not."""
     responses = [
@@ -266,6 +322,7 @@ def test_thinking_only_during_planning():
         """<notes>Done.</notes>
 <svg-elements><circle r="10"/></svg-elements>
 <status>done</status>""",
+        STATEMENT_RESPONSE,
     ]
     provider = _make_mock_provider(responses)
 

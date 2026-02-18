@@ -7,12 +7,16 @@ from pathlib import Path
 
 from .canvas import SvgCanvas
 from .config import DEFAULT_EXPORT_SCALE, DEFAULT_MAX_OUTPUT_TOKENS
-from .prompt import build_system_prompt
+from .prompt import build_statement_prompt, build_system_prompt
 from .providers.base import DrawingRequest, DrawingResponse, LLMProvider
 from .renderer import render_svg_to_png, render_svg_to_png_base64, save_png, save_svg
 from .response_parser import ParsedResponse, parse_response
 
 log = logging.getLogger(__name__)
+
+STATEMENT_INSTRUCTION = """\
+The artwork is complete. Study the finished image and the artist's process notes below, \
+then write an artist's statement for this piece."""
 
 PLANNING_INSTRUCTION = """\
 This is iteration 0 — the planning phase. Study the blank canvas dimensions and think through \
@@ -129,6 +133,34 @@ class SessionLogger:
         if session.total_cache_creation_tokens:
             self.write(f"Total cache creation tokens: {session.total_cache_creation_tokens}")
         self.write(f"Output: {session.output_dir}")
+
+
+def generate_artist_statement(
+    provider: LLMProvider,
+    canvas_png_base64: str,
+    notes_history: list[str],
+    original_prompt: str,
+    slog: SessionLogger | None = None,
+) -> tuple[str, DrawingResponse]:
+    """Generate an artist's statement for a finished artwork.
+
+    Returns the statement text and the raw DrawingResponse (for token tracking).
+    """
+    request = DrawingRequest(
+        system_prompt=build_statement_prompt(),
+        canvas_png_base64=canvas_png_base64,
+        original_prompt=original_prompt,
+        iteration=0,
+        layer_summary="",
+        notes_history=notes_history,
+        max_output_tokens=DEFAULT_MAX_OUTPUT_TOKENS,
+        iteration_message=STATEMENT_INSTRUCTION,
+        thinking_enabled=True,
+    )
+    response = provider.send_drawing_request(request)
+    if slog:
+        slog.log_api_response(response)
+    return response.raw_text.strip(), response
 
 
 def run_drawing_session(session: DrawingSession, verbose: bool = False) -> Path:
@@ -298,6 +330,28 @@ def run_drawing_session(session: DrawingSession, verbose: bool = False) -> Path:
         save_png(final_png, session.output_dir / "final.png")
     except Exception as e:
         slog.write(f"WARNING: Could not save final PNG: {e}")
+
+    # Generate artist's statement
+    try:
+        final_b64 = render_svg_to_png_base64(final_svg, scale=DEFAULT_EXPORT_SCALE)
+        slog.write("")
+        slog.write("Generating artist's statement...")
+        statement, stmt_response = generate_artist_statement(
+            provider=session.provider,
+            canvas_png_base64=final_b64,
+            notes_history=list(session.notes_history),
+            original_prompt=session.prompt,
+            slog=slog,
+        )
+        session.total_input_tokens += stmt_response.input_tokens
+        session.total_output_tokens += stmt_response.output_tokens
+        session.total_thinking_tokens += stmt_response.thinking_tokens
+        session.total_cache_read_tokens += stmt_response.cache_read_tokens
+        session.total_cache_creation_tokens += stmt_response.cache_creation_tokens
+        (session.output_dir / "artist-statement.txt").write_text(statement, encoding="utf-8")
+        slog.write(f"\n{statement}\n")
+    except Exception as e:
+        slog.write(f"WARNING: Artist statement generation failed ({e})")
 
     slog.log_session_end(session)
 
