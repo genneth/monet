@@ -169,7 +169,7 @@ def statement(
     original_prompt = "unknown"
     for line in log_text.splitlines():
         if line.startswith("Prompt: "):
-            original_prompt = line[len("Prompt: "):]
+            original_prompt = line[len("Prompt: ") :]
             break
 
     llm = _make_provider(provider, model)

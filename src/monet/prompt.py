@@ -1,17 +1,50 @@
 from __future__ import annotations
 
 
-def build_system_prompt(width: int, height: int, max_iterations: int = 25) -> str:
-    return f"""You are an SVG artist. You create art by writing SVG elements on a canvas, iteratively refining your work. Each iteration, you see your current canvas as an image and output new SVG elements to add.
-
-## Canvas
+def build_canvas_description(width: int, height: int) -> str:
+    """Canvas dimensions and coordinate system — shared by orchestrator and MCP server."""
+    return f"""\
 - Size: {width}x{height} pixels
 - Coordinate system: (0,0) is top-left, ({width},{height}) is bottom-right
 - Center: ({width // 2},{height // 2})
 
 ## Available SVG Elements
 Use any standard SVG elements: <rect>, <circle>, <ellipse>, <line>, <polyline>, <polygon>, <path>, <text>, <image>, <g>, <use>, etc.
-You can use transforms, gradients, filters, patterns, masks, and clip paths.
+You can use transforms, gradients, filters, patterns, masks, and clip paths."""
+
+
+def build_artistic_guidelines(max_iterations: int | None = None) -> str:
+    """Artistic approach guidance — shared by orchestrator and MCP server.
+
+    Core artistic concepts are always included. When max_iterations is set,
+    iteration-budget-specific pacing advice is appended.
+    """
+    lines = [
+        "1. Work in stages: background/atmosphere → major forms → details → refinement → final touches",
+        "2. Each iteration adds a new layer — build up complexity gradually. Aim for 3-15 elements per layer.",
+        "3. Never redraw the full background or cover the entire canvas — previous layers are preserved"
+        " automatically. Only add NEW elements that build on what's already there.",
+        "4. Use gradients, opacity, and blending for depth and atmosphere",
+        "5. Consider composition, color harmony, and visual balance",
+        "6. A good piece typically takes 8-15 iterations. Don't keep going for marginal"
+        " changes — when it looks complete, stop.",
+    ]
+    if max_iterations is not None:
+        lines.append(
+            f"7. You have a maximum of {max_iterations} iterations. Plan your work accordingly"
+            " — don't rush, but don't waste iterations either."
+        )
+    return "\n".join(lines)
+
+
+def build_system_prompt(width: int, height: int, max_iterations: int = 25) -> str:
+    canvas_desc = build_canvas_description(width, height)
+    guidelines = build_artistic_guidelines(max_iterations)
+
+    return f"""You are an SVG artist. You create art by writing SVG elements on a canvas, iteratively refining your work. Each iteration, you see your current canvas as an image and output new SVG elements to add.
+
+## Canvas
+{canvas_desc}
 
 ## Response Format
 Respond with EXACTLY these XML tags:
@@ -25,7 +58,7 @@ Any SVG <defs> content (gradients, filters, patterns, etc.). CRITICAL: every ID 
 </defs>
 
 <svg-elements>
-New SVG elements to add as a new layer on TOP of existing layers. These are raw SVG elements (no <svg> wrapper). Aim for 3-15 elements per iteration. IMPORTANT: never redraw the full background or cover the entire canvas — previous layers are preserved automatically. Only add NEW elements.
+New SVG elements to add as a new layer on TOP of existing layers. These are raw SVG elements (no <svg> wrapper).
 </svg-elements>
 
 <status>continue</status> or <status>done</status>
@@ -41,13 +74,7 @@ replacement SVG elements
 </replace-layer>
 
 ## Artistic Guidelines
-1. Work in stages: background/atmosphere → major forms → details → refinement → final touches
-2. Use your notes to plan ahead and track progress
-3. Each iteration adds a new layer — build up complexity gradually
-4. Use gradients, opacity, and blending for depth
-5. Consider composition, color harmony, and visual balance
-6. You have a maximum of {max_iterations} iterations. Plan your work accordingly — don't rush, but don't waste iterations on marginal changes either.
-7. Set status to "done" when the piece looks complete. A good piece typically takes 8-15 iterations. Don't keep going just to use all iterations — if it looks good, stop."""
+{guidelines}"""
 
 
 def build_statement_prompt() -> str:

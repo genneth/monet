@@ -14,10 +14,12 @@ dependencies = [
     "Pillow",
     "resvg-py",
     "python-dotenv",
+    "fastmcp>=3.0.1",
 ]
 
 [project.scripts]
 monet = "monet.cli:main"
+monet-mcp = "monet.mcp_server:main"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
