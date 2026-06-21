@@ -26,6 +26,7 @@ class Session:
     prompt: str
     canvas: SvgCanvas
     output_dir: Path
+    model: str = "unknown"
     iteration: int = 0
     finished: bool = False
     _log_lines: list[str] = field(default_factory=list, repr=False)
@@ -93,6 +94,7 @@ def create_canvas(
     width: int = DEFAULT_WIDTH,
     height: int = DEFAULT_HEIGHT,
     background: str = DEFAULT_BACKGROUND,
+    model: str = "unknown",
 ) -> tuple[str, Image]:
     """Start a new drawing session.
 
@@ -105,6 +107,7 @@ def create_canvas(
         width: Canvas width in pixels (default 800).
         height: Canvas height in pixels (default 600).
         background: Background color as hex string (default "#FFFFFF").
+        model: The model name/ID driving this session (e.g., "claude-opus-4-6").
     """
     global _session
 
@@ -114,11 +117,12 @@ def create_canvas(
     output_dir.mkdir(parents=True, exist_ok=True)
 
     canvas = SvgCanvas(width=width, height=height, background=background)
-    _session = Session(prompt=prompt, canvas=canvas, output_dir=output_dir)
+    _session = Session(prompt=prompt, canvas=canvas, output_dir=output_dir, model=model)
 
     # Initialize log
     (output_dir / "artist-log.txt").write_text("", encoding="utf-8")
     _session.log(f"Prompt: {prompt}")
+    _session.log(f"Model: {model}")
     _session.log(f"Canvas: {width}x{height}, bg={background}")
     _session.log(f"Output: {output_dir}")
     _session.log("")
@@ -290,6 +294,7 @@ def finish_drawing() -> tuple[str, Image]:
     session.log("")
     session.log(f"{'=' * 40}")
     session.log("== Drawing finished")
+    session.log(f"Model: {session.model}")
     session.log(f"Iterations: {session.iteration}")
     session.log(f"Layers: {session.canvas.get_layer_summary()}")
     session.log(f"Output: {session.output_dir}")
