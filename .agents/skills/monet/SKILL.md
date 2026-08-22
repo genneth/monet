@@ -7,14 +7,11 @@ description: Create or iteratively refine original SVG artwork with Monet's file
 
 Create the artwork through repeated SVG edits, deterministic renders, and visual inspection. Treat the prompt as a starting point; let revision discover the work's specific logic.
 
-Before drawing, read [references/artistic-guide.md](references/artistic-guide.md). Read at most one additional profile when it fits the request:
-
-- Read [references/painterly.md](references/painterly.md) for organic, atmospheric, impressionist, figurative, or painterly work.
-- Read [references/systems.md](references/systems.md) for generative, geometric, plotter-like, modular, or high-density work.
+Before drawing, read [references/artistic-guide.md](references/artistic-guide.md).
 
 ## Workflow
 
-1. Choose a concise, descriptive title of roughly 2–6 words. Start a session with `uv run monet new "<prompt>" --title "<title>"`. Set dimensions, background, and `--profile painterly|systems` when appropriate. Use the absolute paths in the returned JSON for every later action.
+1. Choose a concise, descriptive title of roughly 2–6 words. Start a session with `uv run monet new "<prompt>" --title "<title>"`. Set dimensions and background when appropriate. Use the absolute paths in the returned JSON for every later action.
 2. Inspect the blank `current.png`. In `artist-notes.md`, note the initial composition and palette, then imagine how a viewer's attention might unfold: what they notice, infer, question, and return to. Write a proposition, not a fixed blueprint or symbol glossary.
 3. Write raw SVG elements—without an outer `<svg>` wrapper—to the returned `next_layer` path. Put gradients, filters, patterns, symbols, masks, and clip paths in the matching `next_defs` file. Prefix every definition ID with that layer's iteration number, such as `iter003-water-glow`.
 4. Run `uv run monet render <session>`. If validation fails, fix the layer and retry; the last successful `current.svg` and `current.png` remain intact.
@@ -26,4 +23,4 @@ Use `uv run monet status <session>` to resume or recover paths. Use `uv run mone
 
 When the work is another attempt in an existing series, inspect `output/series/` and use `--output` to place it beside the related attempts with the next ordered prefix. Make the attempt name describe the distinguishing approach, not the full prompt.
 
-Treat 8–15 successful renders as a useful range, not a quota. Before finishing, apply the second-look review in the artistic guide. Stop when the work feels specific and further changes would be merely cosmetic.
+When the image first feels complete, treat it as halfway. Spend a comparable number of further render-and-inspect passes testing alternatives, revising, and removing; transform existing work more often than you add layers. Then apply the second-look review in the artistic guide and stop when further changes would be merely cosmetic.
