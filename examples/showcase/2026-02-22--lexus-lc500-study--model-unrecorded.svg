@@ -1,0 +1,845 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1000" viewBox="0 0 1400 1000">
+  <rect width="100%" height="100%" fill="#EDE4D3"/>
+  <defs>
+    <!-- Arrowhead marker for dimension lines -->
+<marker id="L9-arrow-right" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+  <path d="M 0,0 L 8,3 L 0,6 Z" fill="#5C4A3A"/>
+</marker>
+<marker id="L9-arrow-left" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto">
+  <path d="M 8,0 L 0,3 L 8,6 Z" fill="#5C4A3A"/>
+</marker>
+<marker id="L9-arrow-up" markerWidth="6" markerHeight="8" refX="3" refY="0" orient="auto">
+  <path d="M 0,8 L 3,0 L 6,8 Z" fill="#5C4A3A"/>
+</marker>
+<marker id="L9-arrow-down" markerWidth="6" markerHeight="8" refX="3" refY="8" orient="auto">
+  <path d="M 0,0 L 3,8 L 6,0 Z" fill="#5C4A3A"/>
+</marker>
+    <!-- Subtle paper grain texture -->
+<filter id="L11-paperGrain" x="0" y="0" width="100%" height="100%">
+  <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" seed="42" result="noise"/>
+  <feColorMatrix type="saturate" values="0" in="noise" result="grayNoise"/>
+  <feComponentTransfer in="grayNoise" result="subtleNoise">
+    <feFuncA type="linear" slope="0.04" intercept="0"/>
+  </feComponentTransfer>
+  <feBlend in="SourceGraphic" in2="subtleNoise" mode="multiply"/>
+</filter>
+  </defs>
+  <g id="layer-1">
+    <!-- Outer border -->
+    <rect x="15" y="15" width="1370" height="970" fill="none" stroke="#3A2A1A" stroke-width="3"/>
+    <!-- Inner border -->
+    <rect x="23" y="23" width="1354" height="954" fill="none" stroke="#3A2A1A" stroke-width="1.2"/>
+    <!-- Fold marks - top/bottom midpoints -->
+    <line x1="700" y1="15" x2="700" y2="23" stroke="#3A2A1A" stroke-width="0.8"/>
+    <line x1="700" y1="977" x2="700" y2="985" stroke="#3A2A1A" stroke-width="0.8"/>
+    <!-- Fold marks - left/right midpoints -->
+    <line x1="15" y1="500" x2="23" y2="500" stroke="#3A2A1A" stroke-width="0.8"/>
+    <line x1="1377" y1="500" x2="1385" y2="500" stroke="#3A2A1A" stroke-width="0.8"/>
+  </g>
+  <g id="layer-2">
+    <!-- Title block outer box -->
+    <rect x="990" y="845" width="387" height="132" fill="none" stroke="#3A2A1A" stroke-width="1.5"/>
+    <!-- Title block horizontal dividers -->
+    <line x1="990" y1="875" x2="1377" y2="875" stroke="#3A2A1A" stroke-width="0.8"/>
+    <line x1="990" y1="905" x2="1377" y2="905" stroke="#3A2A1A" stroke-width="0.8"/>
+    <line x1="990" y1="935" x2="1377" y2="935" stroke="#3A2A1A" stroke-width="0.8"/>
+    <line x1="990" y1="955" x2="1377" y2="955" stroke="#3A2A1A" stroke-width="0.8"/>
+    <!-- Title block vertical dividers -->
+    <line x1="1180" y1="905" x2="1180" y2="977" stroke="#3A2A1A" stroke-width="0.8"/>
+    <line x1="1280" y1="935" x2="1280" y2="977" stroke="#3A2A1A" stroke-width="0.8"/>
+    <!-- Main title -->
+    <text x="1183" y="866" font-family="'Courier New', monospace" font-size="16" font-weight="bold" fill="#3A2A1A" text-anchor="middle" letter-spacing="3">LEXUS LC 500</text>
+    <!-- Subtitle -->
+    <text x="1183" y="893" font-family="'Courier New', monospace" font-size="8.5" fill="#5C4A3A" text-anchor="middle" letter-spacing="1.5">GRAND TOURING COUPE — ORTHOGRAPHIC VIEWS</text>
+    <!-- Specs row labels -->
+    <text x="997" y="920" font-family="'Courier New', monospace" font-size="7.5" fill="#5C4A3A">ENGINE: 5.0L V8 2UR-GSE  |  POWER: 471 HP @ 7100 RPM  |  TORQUE: 398 LB-FT</text>
+    <!-- Bottom row left: projection info -->
+    <text x="997" y="949" font-family="'Courier New', monospace" font-size="7.5" fill="#5C4A3A">CURB WEIGHT: 1,940 KG  |  WHEELBASE: 2,870 MM  |  0-60: 4.4 SEC</text>
+    <!-- Third angle projection symbol -->
+    <circle cx="1020" cy="966" r="7" fill="none" stroke="#3A2A1A" stroke-width="0.8"/>
+    <circle cx="1020" cy="966" r="3" fill="none" stroke="#3A2A1A" stroke-width="0.8"/>
+    <line x1="1020" y1="959" x2="1020" y2="973" stroke="#3A2A1A" stroke-width="0.4" stroke-dasharray="1 1"/>
+    <line x1="1013" y1="966" x2="1027" y2="966" stroke="#3A2A1A" stroke-width="0.4" stroke-dasharray="1 1"/>
+    <!-- Third angle label -->
+    <text x="1035" y="970" font-family="'Courier New', monospace" font-size="6.5" fill="#5C4A3A">THIRD ANGLE</text>
+    <!-- Scale -->
+    <text x="1190" y="949" font-family="'Courier New', monospace" font-size="8" fill="#3A2A1A">SCALE: APPROX 1:83</text>
+    <text x="1190" y="970" font-family="'Courier New', monospace" font-size="7.5" fill="#5C4A3A">UNITS: MM</text>
+    <!-- Sheet info -->
+    <text x="1290" y="949" font-family="'Courier New', monospace" font-size="7.5" fill="#5C4A3A">DWG NO.</text>
+    <text x="1290" y="970" font-family="'Courier New', monospace" font-size="9" font-weight="bold" fill="#3A2A1A">LC500-001</text>
+    <text x="1345" y="949" font-family="'Courier New', monospace" font-size="7.5" fill="#5C4A3A">SHEET</text>
+    <text x="1345" y="970" font-family="'Courier New', monospace" font-size="9" font-weight="bold" fill="#3A2A1A">1 OF 1</text>
+  </g>
+  <g id="layer-3">
+    <!-- Side view center lines -->
+    <line x1="404" y1="479.5" x2="996" y2="479.5" stroke="#5C4A3A" stroke-width="0.4" stroke-dasharray="12 3 3 3" opacity="0.5"/>
+    <!-- Side view vertical center -->
+    <line x1="700" y1="389" x2="700" y2="570" stroke="#5C4A3A" stroke-width="0.4" stroke-dasharray="12 3 3 3" opacity="0.5"/>
+
+    <!-- Top view center line (horizontal - car centerline) -->
+    <line x1="404" y1="249" x2="996" y2="249" stroke="#5C4A3A" stroke-width="0.4" stroke-dasharray="12 3 3 3" opacity="0.5"/>
+    <!-- Top view vertical center -->
+    <line x1="700" y1="124" x2="700" y2="374" stroke="#5C4A3A" stroke-width="0.4" stroke-dasharray="12 3 3 3" opacity="0.5"/>
+
+    <!-- Front view center lines -->
+    <line x1="1136" y1="389" x2="1136" y2="570" stroke="#5C4A3A" stroke-width="0.4" stroke-dasharray="12 3 3 3" opacity="0.5"/>
+    <line x1="1011" y1="479.5" x2="1261" y2="479.5" stroke="#5C4A3A" stroke-width="0.4" stroke-dasharray="12 3 3 3" opacity="0.5"/>
+
+    <!-- Rear view center lines -->
+    <line x1="264" y1="389" x2="264" y2="570" stroke="#5C4A3A" stroke-width="0.4" stroke-dasharray="12 3 3 3" opacity="0.5"/>
+    <line x1="139" y1="479.5" x2="389" y2="479.5" stroke="#5C4A3A" stroke-width="0.4" stroke-dasharray="12 3 3 3" opacity="0.5"/>
+
+    <!-- Projection lines: side→top (vertical, key points) -->
+    <!-- Front of car -->
+    <line x1="986" y1="374" x2="986" y2="399" stroke="#5C4A3A" stroke-width="0.3" stroke-dasharray="3 3" opacity="0.35"/>
+    <!-- Rear of car -->
+    <line x1="414" y1="374" x2="414" y2="399" stroke="#5C4A3A" stroke-width="0.3" stroke-dasharray="3 3" opacity="0.35"/>
+    <!-- Front axle -->
+    <line x1="874" y1="374" x2="874" y2="399" stroke="#5C4A3A" stroke-width="0.3" stroke-dasharray="3 3" opacity="0.35"/>
+    <!-- Rear axle -->
+    <line x1="530" y1="374" x2="530" y2="399" stroke="#5C4A3A" stroke-width="0.3" stroke-dasharray="3 3" opacity="0.35"/>
+
+    <!-- Projection lines: side→front (horizontal) -->
+    <line x1="996" y1="399" x2="1021" y2="399" stroke="#5C4A3A" stroke-width="0.3" stroke-dasharray="3 3" opacity="0.35"/>
+    <line x1="996" y1="560" x2="1021" y2="560" stroke="#5C4A3A" stroke-width="0.3" stroke-dasharray="3 3" opacity="0.35"/>
+    <line x1="996" y1="529.5" x2="1021" y2="529.5" stroke="#5C4A3A" stroke-width="0.3" stroke-dasharray="3 3" opacity="0.35"/>
+
+    <!-- Projection lines: side→rear (horizontal) -->
+    <line x1="404" y1="399" x2="389" y2="399" stroke="#5C4A3A" stroke-width="0.3" stroke-dasharray="3 3" opacity="0.35"/>
+    <line x1="404" y1="560" x2="389" y2="560" stroke="#5C4A3A" stroke-width="0.3" stroke-dasharray="3 3" opacity="0.35"/>
+    <line x1="404" y1="529.5" x2="389" y2="529.5" stroke="#5C4A3A" stroke-width="0.3" stroke-dasharray="3 3" opacity="0.35"/>
+
+    <!-- Axle center lines in side view (vertical through wheel centers) -->
+    <line x1="874" y1="520" x2="874" y2="565" stroke="#5C4A3A" stroke-width="0.4" stroke-dasharray="12 3 3 3" opacity="0.5"/>
+    <line x1="530" y1="520" x2="530" y2="565" stroke="#5C4A3A" stroke-width="0.4" stroke-dasharray="12 3 3 3" opacity="0.5"/>
+  </g>
+  <g id="layer-4">
+    <!-- Ground line for side view -->
+    <line x1="400" y1="560" x2="1000" y2="560" stroke="#3A2A1A" stroke-width="0.8"/>
+
+    <!-- LC500 Side Profile Body Outline - car faces RIGHT -->
+    <path d="
+      M 414,454
+      C 414,450 418,444 425,440
+      C 432,436 445,433 460,431
+      C 478,429 500,429 515,427
+      C 535,424 555,416 572,408
+      C 588,401 608,398 635,397
+      C 660,397 685,398 700,399
+      C 715,400 728,404 738,410
+      C 748,416 758,423 765,428
+      C 768,429 773,430 780,430
+      C 810,429 845,428 880,428
+      C 905,428 930,430 950,434
+      C 962,437 972,441 980,446
+      C 985,450 986,453 986,458
+      L 986,470
+      C 987,485 987,505 986,520
+      C 986,533 985,540 982,544
+      C 980,546 975,547 968,547
+      L 912,547
+      C 908,547 904,542 900,534
+      C 895,520 886,507 874,503
+      C 862,507 853,520 848,534
+      C 844,542 840,547 836,547
+      L 566,547
+      C 562,547 558,542 554,534
+      C 549,520 540,507 530,503
+      C 520,507 511,520 506,534
+      C 502,542 498,547 494,547
+      L 422,547
+      C 418,547 415,544 414,538
+      C 414,520 414,490 414,454
+      Z
+    " fill="none" stroke="#3A2A1A" stroke-width="2.0" stroke-linejoin="round"/>
+
+    <!-- Front wheel (outer tire) -->
+    <circle cx="874" cy="529.5" r="30.5" fill="none" stroke="#3A2A1A" stroke-width="2.0"/>
+    <!-- Front wheel (rim) -->
+    <circle cx="874" cy="529.5" r="17" fill="none" stroke="#3A2A1A" stroke-width="1.2"/>
+    <!-- Front wheel hub -->
+    <circle cx="874" cy="529.5" r="4" fill="none" stroke="#3A2A1A" stroke-width="1.0"/>
+
+    <!-- Rear wheel (outer tire) -->
+    <circle cx="530" cy="529.5" r="30.5" fill="none" stroke="#3A2A1A" stroke-width="2.0"/>
+    <!-- Rear wheel (rim) -->
+    <circle cx="530" cy="529.5" r="17" fill="none" stroke="#3A2A1A" stroke-width="1.2"/>
+    <!-- Rear wheel hub -->
+    <circle cx="530" cy="529.5" r="4" fill="none" stroke="#3A2A1A" stroke-width="1.0"/>
+  </g>
+  <g id="layer-5">
+    <!-- SIDE VIEW DETAILS -->
+
+    <!-- Window/DLO (daylight opening) outline -->
+    <path d="
+      M 765,432
+      C 758,428 750,420 742,414
+      C 736,408 732,405 728,403
+      L 700,400
+      C 680,399 660,399 645,400
+      C 625,401 605,405 585,412
+      C 570,420 555,428 545,432
+      L 765,432
+      Z
+    " fill="none" stroke="#3A2A1A" stroke-width="1.5"/>
+
+    <!-- Quarter window divider (thin pillar) at approximately x=620 -->
+    <line x1="618" y1="403" x2="612" y2="432" stroke="#3A2A1A" stroke-width="1.2"/>
+
+    <!-- Character/crease line running along the body -->
+    <path d="
+      M 980,450
+      C 960,448 920,446 880,446
+      C 840,446 800,446 760,447
+      C 720,448 680,449 650,450
+      C 620,451 590,453 560,456
+      C 540,460 520,465 505,470
+      C 490,475 475,478 460,478
+      C 445,478 430,476 420,472
+    " fill="none" stroke="#3A2A1A" stroke-width="1.0"/>
+
+    <!-- Secondary body line (lower feature line) -->
+    <path d="
+      M 978,472
+      C 950,471 920,470 890,470
+      C 860,470 830,471 800,472
+      C 770,473 740,474 710,475
+      C 680,476 650,478 630,480
+    " fill="none" stroke="#3A2A1A" stroke-width="0.6"/>
+
+    <!-- Door cut line -->
+    <path d="
+      M 660,432
+      C 660,445 659,460 658,475
+      C 657,490 656,510 655,530
+      C 654,540 653,545 652,547
+    " fill="none" stroke="#3A2A1A" stroke-width="0.8"/>
+
+    <!-- Door handle -->
+    <rect x="672" y="444" width="14" height="3" rx="1.5" fill="none" stroke="#3A2A1A" stroke-width="0.8"/>
+
+    <!-- Side mirror -->
+    <path d="
+      M 770,428
+      C 774,426 778,424 780,420
+      C 782,416 782,412 780,410
+      C 778,408 774,410 772,414
+      C 770,418 769,424 770,428
+      Z
+    " fill="none" stroke="#3A2A1A" stroke-width="1.0"/>
+
+    <!-- Headlight outline -->
+    <path d="
+      M 986,450
+      C 978,449 970,448 965,449
+      C 958,450 954,452 952,455
+      C 956,456 962,456 968,455
+      C 976,454 982,453 986,452
+    " fill="none" stroke="#3A2A1A" stroke-width="1.0"/>
+
+    <!-- Taillight outline -->
+    <path d="
+      M 414,454
+      C 420,452 428,451 435,451
+      C 440,451 444,452 446,454
+      C 444,457 440,459 435,460
+      C 428,461 420,460 414,458
+    " fill="none" stroke="#3A2A1A" stroke-width="1.0"/>
+
+    <!-- Front grille/intake area -->
+    <path d="
+      M 986,458
+      C 984,465 983,475 982,485
+      C 981,495 980,505 980,515
+    " fill="none" stroke="#3A2A1A" stroke-width="0.8"/>
+    <path d="
+      M 986,470
+      C 980,471 975,472 970,474
+      C 965,476 962,478 960,482
+    " fill="none" stroke="#3A2A1A" stroke-width="0.6"/>
+
+    <!-- Rear bumper/diffuser detail -->
+    <path d="
+      M 414,510
+      C 420,512 425,515 428,520
+    " fill="none" stroke="#3A2A1A" stroke-width="0.6"/>
+    <!-- Exhaust tip (visible as circle at rear) -->
+    <ellipse cx="424" cy="540" rx="5" ry="4" fill="none" stroke="#3A2A1A" stroke-width="0.8"/>
+
+    <!-- Front wheel spokes (5-spoke pattern) -->
+    <line x1="874" y1="529.5" x2="874" y2="513" stroke="#3A2A1A" stroke-width="0.8"/>
+    <line x1="874" y1="529.5" x2="890" y2="524" stroke="#3A2A1A" stroke-width="0.8"/>
+    <line x1="874" y1="529.5" x2="884" y2="543" stroke="#3A2A1A" stroke-width="0.8"/>
+    <line x1="874" y1="529.5" x2="864" y2="543" stroke="#3A2A1A" stroke-width="0.8"/>
+    <line x1="874" y1="529.5" x2="858" y2="524" stroke="#3A2A1A" stroke-width="0.8"/>
+
+    <!-- Rear wheel spokes (5-spoke pattern) -->
+    <line x1="530" y1="529.5" x2="530" y2="513" stroke="#3A2A1A" stroke-width="0.8"/>
+    <line x1="530" y1="529.5" x2="546" y2="524" stroke="#3A2A1A" stroke-width="0.8"/>
+    <line x1="530" y1="529.5" x2="540" y2="543" stroke="#3A2A1A" stroke-width="0.8"/>
+    <line x1="530" y1="529.5" x2="520" y2="543" stroke="#3A2A1A" stroke-width="0.8"/>
+    <line x1="530" y1="529.5" x2="514" y2="524" stroke="#3A2A1A" stroke-width="0.8"/>
+
+    <!-- Fender vent behind front wheel -->
+    <path d="
+      M 838,468
+      L 832,468
+      L 830,474
+      L 836,474
+      Z
+    " fill="none" stroke="#3A2A1A" stroke-width="0.6"/>
+    <line x1="833" y1="468" x2="831" y2="474" stroke="#3A2A1A" stroke-width="0.4"/>
+    <line x1="835" y1="468" x2="833" y2="474" stroke="#3A2A1A" stroke-width="0.4"/>
+  </g>
+  <g id="layer-6">
+    <!-- FRONT VIEW -->
+    <!-- Ground line -->
+    <line x1="1010" y1="560" x2="1262" y2="560" stroke="#3A2A1A" stroke-width="0.8"/>
+
+    <!-- Front view body outline -->
+    <path d="
+      M 1096,402
+      C 1110,400 1162,400 1176,402
+      C 1184,406 1192,414 1200,422
+      C 1210,432 1220,442 1228,450
+      C 1236,458 1243,468 1247,478
+      C 1250,486 1251,494 1251,502
+      L 1251,540
+      C 1251,544 1249,547 1246,548
+      L 1026,548
+      C 1023,547 1021,544 1021,540
+      L 1021,502
+      C 1021,494 1022,486 1025,478
+      C 1029,468 1036,458 1044,450
+      C 1052,442 1062,432 1072,422
+      C 1080,414 1088,406 1096,402
+      Z
+    " fill="none" stroke="#3A2A1A" stroke-width="2.0" stroke-linejoin="round"/>
+
+    <!-- Windshield (front view - trapezoid) -->
+    <path d="
+      M 1098,404
+      C 1112,402 1160,402 1174,404
+      C 1170,406 1164,408 1158,410
+      L 1196,432
+      C 1200,436 1202,438 1204,440
+      L 1068,440
+      C 1070,438 1072,436 1076,432
+      L 1114,410
+      C 1108,408 1102,406 1098,404
+    " fill="none" stroke="#3A2A1A" stroke-width="1.2"/>
+
+    <!-- Hood line (below windshield) -->
+    <path d="
+      M 1068,440
+      C 1060,442 1050,444 1044,446
+      L 1044,450
+      C 1070,450 1100,449 1136,449
+      C 1172,449 1202,450 1228,450
+      L 1228,446
+      C 1222,444 1212,442 1204,440
+    " fill="none" stroke="#3A2A1A" stroke-width="1.0"/>
+
+    <!-- Spindle grille (hourglass shape) -->
+    <path d="
+      M 1136,452
+      C 1148,453 1158,455 1164,458
+      C 1168,462 1170,468 1168,475
+      C 1165,482 1160,488 1155,492
+      C 1150,496 1146,498 1144,500
+      C 1148,504 1152,508 1156,512
+      C 1162,518 1168,525 1170,532
+      C 1172,538 1170,543 1165,546
+      C 1158,548 1148,548 1136,548
+      C 1124,548 1114,548 1107,546
+      C 1102,543 1100,538 1102,532
+      C 1104,525 1110,518 1116,512
+      C 1120,508 1124,504 1128,500
+      C 1126,498 1122,496 1117,492
+      C 1112,488 1107,482 1104,475
+      C 1102,468 1104,462 1108,458
+      C 1114,455 1124,453 1136,452
+      Z
+    " fill="none" stroke="#3A2A1A" stroke-width="1.5"/>
+
+    <!-- Grille mesh pattern (horizontal lines inside grille) -->
+    <line x1="1110" y1="465" x2="1162" y2="465" stroke="#3A2A1A" stroke-width="0.4"/>
+    <line x1="1108" y1="475" x2="1164" y2="475" stroke="#3A2A1A" stroke-width="0.4"/>
+    <line x1="1112" y1="485" x2="1160" y2="485" stroke="#3A2A1A" stroke-width="0.4"/>
+    <line x1="1120" y1="495" x2="1152" y2="495" stroke="#3A2A1A" stroke-width="0.4"/>
+    <line x1="1108" y1="510" x2="1164" y2="510" stroke="#3A2A1A" stroke-width="0.4"/>
+    <line x1="1105" y1="520" x2="1167" y2="520" stroke="#3A2A1A" stroke-width="0.4"/>
+    <line x1="1104" y1="530" x2="1168" y2="530" stroke="#3A2A1A" stroke-width="0.4"/>
+    <line x1="1106" y1="540" x2="1166" y2="540" stroke="#3A2A1A" stroke-width="0.4"/>
+
+    <!-- Left headlight -->
+    <path d="
+      M 1044,452
+      C 1040,454 1036,458 1032,462
+      C 1028,468 1025,474 1024,480
+      L 1100,460
+      C 1090,456 1070,452 1044,452
+      Z
+    " fill="none" stroke="#3A2A1A" stroke-width="1.2"/>
+    <!-- Left headlight inner detail (LED shape) -->
+    <path d="
+      M 1050,458 L 1090,460 L 1088,464 L 1046,464 Z
+    " fill="none" stroke="#3A2A1A" stroke-width="0.6"/>
+
+    <!-- Right headlight -->
+    <path d="
+      M 1228,452
+      C 1232,454 1236,458 1240,462
+      C 1244,468 1247,474 1248,480
+      L 1172,460
+      C 1182,456 1202,452 1228,452
+      Z
+    " fill="none" stroke="#3A2A1A" stroke-width="1.2"/>
+    <!-- Right headlight inner detail -->
+    <path d="
+      M 1222,458 L 1182,460 L 1184,464 L 1226,464 Z
+    " fill="none" stroke="#3A2A1A" stroke-width="0.6"/>
+
+    <!-- Left lower air intake -->
+    <path d="
+      M 1024,484
+      C 1028,500 1035,518 1040,530
+      L 1040,544
+      L 1102,544
+      L 1102,500
+      C 1090,496 1070,492 1050,488
+      C 1038,486 1028,484 1024,484
+    " fill="none" stroke="#3A2A1A" stroke-width="0.8"/>
+
+    <!-- Right lower air intake -->
+    <path d="
+      M 1248,484
+      C 1244,500 1237,518 1232,530
+      L 1232,544
+      L 1170,544
+      L 1170,500
+      C 1182,496 1202,492 1222,488
+      C 1234,486 1244,484 1248,484
+    " fill="none" stroke="#3A2A1A" stroke-width="0.8"/>
+
+    <!-- Front tires (visible below body) -->
+    <!-- Left tire -->
+    <rect x="1024" y="548" width="28" height="12" rx="3" fill="none" stroke="#3A2A1A" stroke-width="1.5"/>
+    <!-- Right tire -->
+    <rect x="1220" y="548" width="28" height="12" rx="3" fill="none" stroke="#3A2A1A" stroke-width="1.5"/>
+  </g>
+  <g id="layer-7">
+    <!-- REAR VIEW -->
+    <!-- Ground line -->
+    <line x1="138" y1="560" x2="390" y2="560" stroke="#3A2A1A" stroke-width="0.8"/>
+
+    <!-- Rear view body outline -->
+    <path d="
+      M 224,402
+      C 238,400 290,400 304,402
+      C 312,406 320,414 328,422
+      C 338,432 348,442 356,452
+      C 364,462 370,474 374,486
+      C 377,494 379,504 379,512
+      L 379,540
+      C 379,544 377,547 374,548
+      L 154,548
+      C 151,547 149,544 149,540
+      L 149,512
+      C 149,504 151,494 154,486
+      C 158,474 164,462 172,452
+      C 180,442 190,432 200,422
+      C 208,414 216,406 224,402
+      Z
+    " fill="none" stroke="#3A2A1A" stroke-width="2.0" stroke-linejoin="round"/>
+
+    <!-- Rear windshield -->
+    <path d="
+      M 226,404
+      C 240,402 288,402 302,404
+      L 330,430
+      C 334,434 336,436 338,438
+      L 190,438
+      C 192,436 194,434 198,430
+      L 226,404
+    " fill="none" stroke="#3A2A1A" stroke-width="1.2"/>
+
+    <!-- Trunk lid / spoiler lip -->
+    <path d="
+      M 190,438
+      L 172,446
+      C 168,448 166,449 164,450
+      L 364,450
+      C 362,449 360,448 356,446
+      L 338,438
+    " fill="none" stroke="#3A2A1A" stroke-width="1.0"/>
+
+    <!-- Spoiler lip accent line -->
+    <line x1="175" y1="442" x2="353" y2="442" stroke="#3A2A1A" stroke-width="0.6"/>
+
+    <!-- Connected taillight bar (signature LC500 feature) -->
+    <path d="
+      M 155,460
+      L 373,460
+      L 373,472
+      L 155,472
+      Z
+    " fill="none" stroke="#3A2A1A" stroke-width="1.2"/>
+    <!-- Taillight inner details - left lamp cluster -->
+    <line x1="155" y1="464" x2="210" y2="464" stroke="#3A2A1A" stroke-width="0.5"/>
+    <line x1="155" y1="468" x2="210" y2="468" stroke="#3A2A1A" stroke-width="0.5"/>
+    <!-- Center section (connects the two sides) -->
+    <line x1="210" y1="460" x2="210" y2="472" stroke="#3A2A1A" stroke-width="0.5"/>
+    <line x1="318" y1="460" x2="318" y2="472" stroke="#3A2A1A" stroke-width="0.5"/>
+    <!-- Right lamp cluster -->
+    <line x1="318" y1="464" x2="373" y2="464" stroke="#3A2A1A" stroke-width="0.5"/>
+    <line x1="318" y1="468" x2="373" y2="468" stroke="#3A2A1A" stroke-width="0.5"/>
+    <!-- Center light bar -->
+    <line x1="220" y1="466" x2="308" y2="466" stroke="#3A2A1A" stroke-width="0.8"/>
+
+    <!-- LEXUS lettering area (between taillights, center) -->
+    <text x="264" y="469" font-family="'Courier New', monospace" font-size="5" fill="#3A2A1A" text-anchor="middle" letter-spacing="2">LEXUS</text>
+
+    <!-- Rear bumper feature line -->
+    <path d="
+      M 155,480
+      C 170,478 220,476 264,476
+      C 308,476 358,478 373,480
+    " fill="none" stroke="#3A2A1A" stroke-width="0.8"/>
+
+    <!-- Rear diffuser area -->
+    <path d="
+      M 194,530
+      L 334,530
+      L 340,548
+      L 188,548
+      Z
+    " fill="none" stroke="#3A2A1A" stroke-width="0.8"/>
+    <!-- Diffuser fins -->
+    <line x1="220" y1="530" x2="216" y2="548" stroke="#3A2A1A" stroke-width="0.4"/>
+    <line x1="245" y1="530" x2="242" y2="548" stroke="#3A2A1A" stroke-width="0.4"/>
+    <line x1="264" y1="530" x2="264" y2="548" stroke="#3A2A1A" stroke-width="0.4"/>
+    <line x1="283" y1="530" x2="286" y2="548" stroke="#3A2A1A" stroke-width="0.4"/>
+    <line x1="308" y1="530" x2="312" y2="548" stroke="#3A2A1A" stroke-width="0.4"/>
+
+    <!-- Quad exhaust tips -->
+    <ellipse cx="212" cy="542" rx="7" ry="5" fill="none" stroke="#3A2A1A" stroke-width="0.8"/>
+    <ellipse cx="232" cy="542" rx="7" ry="5" fill="none" stroke="#3A2A1A" stroke-width="0.8"/>
+    <ellipse cx="296" cy="542" rx="7" ry="5" fill="none" stroke="#3A2A1A" stroke-width="0.8"/>
+    <ellipse cx="316" cy="542" rx="7" ry="5" fill="none" stroke="#3A2A1A" stroke-width="0.8"/>
+
+    <!-- Rear body side panels / fender contours -->
+    <path d="
+      M 155,474 C 153,490 151,510 150,530" fill="none" stroke="#3A2A1A" stroke-width="0.6"/>
+    <path d="
+      M 373,474 C 375,490 377,510 378,530" fill="none" stroke="#3A2A1A" stroke-width="0.6"/>
+
+    <!-- Reflectors on rear bumper sides -->
+    <rect x="156" y="520" width="12" height="6" rx="1" fill="none" stroke="#3A2A1A" stroke-width="0.6"/>
+    <rect x="360" y="520" width="12" height="6" rx="1" fill="none" stroke="#3A2A1A" stroke-width="0.6"/>
+
+    <!-- Rear tires (visible below body) -->
+    <rect x="150" y="548" width="32" height="12" rx="3" fill="none" stroke="#3A2A1A" stroke-width="1.5"/>
+    <rect x="346" y="548" width="32" height="12" rx="3" fill="none" stroke="#3A2A1A" stroke-width="1.5"/>
+  </g>
+  <g id="layer-8">
+    <!-- TOP VIEW (plan view, car faces right, centered vertically at y=249) -->
+
+    <!-- Body outline - teardrop shape with wide rear haunches -->
+    <path d="
+      M 986,249
+      C 984,228 980,212 974,200
+      C 966,186 954,176 940,168
+      C 920,157 896,150 870,145
+      C 840,140 810,137 775,136
+      C 740,135 700,135 660,135
+      C 620,135 580,136 550,138
+      C 520,140 500,143 480,148
+      C 460,154 445,162 435,172
+      C 425,182 419,196 416,215
+      L 416,283
+      C 419,302 425,316 435,326
+      C 445,336 460,344 480,350
+      C 500,355 520,358 550,360
+      C 580,362 620,363 660,363
+      C 700,363 740,363 775,362
+      C 810,361 840,358 870,353
+      C 896,348 920,341 940,330
+      C 954,322 966,312 974,298
+      C 980,286 984,270 986,249
+      Z
+    " fill="none" stroke="#3A2A1A" stroke-width="2.0" stroke-linejoin="round"/>
+
+    <!-- Windshield outline (top view - trapezoidal) -->
+    <path d="
+      M 770,196
+      C 760,195 740,194 720,194
+      C 700,194 680,195 670,196
+      L 640,200
+      C 636,200 632,201 630,202
+      L 630,296
+      C 632,297 636,298 640,298
+      L 670,302
+      C 680,303 700,304 720,304
+      C 740,304 760,303 770,302
+      Z
+    " fill="none" stroke="#3A2A1A" stroke-width="1.2"/>
+
+    <!-- Roof panel (narrow strip) -->
+    <path d="
+      M 630,210
+      C 625,212 620,215 618,218
+      L 618,280
+      C 620,283 625,286 630,288
+      L 630,210
+    " fill="none" stroke="#3A2A1A" stroke-width="1.0"/>
+
+    <!-- Rear window (top view) -->
+    <path d="
+      M 618,218
+      C 610,220 600,224 590,228
+      L 560,238
+      C 555,240 553,244 553,249
+      C 553,254 555,258 560,260
+      L 590,270
+      C 600,274 610,278 618,280
+    " fill="none" stroke="#3A2A1A" stroke-width="1.2"/>
+
+    <!-- Hood lines / power dome suggestion -->
+    <path d="
+      M 770,220
+      C 800,218 840,216 880,218
+      C 910,220 940,225 960,232
+      L 972,249
+      L 960,266
+      C 940,273 910,278 880,280
+      C 840,282 800,280 770,278
+    " fill="none" stroke="#3A2A1A" stroke-width="0.6"/>
+
+    <!-- Hood center crease -->
+    <line x1="770" y1="249" x2="976" y2="249" stroke="#3A2A1A" stroke-width="0.4"/>
+
+    <!-- Side mirrors (protruding from body) -->
+    <!-- Left mirror -->
+    <path d="
+      M 762,136
+      C 758,130 752,126 748,126
+      C 744,126 742,130 744,134
+      L 755,136
+    " fill="none" stroke="#3A2A1A" stroke-width="1.0"/>
+    <!-- Right mirror -->
+    <path d="
+      M 762,362
+      C 758,368 752,372 748,372
+      C 744,372 742,368 744,364
+      L 755,362
+    " fill="none" stroke="#3A2A1A" stroke-width="1.0"/>
+
+    <!-- Front wheel outlines (top view - ovals/rectangles showing tire width) -->
+    <!-- Left front wheel -->
+    <rect x="858" y="136" width="32" height="20" rx="4" fill="none" stroke="#3A2A1A" stroke-width="1.0"/>
+    <!-- Right front wheel -->
+    <rect x="858" y="342" width="32" height="20" rx="4" fill="none" stroke="#3A2A1A" stroke-width="1.0"/>
+    <!-- Left rear wheel -->
+    <rect x="514" y="134" width="32" height="22" rx="4" fill="none" stroke="#3A2A1A" stroke-width="1.0"/>
+    <!-- Right rear wheel -->
+    <rect x="514" y="342" width="32" height="22" rx="4" fill="none" stroke="#3A2A1A" stroke-width="1.0"/>
+
+    <!-- Door cut line (top view) -->
+    <path d="
+      M 650,136
+      C 648,155 646,180 645,210
+      " fill="none" stroke="#3A2A1A" stroke-width="0.6"/>
+    <path d="
+      M 650,362
+      C 648,343 646,318 645,288
+    " fill="none" stroke="#3A2A1A" stroke-width="0.6"/>
+
+    <!-- Trunk lid line -->
+    <path d="
+      M 500,148
+      C 490,160 478,180 472,210
+      L 472,288
+      C 478,318 490,338 500,350
+    " fill="none" stroke="#3A2A1A" stroke-width="0.8"/>
+
+    <!-- Rear haunches contour lines -->
+    <path d="
+      M 545,138
+      C 530,142 520,148 515,155
+    " fill="none" stroke="#3A2A1A" stroke-width="0.5"/>
+    <path d="
+      M 545,360
+      C 530,356 520,350 515,343
+    " fill="none" stroke="#3A2A1A" stroke-width="0.5"/>
+  </g>
+  <g id="layer-9">
+    <!-- DIMENSION LINES -->
+
+    <!-- === SIDE VIEW DIMENSIONS === -->
+
+    <!-- Overall length: 4,770 mm -->
+    <!-- Extension lines -->
+    <line x1="414" y1="555" x2="414" y2="600" stroke="#5C4A3A" stroke-width="0.5"/>
+    <line x1="986" y1="555" x2="986" y2="600" stroke="#5C4A3A" stroke-width="0.5"/>
+    <!-- Dimension line -->
+    <line x1="414" y1="595" x2="986" y2="595" stroke="#5C4A3A" stroke-width="0.7" marker-start="url(#L9-arrow-left)" marker-end="url(#L9-arrow-right)"/>
+    <!-- Dimension text -->
+    <text x="700" y="593" font-family="'Courier New', monospace" font-size="10" fill="#3A2A1A" text-anchor="middle">4,770</text>
+
+    <!-- Wheelbase: 2,870 mm -->
+    <!-- Extension lines -->
+    <line x1="530" y1="562" x2="530" y2="584" stroke="#5C4A3A" stroke-width="0.4"/>
+    <line x1="874" y1="562" x2="874" y2="584" stroke="#5C4A3A" stroke-width="0.4"/>
+    <!-- Dimension line -->
+    <line x1="530" y1="580" x2="874" y2="580" stroke="#5C4A3A" stroke-width="0.7" marker-start="url(#L9-arrow-left)" marker-end="url(#L9-arrow-right)"/>
+    <text x="702" y="578" font-family="'Courier New', monospace" font-size="9" fill="#3A2A1A" text-anchor="middle">2,870</text>
+
+    <!-- Front overhang: 930 mm -->
+    <line x1="874" y1="606" x2="986" y2="606" stroke="#5C4A3A" stroke-width="0.5" marker-start="url(#L9-arrow-left)" marker-end="url(#L9-arrow-right)"/>
+    <line x1="874" y1="598" x2="874" y2="610" stroke="#5C4A3A" stroke-width="0.4"/>
+    <line x1="986" y1="598" x2="986" y2="610" stroke="#5C4A3A" stroke-width="0.4"/>
+    <text x="930" y="604" font-family="'Courier New', monospace" font-size="8" fill="#3A2A1A" text-anchor="middle">930</text>
+
+    <!-- Rear overhang: 970 mm -->
+    <line x1="414" y1="606" x2="530" y2="606" stroke="#5C4A3A" stroke-width="0.5" marker-start="url(#L9-arrow-left)" marker-end="url(#L9-arrow-right)"/>
+    <line x1="414" y1="598" x2="414" y2="610" stroke="#5C4A3A" stroke-width="0.4"/>
+    <line x1="530" y1="598" x2="530" y2="610" stroke="#5C4A3A" stroke-width="0.4"/>
+    <text x="472" y="604" font-family="'Courier New', monospace" font-size="8" fill="#3A2A1A" text-anchor="middle">970</text>
+
+    <!-- Overall height: 1,345 mm (right of side view) -->
+    <line x1="990" y1="399" x2="1010" y2="399" stroke="#5C4A3A" stroke-width="0.4"/>
+    <line x1="990" y1="560" x2="1010" y2="560" stroke="#5C4A3A" stroke-width="0.4"/>
+    <line x1="1006" y1="399" x2="1006" y2="560" stroke="#5C4A3A" stroke-width="0.7" marker-start="url(#L9-arrow-left)" marker-end="url(#L9-arrow-right)"/>
+    <text x="1008" y="484" font-family="'Courier New', monospace" font-size="9" fill="#3A2A1A" transform="rotate(-90 1008 484)" text-anchor="middle">1,345</text>
+
+    <!-- Ground clearance: 132 mm -->
+    <line x1="750" y1="547" x2="750" y2="560" stroke="#5C4A3A" stroke-width="0.5" marker-start="url(#L9-arrow-left)" marker-end="url(#L9-arrow-right)"/>
+    <text x="760" y="556" font-family="'Courier New', monospace" font-size="7" fill="#5C4A3A">132</text>
+
+    <!-- === FRONT VIEW DIMENSIONS === -->
+
+    <!-- Overall width: 1,920 mm -->
+    <line x1="1021" y1="555" x2="1021" y2="580" stroke="#5C4A3A" stroke-width="0.4"/>
+    <line x1="1251" y1="555" x2="1251" y2="580" stroke="#5C4A3A" stroke-width="0.4"/>
+    <line x1="1021" y1="576" x2="1251" y2="576" stroke="#5C4A3A" stroke-width="0.7" marker-start="url(#L9-arrow-left)" marker-end="url(#L9-arrow-right)"/>
+    <text x="1136" y="574" font-family="'Courier New', monospace" font-size="9" fill="#3A2A1A" text-anchor="middle">1,920</text>
+
+    <!-- Front track: 1,630 mm -->
+    <line x1="1038" y1="562" x2="1038" y2="570" stroke="#5C4A3A" stroke-width="0.3"/>
+    <line x1="1234" y1="562" x2="1234" y2="570" stroke="#5C4A3A" stroke-width="0.3"/>
+    <line x1="1038" y1="567" x2="1234" y2="567" stroke="#5C4A3A" stroke-width="0.5" marker-start="url(#L9-arrow-left)" marker-end="url(#L9-arrow-right)"/>
+    <text x="1136" y="565" font-family="'Courier New', monospace" font-size="7" fill="#5C4A3A" text-anchor="middle">1,630</text>
+
+    <!-- === TOP VIEW DIMENSIONS === -->
+
+    <!-- Width on top view (left side) -->
+    <line x1="406" y1="135" x2="406" y2="363" stroke="#5C4A3A" stroke-width="0.7" marker-start="url(#L9-arrow-left)" marker-end="url(#L9-arrow-right)"/>
+    <line x1="414" y1="135" x2="402" y2="135" stroke="#5C4A3A" stroke-width="0.4"/>
+    <line x1="414" y1="363" x2="402" y2="363" stroke="#5C4A3A" stroke-width="0.4"/>
+    <text x="404" y="253" font-family="'Courier New', monospace" font-size="9" fill="#3A2A1A" transform="rotate(-90 404 253)" text-anchor="middle">1,920</text>
+
+    <!-- Wheel diameter: 508 mm (20 in) shown on side view front wheel -->
+    <line x1="874" y1="499" x2="874" y2="560" stroke="#5C4A3A" stroke-width="0.3" stroke-dasharray="2 2"/>
+    <text x="894" y="502" font-family="'Courier New', monospace" font-size="7" fill="#5C4A3A">Ø508 (20")</text>
+  </g>
+  <g id="layer-10">
+    <!-- VIEW LABELS -->
+
+    <!-- Side view label -->
+    <text x="700" y="622" font-family="'Courier New', monospace" font-size="11" fill="#3A2A1A" text-anchor="middle" letter-spacing="2" font-weight="bold">SIDE ELEVATION</text>
+
+    <!-- Front view label -->
+    <text x="1136" y="596" font-family="'Courier New', monospace" font-size="11" fill="#3A2A1A" text-anchor="middle" letter-spacing="2" font-weight="bold">FRONT ELEVATION</text>
+
+    <!-- Rear view label -->
+    <text x="264" y="596" font-family="'Courier New', monospace" font-size="11" fill="#3A2A1A" text-anchor="middle" letter-spacing="2" font-weight="bold">REAR ELEVATION</text>
+
+    <!-- Top view label -->
+    <text x="700" y="384" font-family="'Courier New', monospace" font-size="11" fill="#3A2A1A" text-anchor="middle" letter-spacing="2" font-weight="bold">PLAN VIEW</text>
+
+    <!-- Tire spec callouts on side view -->
+    <text x="874" y="572" font-family="'Courier New', monospace" font-size="6.5" fill="#5C4A3A" text-anchor="middle">245/45 R20</text>
+    <text x="530" y="572" font-family="'Courier New', monospace" font-size="6.5" fill="#5C4A3A" text-anchor="middle">275/40 R20</text>
+
+    <!-- Rear view width dimension -->
+    <line x1="149" y1="555" x2="149" y2="580" stroke="#5C4A3A" stroke-width="0.4"/>
+    <line x1="379" y1="555" x2="379" y2="580" stroke="#5C4A3A" stroke-width="0.4"/>
+    <line x1="149" y1="576" x2="379" y2="576" stroke="#5C4A3A" stroke-width="0.7" marker-start="url(#L9-arrow-left)" marker-end="url(#L9-arrow-right)"/>
+    <text x="264" y="574" font-family="'Courier New', monospace" font-size="9" fill="#3A2A1A" text-anchor="middle">1,920</text>
+
+    <!-- Rear track dimension -->
+    <line x1="166" y1="562" x2="166" y2="570" stroke="#5C4A3A" stroke-width="0.3"/>
+    <line x1="362" y1="562" x2="362" y2="570" stroke="#5C4A3A" stroke-width="0.3"/>
+    <line x1="166" y1="567" x2="362" y2="567" stroke="#5C4A3A" stroke-width="0.5" marker-start="url(#L9-arrow-left)" marker-end="url(#L9-arrow-right)"/>
+    <text x="264" y="565" font-family="'Courier New', monospace" font-size="7" fill="#5C4A3A" text-anchor="middle">1,635</text>
+
+    <!-- Height dimension on front view -->
+    <line x1="1256" y1="400" x2="1270" y2="400" stroke="#5C4A3A" stroke-width="0.4"/>
+    <line x1="1256" y1="560" x2="1270" y2="560" stroke="#5C4A3A" stroke-width="0.4"/>
+    <line x1="1266" y1="400" x2="1266" y2="560" stroke="#5C4A3A" stroke-width="0.7" marker-start="url(#L9-arrow-left)" marker-end="url(#L9-arrow-right)"/>
+    <text x="1268" y="484" font-family="'Courier New', monospace" font-size="9" fill="#3A2A1A" transform="rotate(-90 1268 484)" text-anchor="middle">1,345</text>
+
+    <!-- Note about all dimensions in MM -->
+    <text x="700" y="635" font-family="'Courier New', monospace" font-size="7.5" fill="#5C4A3A" text-anchor="middle" letter-spacing="1">ALL DIMENSIONS IN MILLIMETERS</text>
+  </g>
+  <g id="layer-11">
+    <!-- Paper grain overlay (very subtle) -->
+    <rect x="15" y="15" width="1370" height="970" fill="none" filter="url(#L11-paperGrain)" opacity="0.6"/>
+
+    <!-- Additional side view refinements -->
+    <!-- Rocker panel detail line -->
+    <path d="
+      M 836,542
+      L 566,542
+    " fill="none" stroke="#3A2A1A" stroke-width="0.4"/>
+
+    <!-- A-pillar line detail -->
+    <path d="
+      M 738,410
+      C 742,415 748,420 755,425
+      C 760,428 764,430 766,431
+    " fill="none" stroke="#3A2A1A" stroke-width="0.8"/>
+
+    <!-- Hood vent / air intake on hood -->
+    <path d="
+      M 820,428 L 850,428 L 850,430 L 820,430 Z
+    " fill="none" stroke="#3A2A1A" stroke-width="0.4"/>
+
+    <!-- Fuel cap detail -->
+    <circle cx="468" cy="445" r="3.5" fill="none" stroke="#3A2A1A" stroke-width="0.5"/>
+
+    <!-- Additional front view refinements -->
+    <!-- Lexus badge on grille -->
+    <circle cx="1136" cy="458" r="5" fill="none" stroke="#3A2A1A" stroke-width="0.6"/>
+    <text x="1136" y="460" font-family="'Courier New', monospace" font-size="5" fill="#3A2A1A" text-anchor="middle">L</text>
+
+    <!-- Front fog lights / DRL -->
+    <path d="M 1040,530 L 1095,516" fill="none" stroke="#3A2A1A" stroke-width="0.5"/>
+    <path d="M 1232,530 L 1177,516" fill="none" stroke="#3A2A1A" stroke-width="0.5"/>
+
+    <!-- Additional rear view refinements -->
+    <!-- License plate area -->
+    <rect x="242" y="500" width="44" height="22" rx="2" fill="none" stroke="#3A2A1A" stroke-width="0.6"/>
+    <text x="264" y="514" font-family="'Courier New', monospace" font-size="5" fill="#5C4A3A" text-anchor="middle">LC 500</text>
+
+    <!-- Top view additional details -->
+    <!-- Headlight outlines from above -->
+    <path d="M 950,160 C 960,155 970,154 975,158 C 978,162 976,168 970,172 L 950,170 Z" fill="none" stroke="#3A2A1A" stroke-width="0.5"/>
+    <path d="M 950,338 C 960,343 970,344 975,340 C 978,336 976,330 970,326 L 950,328 Z" fill="none" stroke="#3A2A1A" stroke-width="0.5"/>
+
+    <!-- Taillight bar from above -->
+    <line x1="420" y1="175" x2="420" y2="323" stroke="#3A2A1A" stroke-width="0.8"/>
+
+    <!-- Additional projection alignment ticks between views -->
+    <!-- Top-to-side vertical alignment at front axle -->
+    <line x1="874" y1="364" x2="874" y2="399" stroke="#5C4A3A" stroke-width="0.2" stroke-dasharray="2 3" opacity="0.3"/>
+    <!-- Top-to-side vertical alignment at rear axle -->
+    <line x1="530" y1="364" x2="530" y2="399" stroke="#5C4A3A" stroke-width="0.2" stroke-dasharray="2 3" opacity="0.3"/>
+
+    <!-- Drawing revision block (small, bottom left area) -->
+    <text x="50" y="960" font-family="'Courier New', monospace" font-size="7" fill="#5C4A3A">REV. A — INITIAL RELEASE</text>
+    <text x="50" y="970" font-family="'Courier New', monospace" font-size="6.5" fill="#5C4A3A">DATE: 2026-02-22</text>
+  </g>
+</svg>

@@ -12,6 +12,12 @@ build/
 
 # Testing
 .pytest_cache/
+.ruff_cache/
 
 # Monet output
 output/
+
+# Harness-local settings
+.agents/mcp_config.json
+.claude/
+.gemini/

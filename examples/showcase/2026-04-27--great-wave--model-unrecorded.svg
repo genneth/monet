@@ -1,0 +1,205 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="100%" height="100%" fill="#fdfbf7"/>
+  <defs>
+    <pattern id="iter1-grid" width="4" height="4" patternUnits="userSpaceOnUse">
+  <path d="M 4 0 L 0 4 M 0 0 L 4 4" fill="none" stroke="#e0ddd5" stroke-width="0.5" opacity="0.6"/>
+</pattern>
+<linearGradient id="iter1-sky" x1="0" y1="0" x2="0" y2="1">
+  <stop offset="0%" stop-color="#fdfbf7" />
+  <stop offset="60%" stop-color="#e8e0d5" />
+  <stop offset="100%" stop-color="#c8ccc9" />
+</linearGradient>
+    <pattern id="iter2-fujiGrid" width="15" height="15" patternUnits="userSpaceOnUse" patternTransform="rotate(15)">
+  <path d="M 0 7.5 L 15 7.5 M 7.5 0 L 7.5 15 M 0 0 L 15 15 M 15 0 L 0 15" fill="none" stroke="#6b8eac" stroke-width="0.5" opacity="0.8"/>
+  <circle cx="7.5" cy="7.5" r="1.5" fill="#6b8eac" opacity="0.8"/>
+</pattern>
+    <pattern id="iter3-waveHatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
+  <path d="M 0 0 L 0 6" fill="none" stroke="#fdfbf7" stroke-width="0.8" opacity="0.2"/>
+</pattern>
+    <pattern id="iter4-interference1" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+  <line x1="0" y1="0" x2="0" y2="10" stroke="#fdfbf7" stroke-width="1.5" opacity="0.4" />
+</pattern>
+<pattern id="iter4-interference2" width="10" height="10" patternUnits="userSpaceOnUse" patternTransform="rotate(48)">
+  <line x1="0" y1="0" x2="0" y2="10" stroke="#081d38" stroke-width="1" opacity="0.4" />
+</pattern>
+    <pattern id="iter5-sprayPattern" width="12" height="12" patternUnits="userSpaceOnUse" patternTransform="rotate(30)">
+  <circle cx="2" cy="2" r="1.5" fill="#fdfbf7" opacity="0.8"/>
+  <circle cx="8" cy="8" r="1" fill="#fdfbf7" opacity="0.6"/>
+  <circle cx="10" cy="4" r="0.5" fill="#fdfbf7" opacity="0.4"/>
+</pattern>
+<symbol id="iter5-foamClaw">
+  <!-- A geometric representation of the wave's foam 'claws' -->
+  <path d="M 0 0 C 10 -10, 20 -5, 30 10 C 20 0, 10 5, 0 15 Z" fill="#fdfbf7" />
+  <path d="M 10 5 C 15 -5, 25 0, 35 15 C 25 5, 15 10, 5 20 Z" fill="#fdfbf7" />
+  <path d="M -5 -5 C 5 -15, 15 -10, 25 5 C 15 -5, 5 0, -5 10 Z" fill="#fdfbf7" />
+</symbol>
+    <pattern id="iter6-boatGrid" width="3" height="3" patternUnits="userSpaceOnUse" patternTransform="rotate(10)">
+  <line x1="0" y1="0" x2="0" y2="3" stroke="#b08d6a" stroke-width="0.5"/>
+</pattern>
+<radialGradient id="iter6-sunGlow" cx="50%" cy="50%" r="50%">
+  <stop offset="0%" stop-color="#d5b08e" stop-opacity="0.5"/>
+  <stop offset="100%" stop-color="#d5b08e" stop-opacity="0"/>
+</radialGradient>
+    <pattern id="iter7-noise" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+  <circle cx="1" cy="1" r="0.5" fill="#101822" opacity="0.1" />
+</pattern>
+  </defs>
+  <g id="layer-1">
+    <rect width="800" height="600" fill="url(#iter1-sky)" />
+    <rect width="800" height="600" fill="url(#iter1-grid)" />
+  </g>
+  <g id="layer-2">
+    <g id="iter2-fuji">
+      <!-- Solid base -->
+      <polygon points="250,550 550,550 400,380" fill="#1b2a3a" stroke="#101822" stroke-width="2" />
+      <!-- Geometric overlay -->
+      <polygon points="250,550 550,550 400,380" fill="url(#iter2-fujiGrid)" />
+      <!-- Snowcap -->
+      <path d="M 400 380 L 340 448 L 365 435 L 380 460 L 400 435 L 420 460 L 435 435 L 460 448 Z" fill="#fdfbf7" stroke="#101822" stroke-width="2" stroke-linejoin="round"/>
+      <!-- Structural blueprint lines extending from Fuji -->
+      <line x1="400" y1="380" x2="400" y2="300" stroke="#1b2a3a" stroke-width="1" stroke-dasharray="2 4" opacity="0.5" />
+      <line x1="250" y1="550" x2="150" y2="550" stroke="#1b2a3a" stroke-width="1" stroke-dasharray="2 4" opacity="0.5" />
+      <line x1="550" y1="550" x2="650" y2="550" stroke="#1b2a3a" stroke-width="1" stroke-dasharray="2 4" opacity="0.5" />
+    </g>
+  </g>
+  <g id="layer-3">
+    <g id="iter3-primary-wave">
+      <!-- Outer dark wave -->
+      <path d="M -50 650 L -50 100 C 150 150, 250 -50, 600 180 C 450 200, 350 300, 250 450 C 200 550, 250 650, 400 650 Z" fill="#081d38" />
+      <path d="M -50 650 L -50 100 C 150 150, 250 -50, 600 180 C 450 200, 350 300, 250 450 C 200 550, 250 650, 400 650 Z" fill="url(#iter3-waveHatch)" />
+
+      <!-- Mid tone -->
+      <path d="M -50 650 L -50 180 C 120 200, 220 20, 500 220 C 380 250, 300 350, 200 480 C 150 550, 200 650, 350 650 Z" fill="#1a406e" />
+
+      <!-- Light tone -->
+      <path d="M -50 650 L -50 260 C 80 260, 180 100, 400 280 C 300 300, 250 400, 150 500 C 100 550, 150 650, 300 650 Z" fill="#30659b" />
+
+      <!-- Foreground right wave -->
+      <path d="M 300 650 C 450 450, 600 450, 850 350 L 850 650 Z" fill="#30659b" />
+      <path d="M 350 650 C 500 500, 650 500, 850 400 L 850 650 Z" fill="#1a406e" />
+      <path d="M 400 650 C 500 550, 650 500, 850 450 L 850 650 Z" fill="#081d38" />
+      <path d="M 400 650 C 500 550, 650 500, 850 450 L 850 650 Z" fill="url(#iter3-waveHatch)" />
+    </g>
+  </g>
+  <g id="layer-4">
+    <g id="iter4-wave-details">
+      <!-- Interference Moire Pattern on Mid Tone -->
+      <path d="M -50 650 L -50 180 C 120 200, 220 20, 500 220 C 380 250, 300 350, 200 480 C 150 550, 200 650, 350 650 Z" fill="url(#iter4-interference1)" />
+      <path d="M -50 650 L -50 180 C 120 200, 220 20, 500 220 C 380 250, 300 350, 200 480 C 150 550, 200 650, 350 650 Z" fill="url(#iter4-interference2)" />
+
+      <!-- Flow lines to give directionality -->
+      <path d="M 0 350 C 100 250, 150 150, 450 250" fill="none" stroke="#fdfbf7" stroke-width="2" stroke-dasharray="10 5 2 5" opacity="0.6"/>
+      <path d="M 50 450 C 150 350, 200 250, 350 350" fill="none" stroke="#fdfbf7" stroke-width="1" stroke-dasharray="5 5" opacity="0.5"/>
+      <path d="M 100 550 C 200 450, 250 350, 250 450" fill="none" stroke="#fdfbf7" stroke-width="1.5" stroke-dasharray="15 5 5 5" opacity="0.4"/>
+
+      <!-- Right wave flow lines -->
+      <path d="M 350 600 C 500 500, 600 450, 800 400" fill="none" stroke="#fdfbf7" stroke-width="1.5" stroke-dasharray="12 6" opacity="0.5"/>
+    </g>
+  </g>
+  <g id="layer-5">
+    <g id="iter5-foam">
+      <!-- Large foam mass around the crests -->
+      <path d="M -50 100 C 150 150, 250 -50, 600 180 C 650 200, 700 250, 750 350 L 750 300 C 650 200, 600 150, 450 100 C 300 50, 200 -100, -50 50 Z" fill="#fdfbf7" />
+      <path d="M -50 180 C 120 200, 220 20, 500 220 C 550 250, 600 300, 650 400 L 650 350 C 600 250, 550 200, 400 180 C 250 150, 150 0, -50 120 Z" fill="#fdfbf7" />
+
+      <!-- Right wave foam -->
+      <path d="M 300 650 C 450 450, 600 450, 850 350 L 850 300 C 600 400, 450 400, 300 600 Z" fill="#fdfbf7" />
+
+      <!-- Applying the claw symbols along the crest -->
+      <!-- Main crest -->
+      <use href="#iter5-foamClaw" x="550" y="160" transform="rotate(45, 550, 160)" />
+      <use href="#iter5-foamClaw" x="580" y="175" transform="rotate(60, 580, 175)" />
+      <use href="#iter5-foamClaw" x="480" y="140" transform="rotate(30, 480, 140)" />
+      <use href="#iter5-foamClaw" x="400" y="110" transform="rotate(15, 400, 110)" />
+      <use href="#iter5-foamClaw" x="320" y="90" transform="rotate(0, 320, 90)" />
+      <use href="#iter5-foamClaw" x="240" y="80" transform="rotate(-15, 240, 80)" />
+      <use href="#iter5-foamClaw" x="160" y="85" transform="rotate(-30, 160, 85)" />
+      <use href="#iter5-foamClaw" x="80" y="95" transform="rotate(-45, 80, 95)" />
+
+      <!-- Mid tone crest -->
+      <use href="#iter5-foamClaw" x="450" y="200" transform="rotate(30, 450, 200)" />
+      <use href="#iter5-foamClaw" x="350" y="180" transform="rotate(15, 350, 180)" />
+      <use href="#iter5-foamClaw" x="250" y="170" transform="rotate(0, 250, 170)" />
+
+      <!-- Right wave crest -->
+      <use href="#iter5-foamClaw" x="780" y="360" transform="rotate(-30, 780, 360)" />
+      <use href="#iter5-foamClaw" x="700" y="390" transform="rotate(-15, 700, 390)" />
+      <use href="#iter5-foamClaw" x="620" y="420" transform="rotate(0, 620, 420)" />
+
+      <!-- Spray area -->
+      <circle cx="580" cy="200" r="80" fill="url(#iter5-sprayPattern)" />
+      <circle cx="500" cy="180" r="100" fill="url(#iter5-sprayPattern)" />
+      <circle cx="400" cy="150" r="120" fill="url(#iter5-sprayPattern)" />
+      <circle cx="280" cy="120" r="100" fill="url(#iter5-sprayPattern)" />
+      <circle cx="150" cy="120" r="80" fill="url(#iter5-sprayPattern)" />
+
+      <circle cx="750" cy="380" r="60" fill="url(#iter5-sprayPattern)" />
+      <circle cx="650" cy="420" r="60" fill="url(#iter5-sprayPattern)" />
+
+    </g>
+  </g>
+  <g id="layer-6">
+    <!-- Geometric Sun in background -->
+    <g opacity="0.6">
+      <circle cx="650" cy="150" r="120" fill="none" stroke="#d5b08e" stroke-width="1" stroke-dasharray="4 6" />
+      <circle cx="650" cy="150" r="180" fill="none" stroke="#d5b08e" stroke-width="0.5" stroke-dasharray="2 8" />
+      <circle cx="650" cy="150" r="240" fill="none" stroke="#d5b08e" stroke-width="0.2" />
+      <circle cx="650" cy="150" r="100" fill="url(#iter6-sunGlow)" />
+    </g>
+
+    <!-- Boat 1 (left hollow) -->
+    <g transform="translate(260, 470) rotate(50)">
+      <polygon points="-60,0 60,0 45,12 -45,12" fill="#e8cca6" stroke="#101822" stroke-width="1.5" />
+      <polygon points="-50,0 50,0 40,-6 -40,-6" fill="url(#iter6-boatGrid)" stroke="#101822" stroke-width="1" />
+      <!-- Rowers -->
+      <circle cx="-30" cy="-6" r="3.5" fill="#101822" />
+      <circle cx="-10" cy="-6" r="3.5" fill="#101822" />
+      <circle cx="10" cy="-6" r="3.5" fill="#101822" />
+      <circle cx="30" cy="-6" r="3.5" fill="#101822" />
+    </g>
+
+    <!-- Boat 2 (right slope) -->
+    <g transform="translate(680, 420) rotate(-25)">
+      <polygon points="-50,0 50,0 35,10 -35,10" fill="#e8cca6" stroke="#101822" stroke-width="1.5" />
+      <polygon points="-40,0 40,0 30,-5 -30,-5" fill="url(#iter6-boatGrid)" stroke="#101822" stroke-width="1" />
+      <!-- Rowers -->
+      <circle cx="-20" cy="-5" r="3" fill="#101822" />
+      <circle cx="0" cy="-5" r="3" fill="#101822" />
+      <circle cx="20" cy="-5" r="3" fill="#101822" />
+    </g>
+  </g>
+  <g id="layer-7">
+    <g id="iter7-finishing">
+      <!-- Overall atmospheric noise to tie the piece together (mimicking paper texture) -->
+      <rect x="0" y="0" width="800" height="600" fill="url(#iter7-noise)" style="pointer-events: none;" />
+
+      <!-- Red Signature Box (Top Left) -->
+      <g transform="translate(30, 30)">
+        <rect x="0" y="0" width="24" height="70" fill="#a83c32" />
+        <rect x="2" y="2" width="20" height="66" fill="none" stroke="#fdfbf7" stroke-width="0.5" />
+        <!-- Abstract structural "kanji" -->
+        <path d="M 6 12 L 18 12 M 12 6 L 12 18 M 6 25 L 18 30 M 12 20 L 12 35 M 6 42 L 18 42 M 10 38 L 10 50 M 14 38 L 14 50 M 6 58 L 18 55" stroke="#fdfbf7" stroke-width="1.5" fill="none" stroke-linecap="round" />
+      </g>
+
+      <!-- High contrast floating spray particles (dots) -->
+      <circle cx="580" cy="100" r="3" fill="#fdfbf7" opacity="0.8" />
+      <circle cx="620" cy="120" r="2" fill="#fdfbf7" opacity="0.7" />
+      <circle cx="600" cy="150" r="4" fill="#fdfbf7" opacity="0.6" />
+      <circle cx="660" cy="180" r="1.5" fill="#fdfbf7" opacity="0.8" />
+      <circle cx="540" cy="80" r="2" fill="#fdfbf7" opacity="0.5" />
+      <circle cx="480" cy="90" r="3" fill="#fdfbf7" opacity="0.7" />
+      <circle cx="420" cy="60" r="2.5" fill="#fdfbf7" opacity="0.8" />
+      <circle cx="360" cy="50" r="1.5" fill="#fdfbf7" opacity="0.6" />
+      <circle cx="280" cy="40" r="4" fill="#fdfbf7" opacity="0.9" />
+      <circle cx="220" cy="50" r="2" fill="#fdfbf7" opacity="0.7" />
+      <circle cx="160" cy="60" r="3" fill="#fdfbf7" opacity="0.5" />
+      <circle cx="100" cy="70" r="1.5" fill="#fdfbf7" opacity="0.8" />
+      <circle cx="50" cy="80" r="3" fill="#fdfbf7" opacity="0.9" />
+
+      <!-- Right wave spray -->
+      <circle cx="780" cy="300" r="3" fill="#fdfbf7" opacity="0.8" />
+      <circle cx="820" cy="280" r="2" fill="#fdfbf7" opacity="0.6" />
+      <circle cx="750" cy="340" r="4" fill="#fdfbf7" opacity="0.7" />
+    </g>
+  </g>
+</svg>

@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "monet": {
-      "command": "uv",
-      "args": ["run", "monet-mcp"]
-    }
-  }
-}

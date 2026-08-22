@@ -1,0 +1,181 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="100%" height="100%" fill="#1A3A5C"/>
+  <g id="layer-1">
+    <!-- Large emerald leaf sweeping from bottom-left -->
+    <path d="M-30,600 C50,520 120,440 180,380 C220,340 260,310 300,300 C320,295 340,300 330,320 C310,360 270,410 220,470 C170,530 100,580 30,610 Z" fill="#00875A"/>
+
+    <!-- Big dark green leaf from top-right corner -->
+    <path d="M830,0 C770,60 700,110 640,160 C600,190 560,220 530,260 C520,275 525,290 545,280 C580,260 630,220 690,170 C750,120 810,60 840,-10 Z" fill="#2E7D32"/>
+
+    <!-- Large leaf green form from left edge, mid-height -->
+    <path d="M-20,200 C40,190 110,200 170,230 C230,260 280,300 310,350 C320,370 310,385 290,370 C260,340 220,300 170,270 C110,240 50,220 -20,230 Z" fill="#4CAF50"/>
+
+    <!-- Sweeping emerald leaf from bottom-right -->
+    <path d="M830,580 C760,540 680,500 610,460 C560,430 520,400 490,370 C480,355 485,340 505,350 C540,370 590,400 650,440 C720,480 790,530 840,570 Z" fill="#00875A"/>
+
+    <!-- Tall leaf reaching up from bottom center -->
+    <path d="M380,620 C370,550 360,480 370,410 C380,350 400,300 420,270 C430,258 445,260 440,278 C430,310 415,360 410,420 C405,490 410,560 420,630 Z" fill="#2E7D32"/>
+  </g>
+  <g id="layer-2">
+    <!-- Bold wide leaf from left — Matisse-style broad organic form -->
+    <path d="M-40,100 C30,80 120,90 200,130 C270,165 320,220 340,290 C350,330 330,360 290,340 C240,310 190,260 140,210 C80,150 20,120 -40,130 Z" fill="#00875A"/>
+
+    <!-- Large leaf from top, dropping down right of center -->
+    <path d="M500,-30 C510,40 530,120 520,200 C510,270 480,330 440,370 C420,390 395,385 405,360 C425,320 450,270 460,210 C470,140 465,70 460,-20 Z" fill="#4CAF50"/>
+
+    <!-- Wide sweeping form from bottom-right — like a Matisse algae shape -->
+    <path d="M830,430 C750,400 660,380 580,390 C510,400 450,430 410,480 C390,505 400,530 430,515 C470,490 530,460 600,445 C680,430 760,440 840,460 Z" fill="#2E7D32"/>
+
+    <!-- Broad leaf from bottom-left corner -->
+    <path d="M50,630 C80,560 140,500 210,460 C280,425 350,420 400,440 C425,450 430,470 410,475 C370,470 320,460 260,470 C190,490 130,540 80,610 Z" fill="#00875A"/>
+
+    <!-- Chunky leaf shape upper-left area -->
+    <path d="M80,30 C130,50 180,100 210,170 C230,230 220,290 190,330 C175,350 155,345 160,320 C170,280 175,230 160,180 C140,120 110,70 60,40 Z" fill="#388E3C"/>
+  </g>
+  <g id="layer-3">
+    <!-- BIRD 1: Bold coral/vermillion bird — simplified Matisse style, upper right area -->
+    <!-- Body -->
+    <path d="M480,140 C530,120 600,110 650,130 C700,150 730,190 730,240 C730,290 700,330 660,340 C620,350 570,340 540,310 C510,280 490,240 480,200 C475,170 475,150 480,140 Z" fill="#E53935"/>
+    <!-- Tail feathers -->
+    <path d="M660,330 C700,360 750,370 790,350 C810,340 820,310 800,300 C780,295 750,310 720,330 C700,340 680,340 660,330 Z" fill="#FF6F61"/>
+    <!-- Wing -->
+    <path d="M520,180 C550,170 590,175 620,200 C650,225 660,260 640,280 C620,295 590,290 565,270 C540,250 525,220 520,190 Z" fill="#C62828"/>
+    <!-- Eye -->
+    <circle cx="620" cy="170" r="10" fill="#FFFFFF"/>
+    <circle cx="622" cy="168" r="5" fill="#212121"/>
+    <!-- Beak -->
+    <path d="M490,160 C475,150 455,155 450,170 C448,178 460,180 470,175 C480,170 488,165 490,160 Z" fill="#FF9800"/>
+
+    <!-- FAT Matisse leaf — really broad, bottom left -->
+    <path d="M-20,350 C60,300 160,280 250,300 C340,320 400,380 400,450 C400,510 350,550 280,540 C210,530 140,490 80,440 C30,400 -10,380 -20,370 Z" fill="#1B5E20"/>
+
+    <!-- Another chunky leaf form — upper left -->
+    <path d="M0,0 C80,20 170,70 220,140 C260,200 260,270 220,300 C190,320 150,300 130,250 C110,200 80,140 40,80 C15,40 0,15 0,0 Z" fill="#43A047"/>
+  </g>
+  <g id="layer-4">
+    <!-- BIRD 2: Yellow/orange bird, lower left, facing right -->
+    <path d="M120,420 C160,390 220,380 270,400 C320,420 350,460 340,510 C330,550 290,570 240,560 C190,550 150,520 130,480 C115,450 115,430 120,420 Z" fill="#FFD600"/>
+    <!-- Wing -->
+    <path d="M170,430 C200,425 230,440 250,465 C265,490 260,515 240,520 C220,525 195,510 180,490 C165,465 160,440 170,430 Z" fill="#F9A825"/>
+    <!-- Eye -->
+    <circle cx="230" cy="415" r="8" fill="#FFFFFF"/>
+    <circle cx="232" cy="413" r="4" fill="#212121"/>
+    <!-- Beak -->
+    <path d="M280,405 C300,395 320,400 325,415 C328,425 315,428 305,420 C295,415 285,410 280,405 Z" fill="#E53935"/>
+    <!-- Tail -->
+    <path d="M120,460 C90,480 60,510 50,540 C45,555 55,565 70,555 C90,535 110,500 125,470 Z" fill="#FBC02D"/>
+
+    <!-- Bright magenta flower/organic shape — upper area -->
+    <path d="M340,40 C380,30 420,50 440,90 C460,130 450,175 420,195 C390,210 350,200 330,170 C310,140 310,100 320,65 C325,50 330,42 340,40 Z" fill="#D81B60"/>
+
+    <!-- Orange fruit shapes -->
+    <circle cx="160" cy="290" r="28" fill="#FF9800"/>
+    <circle cx="680" cy="430" r="24" fill="#FF6F61"/>
+    <circle cx="600" cy="520" r="20" fill="#FF9800"/>
+  </g>
+  <g id="layer-5">
+    <!-- Broad leaf form from right edge — balances the composition -->
+    <path d="M830,200 C770,180 700,190 650,230 C600,270 580,330 600,380 C620,420 670,430 720,410 C770,390 810,340 830,280 Z" fill="#388E3C"/>
+
+    <!-- Leaf sweeping across top -->
+    <path d="M250,0 C280,30 330,70 370,80 C420,95 470,80 500,50 C520,30 520,5 500,0 Z" fill="#2E7D32"/>
+
+    <!-- Small leaf shapes — scattered accents -->
+    <path d="M700,80 C720,70 745,80 750,105 C755,130 740,150 720,145 C700,140 690,120 692,100 C693,90 695,83 700,80 Z" fill="#43A047"/>
+
+    <path d="M50,550 C70,535 100,535 115,555 C130,575 120,600 95,605 C70,608 50,590 48,570 C47,560 48,553 50,550 Z" fill="#4CAF50"/>
+
+    <!-- White organic shape — Matisse often used white as a bold colour -->
+    <path d="M350,440 C375,425 410,430 430,455 C450,480 445,515 420,530 C395,540 365,530 350,505 C340,485 340,455 350,440 Z" fill="#FFFFFF"/>
+
+    <!-- Small yellow accent leaf -->
+    <path d="M560,60 C580,55 600,70 600,95 C600,115 585,130 565,125 C550,120 545,100 550,80 C553,70 555,63 560,60 Z" fill="#FFD600"/>
+
+    <!-- Turquoise accent shape -->
+    <path d="M740,530 C760,520 785,530 790,555 C795,580 780,600 755,595 C735,590 725,565 730,545 C733,535 736,528 740,530 Z" fill="#00ACC1"/>
+  </g>
+  <g id="layer-6">
+    <!-- Matisse-style star/flower shape — upper left area -->
+    <path d="M130,130 C145,110 165,105 175,120 C185,140 175,165 160,180 C150,195 140,200 135,190 C125,175 115,155 115,140 C115,133 120,128 130,130 Z" fill="#FFD600"/>
+
+    <!-- Flowing seaweed-like form — right side -->
+    <path d="M760,150 C770,200 755,260 740,310 C725,355 730,400 750,430 C760,445 775,440 775,420 C775,390 780,340 790,290 C800,240 800,190 790,150 C785,135 765,135 760,150 Z" fill="#00875A"/>
+
+    <!-- Broad leaf shape bottom-right to ground the corner -->
+    <path d="M600,600 C620,550 670,510 730,500 C790,490 830,510 840,550 C845,575 830,600 830,620 L600,620 Z" fill="#2E7D32"/>
+
+    <!-- Cluster of berries — small circles near top -->
+    <circle cx="300" cy="110" r="14" fill="#E53935"/>
+    <circle cx="325" cy="95" r="11" fill="#FF6F61"/>
+    <circle cx="280" cy="95" r="10" fill="#C62828"/>
+
+    <!-- Small leaf accent near yellow bird -->
+    <path d="M310,500 C325,490 345,498 348,518 C350,535 338,548 322,545 C308,540 300,522 305,508 Z" fill="#43A047"/>
+
+    <!-- Orange crescent accent — Matisse loved these -->
+    <path d="M460,540 C485,525 515,535 520,560 C525,580 510,595 485,590 C465,585 455,565 460,545 Z" fill="#FF9800"/>
+  </g>
+  <g id="layer-7">
+    <!-- Bold Matisse-style lobed leaf — the iconic "hand" shape, top right -->
+    <path d="M650,20 C665,10 685,15 695,35 C705,55 700,80 690,95 C680,105 670,100 668,85 C665,65 660,45 650,30 Z" fill="#00875A"/>
+    <path d="M695,35 C710,30 730,40 735,65 C740,85 730,105 715,100 C700,95 695,75 695,55 Z" fill="#00875A"/>
+    <path d="M660,20 C650,5 645,-10 660,-20 C675,-10 670,5 665,20 Z" fill="#00875A"/>
+
+    <!-- Coral/salmon organic blob — adds warmth to the gap between birds -->
+    <path d="M400,260 C420,245 450,250 465,275 C478,300 470,330 445,340 C425,345 405,330 395,308 C388,290 390,270 400,260 Z" fill="#FF6F61"/>
+
+    <!-- Small white accent shape — echoes the larger white below -->
+    <path d="M180,180 C192,172 208,178 212,195 C215,210 205,222 192,218 C180,214 174,198 178,185 Z" fill="#FFFFFF"/>
+
+    <!-- Deep purple accent — adds palette depth -->
+    <path d="M540,430 C555,418 575,425 580,445 C585,465 572,480 555,476 C540,472 532,452 538,435 Z" fill="#7B1FA2"/>
+
+    <!-- Tiny yellow dots — like scattered pollen -->
+    <circle cx="470" cy="380" r="7" fill="#FFD600"/>
+    <circle cx="355" cy="350" r="6" fill="#FFD600"/>
+    <circle cx="720" cy="480" r="8" fill="#FFD600"/>
+
+    <!-- Small red berry near bottom -->
+    <circle cx="520" cy="580" r="12" fill="#E53935"/>
+  </g>
+  <g id="layer-8">
+    <!-- Thin curving stem connecting lower area — organic vine -->
+    <path d="M350,600 C360,560 380,520 410,490 C440,460 470,445 490,440" stroke="#1B5E20" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+    <!-- Another vine/stem from top -->
+    <path d="M420,0 C415,40 405,90 400,140 C395,180 400,210 415,230" stroke="#2E7D32" stroke-width="4" fill="none" stroke-linecap="round"/>
+
+    <!-- Small Matisse-style leaf on the vine -->
+    <path d="M405,135 C390,120 385,100 395,90 C405,82 420,90 425,108 C428,120 418,135 405,135 Z" fill="#4CAF50"/>
+
+    <!-- Bold blue organic shape — echoes the background but distinct -->
+    <path d="M85,270 C100,255 125,260 135,280 C145,305 130,325 110,322 C90,318 78,295 82,275 Z" fill="#1565C0"/>
+
+    <!-- Magenta accent near bottom right -->
+    <path d="M650,560 C665,548 685,555 688,575 C690,590 678,600 662,596 C650,590 644,575 650,560 Z" fill="#D81B60"/>
+
+    <!-- Final yellow flower-like shape near top center -->
+    <path d="M420,60 C435,48 455,52 462,70 C468,90 458,108 440,108 C425,106 415,90 417,72 Z" fill="#FBC02D"/>
+
+    <!-- Tiny white dot accents — like light catching -->
+    <circle cx="500" cy="300" r="5" fill="#FFFFFF"/>
+    <circle cx="300" cy="420" r="4" fill="#FFFFFF"/>
+    <circle cx="680" cy="250" r="5" fill="#FFFFFF"/>
+  </g>
+  <g id="layer-9">
+    <!-- Small leaf tucking into top-right corner -->
+    <path d="M780,0 C790,20 785,50 770,65 C755,78 738,72 740,55 C743,35 760,15 780,0 Z" fill="#43A047"/>
+
+    <!-- Warm red-orange shape near bottom center — grounds the lower area -->
+    <path d="M430,570 C448,555 475,560 482,582 C488,600 475,615 455,612 C438,608 425,590 430,570 Z" fill="#E53935"/>
+
+    <!-- Final small turquoise accent — upper left blue gap -->
+    <path d="M240,155 C252,145 268,150 270,168 C272,182 262,192 248,188 C237,184 233,168 238,158 Z" fill="#00ACC1"/>
+
+    <!-- Tiny green leaf near red bird's feet -->
+    <path d="M620,370 C632,362 648,368 648,385 C648,398 636,405 624,400 C614,394 612,378 620,370 Z" fill="#388E3C"/>
+
+    <!-- Small orange dot — final rhythm -->
+    <circle cx="140" cy="380" r="6" fill="#FF9800"/>
+  </g>
+</svg>

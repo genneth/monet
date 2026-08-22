@@ -1,0 +1,376 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="100%" height="100%" fill="#f2ede4"/>
+  <defs>
+    <filter id="iter1-paperTexture" x="0%" y="0%" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="5" result="noise" />
+    <feDiffuseLighting in="noise" lighting-color="#f2ede4" surfaceScale="2">
+      <feDistantLight azimuth="45" elevation="60" />
+    </feDiffuseLighting>
+  </filter>
+    <filter id="iter3-handDrawn" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" />
+  </filter>
+    <filter id="iter4-jitter">
+    <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="2" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1" />
+  </filter>
+  </defs>
+  <g id="layer-1">
+    <!-- Background texture layer -->
+      <rect width="800" height="600" fill="#f2ede4" filter="url(#iter1-paperTexture)" opacity="0.4" />
+
+      <!-- Large biomorphic color fields (The 'Toddlers') -->
+      <!-- Red Shape - Left -->
+      <path d="M150,200 C100,250 80,350 160,450 C240,550 350,500 320,380 C300,300 220,150 150,200Z" fill="#e21f26" opacity="0.8" />
+
+      <!-- Blue Shape - Center/Right -->
+      <path d="M450,150 C380,180 350,300 420,420 C500,550 650,500 680,350 C710,200 550,100 450,150Z" fill="#005ba9" opacity="0.7" />
+
+      <!-- Yellow Shape - Lower Center -->
+      <path d="M300,450 C250,480 280,580 400,570 C520,560 550,450 450,420 C350,390 320,420 300,450Z" fill="#f9d023" opacity="0.9" />
+
+      <!-- Small Green Accents -->
+      <circle cx="200" cy="120" r="30" fill="#009e52" opacity="0.6" />
+      <ellipse cx="650" cy="500" rx="40" ry="20" fill="#009e52" opacity="0.7" transform="rotate(-20 650 500)" />
+  </g>
+  <g id="layer-2">
+    <!-- Connecting "Trend Line" / Path of Play -->
+      <path d="M100,500 Q250,450 350,520 T600,480" fill="none" stroke="black" stroke-width="2" filter="url(#iter3-handDrawn)" />
+
+      <!-- Toddler 1 (Red) features -->
+      <path d="M220,320 Q180,280 150,290" fill="none" stroke="black" stroke-width="2.5" /> <!-- Arm reaching -->
+      <circle cx="210" cy="400" r="12" fill="white" stroke="black" stroke-width="1.5" /> <!-- Eye -->
+      <circle cx="212" cy="402" r="5" fill="black" /> <!-- Pupil -->
+      <path d="M280,600 Q300,550 310,530" fill="none" stroke="black" stroke-width="2" /> <!-- Leg/Root -->
+
+      <!-- Toddler 2 (Blue) features -->
+      <circle cx="600" cy="350" r="40" fill="none" stroke="black" stroke-width="1.5" /> <!-- Large Miró Eye outline -->
+      <circle cx="610" cy="340" r="15" fill="black" /> <!-- Large Pupil -->
+      <path d="M650,230 L680,180" stroke="black" stroke-width="2" /> <!-- Antenna/Hair -->
+      <circle cx="685" cy="175" r="4" fill="red" /> <!-- Antenna tip -->
+
+      <!-- Toddler 3 (Yellow) features -->
+      <path d="M450,580 C480,550 520,550 550,580" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" /> <!-- Smile/Base -->
+      <line x1="400" y1="520" x2="380" y2="480" stroke="black" stroke-width="1.5" /> <!-- Small whisker/line -->
+
+      <!-- Floating Data Points (Quant toys) -->
+      <circle cx="140" cy="285" r="6" fill="black" /> <!-- Target dot -->
+      <path d="M720,400 L750,420 L730,450 Z" fill="black" /> <!-- Abstract geometric toy -->
+  </g>
+  <g id="layer-3">
+    <!-- Distorted Sigma (Σ) as a creature/toy -->
+      <path d="M 120 150 L 160 150 L 135 175 L 160 200 L 120 200" stroke="black" stroke-width="2" fill="none" stroke-linecap="round" filter="url(#iter4-jitter)" transform="rotate(-15, 140, 175)" />
+      <circle cx="160" cy="150" r="3" fill="black" />
+
+      <!-- Distorted Pi (π) as a stool or legs for the yellow shape -->
+      <path d="M 450 480 L 510 480 M 470 480 L 465 520 M 495 480 L 500 520" stroke="black" stroke-width="2.5" fill="none" stroke-linecap="round" filter="url(#iter4-jitter)" />
+
+      <!-- Data cluster stars (Miró style 8-pointed or crossed stars) -->
+      <g transform="translate(650, 120) scale(0.8)">
+        <line x1="-20" y1="0" x2="20" y2="0" stroke="black" stroke-width="1.5" />
+        <line x1="0" y1="-20" x2="0" y2="20" stroke="black" stroke-width="1.5" />
+        <line x1="-14" y1="-14" x2="14" y2="14" stroke="black" stroke-width="1.5" />
+        <line x1="-14" y1="14" x2="14" y2="-14" stroke="black" stroke-width="1.5" />
+        <circle cx="0" cy="0" r="4" fill="#e21f26" />
+      </g>
+
+      <!-- Scatter plot path / Playful algorithm -->
+      <circle cx="580" cy="400" r="5" fill="black" />
+      <circle cx="620" cy="380" r="3" fill="#005ba9" />
+      <circle cx="650" cy="420" r="4" fill="black" />
+      <path d="M 580 400 Q 600 370 620 380 T 650 420" stroke="black" stroke-width="1" fill="none" />
+
+      <!-- Adding character to the yellow toddler -->
+      <path d="M 400 450 Q 380 480 350 490" stroke="black" stroke-width="2" fill="none" stroke-linecap="round" />
+      <circle cx="480" cy="430" r="2" fill="black" />
+      <path d="M 475 425 Q 480 415 485 425" stroke="black" stroke-width="1" fill="none" />
+
+      <!-- Floating 'Growth' arrow/vector -->
+      <path d="M 700 550 L 750 500 L 740 500 M 750 500 L 750 510" stroke="black" stroke-width="2" fill="none" stroke-linecap="round" />
+  </g>
+  <g id="layer-4">
+    <!-- A "percentage" crescent moon in the upper right -->
+      <path d="M 680,100 Q 720,100 720,140 Q 720,180 680,180 Q 700,160 700,140 Q 700,120 680,100" fill="#f9d023" stroke="black" stroke-width="1.5" />
+      <circle cx="690" cy="125" r="4" fill="black" />
+      <circle cx="710" cy="155" r="4" fill="black" />
+
+      <!-- Data trend "lines of force" weaving through the center -->
+      <path d="M 100,500 Q 250,450 400,520 T 700,480" fill="none" stroke="black" stroke-width="1.2" stroke-dasharray="2,2" />
+      <path d="M 150,550 C 300,500 500,600 650,530" fill="none" stroke="black" stroke-width="1" />
+
+      <!-- The "Flowchart Toy" for the red toddler -->
+      <g transform="translate(180, 200)">
+        <line x1="0" y1="0" x2="-40" y2="-60" stroke="black" stroke-width="1.5" />
+        <polygon points="-40,-60 -50,-80 -30,-80" fill="#005ba9" stroke="black" stroke-width="1" />
+        <line x1="0" y1="0" x2="40" y2="-30" stroke="black" stroke-width="1.5" />
+        <rect x="35" y="-45" width="20" height="20" fill="#009e52" stroke="black" stroke-width="1" transform="rotate(15)" />
+        <circle cx="0" cy="0" r="6" fill="#e21f26" stroke="black" stroke-width="1" />
+      </g>
+
+      <!-- Floating "Data Particles" (dots of energy) -->
+      <circle cx="380" cy="150" r="3" fill="black" />
+      <circle cx="410" cy="120" r="5" fill="#e21f26" />
+      <circle cx="450" cy="180" r="2" fill="black" />
+      <circle cx="500" cy="100" r="4" fill="#005ba9" />
+      <circle cx="750" cy="300" r="3" fill="black" />
+      <circle cx="50" cy="100" r="6" fill="#f9d023" opacity="0.6" />
+
+      <!-- A stylized "Integral" symbol acting as a playful snake/worm near the bottom -->
+      <path d="M 450,580 Q 470,550 450,520 T 450,460" fill="none" stroke="black" stroke-width="3" stroke-linecap="round" />
+      <circle cx="450" cy="585" r="2" fill="black" />
+      <circle cx="450" cy="455" r="2" fill="black" />
+  </g>
+  <g id="layer-5">
+    <!-- Normal Distribution / Arching Lines -->
+      <path d="M 100,500 Q 400,200 700,500" stroke="black" stroke-width="1.5" fill="none" opacity="0.7"/>
+      <path d="M 120,510 Q 400,250 680,510" stroke="black" stroke-width="0.8" fill="none" stroke-dasharray="2,2"/>
+
+      <!-- Integral Tail for the Sigma/Bird -->
+      <path d="M 210,230 C 230,200 190,180 210,150" stroke="black" stroke-width="2" fill="none" />
+      <circle cx="210" cy="150" r="2.5" fill="black" />
+
+      <!-- Neural Network / Data Play-set (Top Left) -->
+      <g id="iter6-data-cluster">
+        <line x1="80" y1="120" x2="120" y2="100" stroke="black" stroke-width="0.5" />
+        <line x1="120" y1="100" x2="150" y2="140" stroke="black" stroke-width="0.5" />
+        <line x1="80" y1="120" x2="100" y2="160" stroke="black" stroke-width="0.5" />
+        <circle cx="80" cy="120" r="4" fill="#e21f26" />
+        <circle cx="120" cy="100" r="3" fill="#005ba9" />
+        <circle cx="150" cy="140" r="5" fill="#f9d023" />
+        <circle cx="100" cy="160" r="2" fill="black" />
+      </g>
+
+      <!-- Percentage Sun/Moon (Top Right refinement) -->
+      <circle cx="850" cy="50" r="2" fill="black" /> <!-- Anchor point -->
+      <path d="M 725,115 L 755,85" stroke="black" stroke-width="2" />
+      <circle cx="730" cy="90" r="4" stroke="black" fill="none" stroke-width="1.5" />
+      <circle cx="750" cy="110" r="4" stroke="black" fill="none" stroke-width="1.5" />
+
+      <!-- Floating "Building Block" Data Points -->
+      <rect x="600" y="150" width="8" height="8" fill="black" transform="rotate(15 604 154)" />
+      <polygon points="450,80 460,95 440,95" fill="black" />
+      <circle cx="380" cy="120" r="1.5" fill="black" />
+
+      <!-- Eye for the Sigma/Bird thing -->
+      <circle cx="165" cy="275" r="3" fill="black" />
+      <path d="M 160,270 Q 165,260 170,270" stroke="black" stroke-width="1" fill="none" />
+  </g>
+  <g id="layer-6">
+    <!-- Bell Curve / Distribution Lines -->
+      <path d="M 120,530 Q 400,100 700,510" fill="none" stroke="black" stroke-width="1.5" stroke-dasharray="2,2" opacity="0.6" />
+      <path d="M 150,550 Q 400,150 650,530" fill="none" stroke="black" stroke-width="1" opacity="0.4" />
+
+      <!-- Integral Tail for Sigma entity -->
+      <path d="M 230,310 C 250,350 200,380 220,420" fill="none" stroke="black" stroke-width="2" />
+      <circle cx="220" cy="425" r="2.5" fill="black" />
+
+      <!-- Probability Cloud (Stipple-like dots) -->
+      <g id="iter7-probCloud">
+        <circle cx="580" cy="180" r="1.5" fill="#e21f26" />
+        <circle cx="600" cy="170" r="1" fill="black" />
+        <circle cx="610" cy="195" r="1.5" fill="#005ba9" />
+        <circle cx="590" cy="205" r="1" fill="#f9d023" />
+        <circle cx="620" cy="185" r="1.2" fill="black" />
+      </g>
+
+      <!-- Bar Chart Building Blocks -->
+      <line x1="680" y1="580" x2="680" y2="540" stroke="black" stroke-width="3" stroke-linecap="round" />
+      <line x1="700" y1="580" x2="700" y2="520" stroke="black" stroke-width="3" stroke-linecap="round" />
+      <line x1="720" y1="580" x2="720" y2="555" stroke="black" stroke-width="3" stroke-linecap="round" />
+      <line x1="740" y1="580" x2="740" y2="530" stroke="black" stroke-width="3" stroke-linecap="round" />
+
+      <!-- Tension Lines -->
+      <path d="M 80,180 L 160,250" stroke="black" stroke-width="0.8" opacity="0.5" />
+      <path d="M 720,280 L 800,350" stroke="black" stroke-width="0.8" opacity="0.5" />
+
+      <!-- Extra Eye for the Yellow Toddler -->
+      <circle cx="430" cy="740" r="8" fill="white" stroke="black" stroke-width="1" />
+      <circle cx="432" cy="742" r="3" fill="black" />
+  </g>
+  <g id="layer-7">
+    <!-- Integral spine on the left -->
+      <path d="M 120 180 Q 90 250 110 400 T 80 580" stroke="black" stroke-width="1.5" fill="none" opacity="0.8" />
+      <circle cx="120" cy="180" r="3" fill="black" />
+      <circle cx="80" cy="580" r="3" fill="black" />
+
+      <!-- Detailed Eye for the Blue Shape -->
+      <circle cx="610" cy="400" r="45" stroke="black" stroke-width="1" fill="none" />
+      <circle cx="610" cy="400" r="12" fill="black" />
+      <circle cx="614" cy="396" r="4" fill="white" />
+
+      <!-- Hair/Sensors for the Yellow Shape -->
+      <path d="M 450 670 L 430 720" stroke="black" stroke-width="1" fill="none" transform="rotate(-15 450 670)"/>
+      <circle cx="430" cy="735" r="4" fill="#e21f26" />
+      <path d="M 520 680 L 540 730" stroke="black" stroke-width="1" fill="none" />
+      <circle cx="540" cy="740" r="3" fill="#005ba9" />
+
+      <!-- Matrix/Ladder Climbing Frame -->
+      <g stroke="black" stroke-width="1.2" opacity="0.7">
+        <line x1="380" y1="350" x2="420" y2="330" />
+        <line x1="390" y1="380" x2="430" y2="360" />
+        <line x1="400" y1="410" x2="440" y2="390" />
+        <path d="M 385 340 Q 400 380 410 420" fill="none" />
+        <path d="M 415 320 Q 430 360 440 400" fill="none" />
+      </g>
+
+      <!-- Floating Math Symbols (Dust) -->
+      <text x="250" y="150" font-family="serif" font-size="14" fill="black" opacity="0.6">+</text>
+      <text x="700" y="250" font-family="serif" font-size="18" fill="black" opacity="0.6">√</text>
+      <text x="350" y="50" font-family="serif" font-size="12" fill="black" opacity="0.6">∑</text>
+      <path d="M 550 80 L 570 80 M 550 88 L 570 88" stroke="black" stroke-width="1.5" opacity="0.5" /> <!-- = sign -->
+
+      <!-- Balancing Dots -->
+      <circle cx="50" cy="500" r="10" fill="#f9d023" />
+      <circle cx="750" cy="150" r="6" fill="#e21f26" />
+      <circle cx="400" cy="100" r="4" fill="#009e52" />
+  </g>
+  <g id="layer-8">
+    <!-- Ladder/Matrix climbing frame in center -->
+      <path d="M410,340 L435,420 M425,335 L450,415 M415,360 L440,355 M420,385 L445,380 M428,405 L453,400" stroke="black" stroke-width="1.2" fill="none" opacity="0.8" />
+
+      <!-- Integral symbol as a structural spine on the left -->
+      <path d="M120,280 C100,350 110,500 130,550 C140,580 160,570 180,560" stroke="black" stroke-width="1.5" fill="none" />
+      <circle cx="120" cy="280" r="2.5" fill="black" />
+
+      <!-- Yellow toddler's "Data Sensor" hair/antennas -->
+      <path d="M530,455 L545,430" stroke="black" stroke-width="1" fill="none" />
+      <circle cx="545" cy="430" r="2" fill="black" />
+      <path d="M560,452 L575,410" stroke="black" stroke-width="1" fill="none" />
+      <circle cx="575" cy="410" r="2" fill="black" />
+
+      <!-- Floating math "dust" symbols -->
+      <text x="320" y="240" font-family="serif" font-size="14" fill="black" opacity="0.6" transform="rotate(-15 320,240)">+</text>
+      <text x="680" y="320" font-family="serif" font-size="16" fill="black" opacity="0.5">√</text>
+      <text x="210" y="550" font-family="serif" font-size="14" fill="black" opacity="0.6">-</text>
+      <text x="480" y="180" font-family="serif" font-size="12" fill="black" opacity="0.5">×</text>
+
+      <!-- Balancing color dots -->
+      <circle cx="100" cy="520" r="8" fill="#e21f26" /> <!-- Red dot bottom left -->
+      <circle cx="750" cy="180" r="5" fill="#005ba9" /> <!-- Blue dot upper right -->
+      <circle cx="380" cy="480" r="4" fill="#f9d023" /> <!-- Yellow dot near bottom -->
+
+      <!-- Extra "stitching" lines for texture -->
+      <path d="M250,580 Q300,550 380,590" stroke="black" stroke-width="0.8" stroke-dasharray="3,3" fill="none" opacity="0.4" />
+  </g>
+  <g id="layer-9">
+    <!-- Data sensor hair/antennas for the yellow toddler -->
+      <path d="M480,720 Q490,680 475,650" fill="none" stroke="black" stroke-width="1.2"/>
+      <circle cx="475" cy="650" r="3" fill="black"/>
+      <path d="M560,750 Q580,720 565,680" fill="none" stroke="black" stroke-width="1"/>
+      <circle cx="565" cy="680" r="2.5" fill="black"/>
+
+      <!-- Floating math dust (small symbols) -->
+      <text x="700" y="320" font-family="serif" font-size="12" fill="#555" transform="rotate(15, 700, 320)">√</text>
+      <text x="320" y="390" font-family="serif" font-size="14" fill="#555" transform="rotate(-10, 320, 390)">+</text>
+      <text x="520" y="180" font-family="serif" font-size="10" fill="#555">-</text>
+      <text x="150" y="700" font-family="serif" font-size="14" fill="#555">≈</text>
+
+      <!-- Probability cloud / Energy dots -->
+      <circle cx="580" cy="450" r="2" fill="#e21f26"/>
+      <circle cx="595" cy="465" r="1.5" fill="#005ba9"/>
+      <circle cx="610" cy="440" r="2" fill="#f9d023"/>
+      <circle cx="180" cy="280" r="1.5" fill="#009e52"/>
+      <circle cx="210" cy="310" r="2" fill="#e21f26"/>
+
+      <!-- Echo/Trend lines (faint grey) -->
+      <path d="M200,850 Q350,820 600,880" fill="none" stroke="#ccc" stroke-width="0.8" stroke-dasharray="4,2"/>
+      <path d="M100,500 Q250,550 400,520" fill="none" stroke="#ccc" stroke-width="0.8" opacity="0.6"/>
+
+      <!-- Heavy grounding dot -->
+      <circle cx="120" cy="850" r="8" fill="black"/>
+
+      <!-- Detail eye for red shape -->
+      <path d="M210,640 A15,15 0 0,1 235,640" fill="none" stroke="black" stroke-width="2"/>
+      <circle cx="222" cy="635" r="2" fill="black"/>
+  </g>
+  <g id="layer-10">
+    <!-- Data sensor hair for yellow toddler -->
+      <path d="M420,700 Q430,660 410,640" stroke="black" stroke-width="1.5" fill="none" transform="translate(-10,-100)"/>
+      <circle cx="400" cy="540" r="4" fill="#e21f26" />
+      <path d="M450,700 Q470,650 480,630" stroke="black" stroke-width="1.5" fill="none" transform="translate(-10,-100)"/>
+      <circle cx="470" cy="530" r="3" fill="#005ba9" />
+
+      <!-- Integral symbol as structural spine on left -->
+      <path d="M120,450 C100,550 150,750 130,900" stroke="black" stroke-width="1" fill="none" opacity="0.6" transform="scale(0.8) translate(0,-100)"/>
+
+      <!-- Crescent moon eye for red toddler -->
+      <path d="M210,480 A15,15 0 0,1 230,500 A10,10 0 0,0 210,480" fill="black" transform="rotate(-20, 220, 490)"/>
+
+      <!-- Floating math dust (small symbols) -->
+      <text x="350" y="250" font-family="serif" font-size="14" fill="black" opacity="0.7" font-style="italic">√</text>
+      <text x="650" y="380" font-family="serif" font-size="12" fill="black" opacity="0.7">+</text>
+      <text x="280" y="180" font-family="serif" font-size="16" fill="black" opacity="0.7">≈</text>
+      <text x="730" y="550" font-family="serif" font-size="14" fill="black" opacity="0.7">∂</text>
+
+      <!-- Heavy grounding dots -->
+      <circle cx="100" cy="550" r="7" fill="black" />
+      <circle cx="750" cy="420" r="5" fill="black" />
+
+      <!-- Little 'bird' square root -->
+      <path d="M600,150 L610,165 L630,145" stroke="black" stroke-width="2" fill="none" />
+      <circle cx="605" cy="155" r="2" fill="black" />
+  </g>
+  <g id="layer-11">
+    <!-- Integral symbol spine on the left -->
+    <path d="M 120 180 Q 80 300 120 450 Q 140 550 180 580" fill="none" stroke="black" stroke-width="1.5" opacity="0.7" />
+    <path d="M 115 175 C 130 170 130 190 120 185" fill="none" stroke="black" stroke-width="1.5" opacity="0.7" />
+    <path d="M 185 585 C 170 590 170 570 180 575" fill="none" stroke="black" stroke-width="1.5" opacity="0.7" />
+
+    <!-- Data sensor hair for the yellow toddler -->
+    <path d="M 460 720 Q 450 680 430 660" fill="none" stroke="black" stroke-width="1" />
+    <circle cx="430" cy="660" r="4" fill="#e21f26" />
+    <path d="M 500 710 Q 510 670 530 655" fill="none" stroke="black" stroke-width="1" />
+    <circle cx="530" cy="655" r="3" fill="#005ba9" />
+    <path d="M 540 730 Q 570 700 590 710" fill="none" stroke="black" stroke-width="1" />
+    <circle cx="590" cy="710" r="3.5" fill="#f9d023" />
+
+    <!-- Crescent moon eye for the red toddler -->
+    <path d="M 230 460 A 15 15 0 0 1 250 480" fill="none" stroke="black" stroke-width="2" />
+    <circle cx="238" cy="472" r="2.5" fill="black" />
+
+    <!-- Heavy grounding dots -->
+    <circle cx="100" cy="550" r="8" fill="black" />
+    <circle cx="750" cy="300" r="6" fill="black" />
+
+    <!-- Floating math dust -->
+    <text x="380" y="150" font-family="serif" font-style="italic" font-size="18" fill="black" opacity="0.6">≈</text>
+    <text x="650" y="450" font-family="serif" font-weight="bold" font-size="14" fill="black" opacity="0.5">+</text>
+    <text x="320" y="400" font-family="serif" font-weight="bold" font-size="16" fill="black" opacity="0.4">-</text>
+    <text x="150" y="80" font-family="serif" font-size="20" fill="black" opacity="0.3">∑</text>
+
+    <!-- Square root bird -->
+    <path d="M 680 180 L 685 195 L 705 195" fill="none" stroke="black" stroke-width="1.5" />
+    <circle cx="708" cy="192" r="1.5" fill="black" />
+  </g>
+  <g id="layer-12">
+    <!-- Yellow toddler "data sensor" hair -->
+    <path d="M480,550 Q470,510 450,500" stroke="black" stroke-width="1.2" fill="none" />
+    <circle cx="450" cy="500" r="3" fill="#e21f26" />
+    <path d="M520,560 Q530,520 550,515" stroke="black" stroke-width="1.2" fill="none" />
+    <circle cx="550" cy="515" r="2.5" fill="#005ba9" />
+    <path d="M500,555 Q510,500 490,480" stroke="black" stroke-width="1.2" fill="none" />
+    <circle cx="490" cy="480" r="3.5" fill="black" />
+
+    <!-- Crescent moon eye for red toddler -->
+    <path d="M285,480 A10,10 0 0,1 305,480 A8,8 0 0,0 285,480" fill="black" transform="rotate(-30, 295, 480)" />
+
+    <!-- Anchoring heavy dots -->
+    <circle cx="120" cy="560" r="7" fill="black" />
+    <circle cx="680" cy="450" r="5" fill="black" />
+    <circle cx="400" cy="420" r="4" fill="#e21f26" />
+
+    <!-- Math dust and birds -->
+    <text x="150" y="150" font-family="serif" font-size="14" fill="black" opacity="0.7" transform="rotate(-15, 150, 150)">√</text>
+    <text x="650" y="550" font-family="serif" font-size="12" fill="black" opacity="0.6">+</text>
+    <text x="720" y="300" font-family="serif" font-size="14" fill="black" opacity="0.5">≈</text>
+
+    <!-- Square root bird -->
+    <path d="M600,345 L610,360 L625,360" stroke="black" stroke-width="1.5" fill="none" />
+    <circle cx="612" cy="355" r="1.5" fill="black" />
+
+    <!-- Movement whiskers -->
+    <path d="M150,300 Q130,350 120,450" stroke="black" stroke-width="0.8" fill="none" opacity="0.4" />
+    <path d="M700,200 Q750,250 780,400" stroke="black" stroke-width="0.6" fill="none" opacity="0.3" />
+  </g>
+</svg>

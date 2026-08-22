@@ -5,21 +5,15 @@ build-backend = "hatchling.build"
 [project]
 name = "monet"
 version = "0.1.0"
-description = "LLM-powered iterative SVG art generator"
+description = "File-backed iterative SVG canvas for coding agents"
 requires-python = ">=3.14"
 dependencies = [
     "click",
-    "anthropic",
-    "google-genai",
-    "Pillow",
     "resvg-py",
-    "python-dotenv",
-    "fastmcp>=3.0.1",
 ]
 
 [project.scripts]
 monet = "monet.cli:main"
-monet-mcp = "monet.mcp_server:main"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

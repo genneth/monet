@@ -1,0 +1,245 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="100%" height="100%" fill="#FDFCF0"/>
+  <defs>
+    <radialGradient id="iter1-ballGradient" cx="40%" cy="35%" r="50%">
+    <stop offset="0%" stop-color="#DA70D6" />
+    <stop offset="70%" stop-color="#9932CC" />
+    <stop offset="100%" stop-color="#4B0082" />
+  </radialGradient>
+
+  <filter id="iter1-fuzzyEdge">
+    <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="10" xChannelSelector="R" yChannelSelector="G" />
+  </filter>
+
+  <radialGradient id="iter1-shadowGradient">
+    <stop offset="0%" stop-color="#000000" stop-opacity="0.3" />
+    <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+  </radialGradient>
+    <filter id="iter2-fuzzyEars" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="4" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="15" xChannelSelector="R" yChannelSelector="G" />
+  </filter>
+
+  <radialGradient id="iter2-earGrad" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#9932CC" />
+    <stop offset="100%" stop-color="#4B0082" />
+  </radialGradient>
+
+  <filter id="iter2-softHighlight">
+    <feGaussianBlur stdDeviation="15" />
+  </filter>
+    <filter id="iter3-earFuzz" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.15" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="15" xChannelSelector="R" yChannelSelector="G" />
+  </filter>
+
+  <radialGradient id="iter3-earGrad" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#9932CC" />
+    <stop offset="100%" stop-color="#4B0082" />
+  </radialGradient>
+    <filter id="iter4-fuzzyFilter" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="3" seed="42" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="15" xChannelSelector="R" yChannelSelector="G" />
+  </filter>
+
+  <linearGradient id="iter4-earGradient" x1="0%" y1="100%" x2="0%" y2="0%">
+    <stop offset="0%" style="stop-color:#4B0082;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#8A2BE2;stop-opacity:1" />
+  </linearGradient>
+    <filter id="iter5-earFuzz">
+    <feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="4" seed="42" />
+    <feDisplacementMap in="SourceGraphic" scale="15" />
+  </filter>
+  <radialGradient id="iter5-earGrad" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#9932CC" />
+    <stop offset="100%" stop-color="#4B0082" />
+  </radialGradient>
+    <filter id="iter6-earFuzz">
+    <feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="4" seed="42"/>
+    <feDisplacementMap in="SourceGraphic" scale="15" />
+  </filter>
+    <filter id="iter7-earFilter" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.1" numOctaves="4" seed="42" />
+    <feDisplacementMap in="SourceGraphic" scale="15" />
+  </filter>
+    <filter id="iter8-fuzzyFilter" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.1" numOctaves="3" seed="8"/>
+    <feDisplacementMap in="SourceGraphic" scale="15" />
+  </filter>
+  </defs>
+  <g id="layer-1">
+    <!-- Ground Shadow -->
+      <ellipse cx="400" cy="520" rx="200" ry="40" fill="url(#iter1-shadowGradient)" />
+
+      <!-- Base Body Sphere -->
+      <circle cx="400" cy="320" r="220" fill="url(#iter1-ballGradient)" filter="url(#iter1-fuzzyEdge)" />
+  </g>
+  <g id="layer-2">
+    <!-- Ears -->
+      <g filter="url(#iter2-fuzzyEars)">
+        <!-- Left Ear -->
+        <path d="M280,180 Q320,80 380,180" fill="url(#iter2-earGrad)" transform="rotate(-15, 330, 150)" />
+        <!-- Right Ear -->
+        <path d="M420,180 Q480,80 520,180" fill="url(#iter2-earGrad)" transform="rotate(15, 470, 150)" />
+      </g>
+
+      <!-- Secondary Highlight on Body for better volume -->
+      <ellipse cx="400" cy="240" rx="100" ry="80" fill="white" fill-opacity="0.15" filter="url(#iter2-softHighlight)" />
+
+      <!-- Initial flyaway hairs (fine strokes) -->
+      <g stroke="#9932CC" stroke-width="0.5" opacity="0.6">
+        <path d="M250,250 L230,230" />
+        <path d="M550,250 L570,235" />
+        <path d="M300,480 L290,510" />
+        <path d="M500,480 L510,510" />
+        <path d="M230,350 L200,350" />
+        <path d="M570,350 L600,350" />
+        <path d="M350,130 L340,100" />
+        <path d="M450,130 L460,100" />
+      </g>
+  </g>
+  <g id="layer-3">
+    <!-- Cat Ears -->
+      <path d="M 310,210 L 270,110 L 370,180 Z" fill="url(#iter3-earGrad)" filter="url(#iter3-earFuzz)" />
+      <path d="M 490,210 L 530,110 L 430,180 Z" fill="url(#iter3-earGrad)" filter="url(#iter3-earFuzz)" />
+
+      <!-- Additional grounding shadow -->
+      <ellipse cx="400" cy="530" rx="150" ry="25" fill="black" opacity="0.15" />
+
+      <!-- Fine flyaway hairs to enhance the fuzz texture -->
+      <g stroke="#DA70D6" stroke-width="0.5" opacity="0.4">
+        <path d="M 230,300 Q 210,290 200,310" fill="none" />
+        <path d="M 570,300 Q 590,290 600,310" fill="none" />
+        <path d="M 400,160 Q 400,130 420,120" fill="none" />
+        <path d="M 280,180 Q 260,150 240,160" fill="none" />
+        <path d="M 520,180 Q 540,150 560,160" fill="none" />
+        <path d="M 300,500 Q 280,520 290,540" fill="none" />
+        <path d="M 500,500 Q 520,520 510,540" fill="none" />
+        <path d="M 400,300 Q 410,270 430,280" stroke="#E6E6FA" opacity="0.3" fill="none" />
+        <path d="M 350,350 Q 340,320 320,330" stroke="#E6E6FA" opacity="0.3" fill="none" />
+      </g>
+  </g>
+  <g id="layer-4">
+    <!-- Ears -->
+      <g filter="url(#iter4-fuzzyFilter)">
+        <path d="M300,220 Q330,120 370,190 Z" fill="url(#iter4-earGradient)" />
+        <path d="M500,220 Q470,120 430,190 Z" fill="url(#iter4-earGradient)" />
+      </g>
+
+      <!-- More flyaway hairs -->
+      <g stroke="#DA70D6" stroke-width="0.5" fill="none" opacity="0.6">
+        <path d="M250,300 Q220,280 230,250" />
+        <path d="M550,300 Q580,280 570,250" />
+        <path d="M400,160 Q410,120 390,100" />
+        <path d="M320,180 Q300,140 280,150" />
+        <path d="M480,180 Q500,140 520,150" />
+        <path d="M280,450 Q240,480 260,510" />
+        <path d="M520,450 Q560,480 540,510" />
+      </g>
+
+      <!-- Subtle patch for the face drawing -->
+      <ellipse cx="400" cy="350" rx="60" ry="50" fill="#E6E6FA" opacity="0.15" filter="url(#iter4-fuzzyFilter)" />
+  </g>
+  <g id="layer-5">
+    <!-- Left Ear -->
+      <path d="M 300 220 Q 280 120 360 180" fill="url(#iter5-earGrad)" filter="url(#iter5-earFuzz)" opacity="0.9" />
+      <!-- Right Ear -->
+      <path d="M 500 220 Q 520 120 440 180" fill="url(#iter5-earGrad)" filter="url(#iter5-earFuzz)" opacity="0.9" />
+
+      <!-- Flyaway Hairs (perimeter) -->
+      <path d="M 240 300 Q 220 280 230 250" fill="none" stroke="#E6E6FA" stroke-width="0.5" opacity="0.6" />
+      <path d="M 560 300 Q 580 280 570 250" fill="none" stroke="#E6E6FA" stroke-width="0.5" opacity="0.6" />
+      <path d="M 400 160 Q 400 130 420 140" fill="none" stroke="#E6E6FA" stroke-width="0.5" opacity="0.6" />
+      <path d="M 330 180 Q 310 150 290 170" fill="none" stroke="#E6E6FA" stroke-width="0.5" opacity="0.6" />
+      <path d="M 470 180 Q 490 150 510 170" fill="none" stroke="#E6E6FA" stroke-width="0.5" opacity="0.6" />
+
+      <!-- Surface Fuzz depth -->
+      <path d="M 380 320 Q 400 300 420 320" fill="none" stroke="#DA70D6" stroke-width="1" opacity="0.4" />
+      <path d="M 350 350 Q 370 330 390 350" fill="none" stroke="#DA70D6" stroke-width="1" opacity="0.4" />
+
+      <!-- Subtle flattened area for the face -->
+      <ellipse cx="400" cy="350" rx="60" ry="50" fill="#BA55D3" opacity="0.2" filter="blur(15px)" />
+  </g>
+  <g id="layer-6">
+    <!-- Ears -->
+      <g filter="url(#iter6-earFuzz)">
+        <path d="M300,180 Q320,80 370,160 Z" fill="#6A0DAD" opacity="0.9" />
+        <path d="M500,180 Q480,80 430,160 Z" fill="#6A0DAD" opacity="0.9" />
+      </g>
+
+      <!-- The Tiny Pencil Face -->
+      <g transform="translate(400, 310) scale(0.6)" opacity="0.7">
+        <!-- Eyes -->
+        <path d="M-30,-10 Q-25,-20 -20,-10" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" />
+        <path d="M20,-10 Q25,-20 30,-10" fill="none" stroke="#333" stroke-width="2" stroke-linecap="round" />
+        <!-- Nose -->
+        <path d="M-5,5 L5,5 L0,12 Z" fill="none" stroke="#333" stroke-width="1.5" stroke-linejoin="round" />
+        <!-- Mouth -->
+        <path d="M0,12 Q-10,25 -20,20" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round" />
+        <path d="M0,12 Q10,25 20,20" fill="none" stroke="#333" stroke-width="1.5" stroke-linecap="round" />
+        <!-- Whiskers -->
+        <path d="M-25,10 L-55,5" fill="none" stroke="#333" stroke-width="1" opacity="0.5" />
+        <path d="M-25,15 L-55,20" fill="none" stroke="#333" stroke-width="1" opacity="0.5" />
+        <path d="M25,10 L55,5" fill="none" stroke="#333" stroke-width="1" opacity="0.5" />
+        <path d="M25,15 L55,20" fill="none" stroke="#333" stroke-width="1" opacity="0.5" />
+      </g>
+
+      <!-- Integrating hair over the face -->
+      <path d="M380,280 Q400,300 420,290" fill="none" stroke="#DA70D6" stroke-width="0.5" opacity="0.4" />
+      <path d="M390,320 Q410,340 430,310" fill="none" stroke="#DA70D6" stroke-width="0.5" opacity="0.4" />
+  </g>
+  <g id="layer-7">
+    <!-- Ears -->
+      <path d="M300,180 Q330,100 370,170" fill="#6A0DAD" filter="url(#iter7-earFilter)" opacity="0.9" />
+      <path d="M500,180 Q470,100 430,170" fill="#6A0DAD" filter="url(#iter7-earFilter)" opacity="0.9" />
+
+      <!-- Tiny Pencil Face (re-emphasized) -->
+      <g transform="translate(400, 310) scale(0.8)">
+        <!-- Eyes -->
+        <path d="M-15,-5 Q-10,-10 -5,-5" fill="none" stroke="#222" stroke-width="1.5" stroke-linecap="round" />
+        <path d="M5,-5 Q10,-10 15,-5" fill="none" stroke="#222" stroke-width="1.5" stroke-linecap="round" />
+        <!-- Nose/Mouth -->
+        <path d="M-5,5 Q0,10 5,5 M0,8 L0,12 Q0,15 -5,15 M0,12 Q0,15 5,15" fill="none" stroke="#222" stroke-width="1.2" stroke-linecap="round" />
+        <!-- Whiskers -->
+        <line x1="-20" y1="5" x2="-40" y2="2" stroke="#333" stroke-width="0.8" opacity="0.6" />
+        <line x1="-20" y1="8" x2="-42" y2="10" stroke="#333" stroke-width="0.8" opacity="0.6" />
+        <line x1="20" y1="5" x2="40" y2="2" stroke="#333" stroke-width="0.8" opacity="0.6" />
+        <line x1="20" y1="8" x2="42" y2="10" stroke="#333" stroke-width="0.8" opacity="0.6" />
+      </g>
+
+      <!-- Highlight flyaways -->
+      <path d="M380,120 Q400,80 420,120" fill="none" stroke="#E6E6FA" stroke-width="0.5" opacity="0.4" />
+      <path d="M350,140 Q360,100 380,130" fill="none" stroke="#E6E6FA" stroke-width="0.5" opacity="0.4" />
+      <path d="M450,140 Q440,100 420,130" fill="none" stroke="#E6E6FA" stroke-width="0.5" opacity="0.4" />
+  </g>
+  <g id="layer-8">
+    <!-- Fuzzy Ears -->
+      <path d="M330,220 L360,150 L390,210 Z" fill="#6a0dad" filter="url(#iter8-fuzzyFilter)" opacity="0.9" />
+      <path d="M410,210 L440,150 L470,220 Z" fill="#6a0dad" filter="url(#iter8-fuzzyFilter)" opacity="0.9" />
+
+      <!-- Tiny Pencil Face (Drawn on in the middle) -->
+      <g transform="translate(400, 310) scale(0.8)" stroke="#222222" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Eyes -->
+        <path d="M-15,-5 Q-10,-12 -5,-5" />
+        <path d="M5,-5 Q10,-12 15,-5" />
+        <!-- Nose/Mouth -->
+        <path d="M-2,2 L0,4 L2,2" />
+        <path d="M0,4 Q0,10 -8,10" />
+        <path d="M0,4 Q0,10 8,10" />
+        <!-- Whiskers -->
+        <line x1="-18" y1="5" x2="-35" y2="2" opacity="0.6" />
+        <line x1="-18" y1="8" x2="-38" y2="8" opacity="0.6" />
+        <line x1="18" y1="5" x2="35" y2="2" opacity="0.6" />
+        <line x1="18" y1="8" x2="38" y2="8" opacity="0.6" />
+        <!-- Sketchy Scribbles around the face -->
+        <path d="M-25,15 Q-10,20 10,18" stroke-width="0.5" opacity="0.3" />
+        <path d="M-5,-15 Q5,-18 15,-14" stroke-width="0.5" opacity="0.3" />
+      </g>
+
+      <!-- Brighter flyaway hairs for highlights -->
+      <path d="M300,200 Q280,150 320,120" stroke="#E6E6FA" stroke-width="0.5" fill="none" opacity="0.4" />
+      <path d="M500,200 Q520,150 480,120" stroke="#E6E6FA" stroke-width="0.5" fill="none" opacity="0.4" />
+      <path d="M400,180 Q410,130 430,140" stroke="#E6E6FA" stroke-width="0.5" fill="none" opacity="0.4" />
+  </g>
+</svg>

@@ -1,0 +1,677 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="100%" height="100%" fill="#1a3a3a"/>
+  <defs>
+    <linearGradient id="iter1-waterBase" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" style="stop-color:#2d4f4f" />
+        <stop offset="50%" style="stop-color:#1a3a3a" />
+        <stop offset="100%" style="stop-color:#0d1f1f" />
+    </linearGradient>
+    <radialGradient id="iter1-glow1" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" style="stop-color:#4a7a7a; stop-opacity:0.4" />
+        <stop offset="100%" style="stop-color:#4a7a7a; stop-opacity:0" />
+    </radialGradient>
+    <radialGradient id="iter1-glow2" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" style="stop-color:#3d2b52; stop-opacity:0.3" />
+        <stop offset="100%" style="stop-color:#3d2b52; stop-opacity:0" />
+    </radialGradient>
+    <radialGradient id="iter2-reflection1" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#add8e6" stop-opacity="0.4" />
+    <stop offset="100%" stop-color="#add8e6" stop-opacity="0" />
+  </radialGradient>
+  <radialGradient id="iter2-reflection2" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#e6e6fa" stop-opacity="0.3" />
+    <stop offset="100%" stop-color="#e6e6fa" stop-opacity="0" />
+  </radialGradient>
+  <filter id="iter2-blur">
+    <feGaussianBlur stdDeviation="15" />
+  </filter>
+    <filter id="iter3-softBlur" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="4" />
+    </filter>
+    <filter id="iter3-lightGlow" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="8" />
+    </filter>
+    <radialGradient id="iter4-padShadow" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#0b241e" stop-opacity="0.6" />
+    <stop offset="100%" stop-color="#0b241e" stop-opacity="0" />
+  </radialGradient>
+  <radialGradient id="iter4-lilyPink" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#fff5f8" />
+    <stop offset="60%" stop-color="#f8bbd0" />
+    <stop offset="100%" stop-color="#e91e63" stop-opacity="0" />
+  </radialGradient>
+  <filter id="iter4-softBlur">
+    <feGaussianBlur stdDeviation="3" />
+  </filter>
+    <radialGradient id="iter5-lilyHighlight" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#88b04b" stop-opacity="0.6" />
+        <stop offset="100%" stop-color="#2d5a27" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="iter5-flowerGlow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#fff" stop-opacity="0.9" />
+        <stop offset="70%" stop-color="#ffb6c1" stop-opacity="0.4" />
+        <stop offset="100%" stop-color="#ffb6c1" stop-opacity="0" />
+    </radialGradient>
+    <filter id="iter6-softBlur" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+  </filter>
+  <linearGradient id="iter6-padGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" style="stop-color:#455a64;stop-opacity:0.8" />
+    <stop offset="100%" style="stop-color:#1b5e20;stop-opacity:0.6" />
+  </linearGradient>
+    <radialGradient id="iter7-lilyPadGrad" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#4a7c59" stop-opacity="0.8" />
+    <stop offset="100%" stop-color="#1e3d2b" stop-opacity="0.9" />
+  </radialGradient>
+  <filter id="iter7-softBlur">
+    <feGaussianBlur stdDeviation="2" />
+  </filter>
+    <filter id="iter8-blur" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+  </filter>
+  <radialGradient id="iter8-lilyFlower" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" stop-color="#ffffff" />
+    <stop offset="70%" stop-color="#ffccdd" />
+    <stop offset="100%" stop-color="#ff99bb" stop-opacity="0" />
+  </radialGradient>
+    <filter id="iter9-softBlur" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+  </filter>
+    <filter id="iter10-softBlur" x="-20%" y="-20%" width="140%" height="140%">
+<feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+</filter>
+    <filter id="iter11-softBlur" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+  </filter>
+    <linearGradient id="iter12-padGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" style="stop-color:#3a5a40;stop-opacity:0.8" />
+    <stop offset="100%" style="stop-color:#1b3022;stop-opacity:0.9" />
+  </linearGradient>
+  <linearGradient id="iter12-shimmerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" style="stop-color:#fffceb;stop-opacity:0" />
+    <stop offset="50%" style="stop-color:#fffceb;stop-opacity:0.6" />
+    <stop offset="100%" style="stop-color:#fffceb;stop-opacity:0" />
+  </linearGradient>
+    <filter id="iter14-softGlow" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur stdDeviation="2" result="blur" />
+    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+  </filter>
+    <filter id="iter15-softBlur" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" />
+  </filter>
+  <filter id="iter15-sparkleBlur" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="0.5" />
+  </filter>
+  </defs>
+  <g id="layer-1">
+    <!-- Base water fill -->
+        <rect width="800" height="600" fill="url(#iter1-waterBase)" />
+
+        <!-- Large atmospheric color patches -->
+        <ellipse cx="200" cy="150" rx="300" ry="200" fill="url(#iter1-glow1)" />
+        <ellipse cx="600" cy="450" rx="400" ry="300" fill="url(#iter1-glow2)" />
+        <ellipse cx="700" cy="100" rx="250" ry="150" fill="url(#iter1-glow1)" opacity="0.5"/>
+
+        <!-- Initial "brushstrokes" for water surface texture -->
+        <path d="M0,100 Q400,120 800,100" stroke="#3d5a5a" stroke-width="40" fill="none" opacity="0.3" filter="blur(20px)" />
+        <path d="M0,300 Q400,320 800,300" stroke="#254a4a" stroke-width="60" fill="none" opacity="0.3" filter="blur(30px)" />
+        <path d="M0,500 Q400,520 800,500" stroke="#1a2e2e" stroke-width="80" fill="none" opacity="0.3" filter="blur(40px)" />
+  </g>
+  <g id="layer-2">
+    <!-- Reflection patches -->
+      <ellipse cx="200" cy="150" rx="150" ry="80" fill="url(#iter2-reflection1)" filter="url(#iter2-blur)" />
+      <ellipse cx="600" cy="400" rx="180" ry="100" fill="url(#iter2-reflection2)" filter="url(#iter2-blur)" />
+      <ellipse cx="450" cy="100" rx="120" ry="60" fill="url(#iter2-reflection1)" filter="url(#iter2-blur)" opacity="0.5" />
+
+      <!-- First layer of lily pads (darker base) -->
+      <g id="iter2-pads-base" fill="#1b3d2f" opacity="0.8">
+        <!-- Foreground cluster -->
+        <ellipse cx="150" cy="500" rx="70" ry="25" transform="rotate(-5, 150, 500)" />
+        <ellipse cx="230" cy="520" rx="60" ry="20" transform="rotate(3, 230, 520)" />
+        <ellipse cx="100" cy="470" rx="50" ry="15" />
+
+        <!-- Midground clusters -->
+        <ellipse cx="550" cy="350" rx="40" ry="12" />
+        <ellipse cx="610" cy="365" rx="45" ry="15" />
+        <ellipse cx="480" cy="330" rx="35" ry="10" />
+
+        <!-- Distant clusters -->
+        <ellipse cx="300" cy="120" rx="25" ry="6" />
+        <ellipse cx="340" cy="130" rx="20" ry="5" />
+        <ellipse cx="700" cy="200" rx="30" ry="8" />
+      </g>
+  </g>
+  <g id="layer-3">
+    <!-- Dappled Sunlight on Water -->
+        <ellipse cx="200" cy="150" rx="80" ry="30" fill="#e8f5e9" fill-opacity="0.3" filter="url(#iter3-lightGlow)" transform="rotate(-5, 200, 150)"/>
+        <ellipse cx="650" cy="100" rx="100" ry="40" fill="#fff9c4" fill-opacity="0.2" filter="url(#iter3-lightGlow)" transform="rotate(10, 650, 100)"/>
+        <ellipse cx="450" cy="450" rx="120" ry="50" fill="#c8e6c9" fill-opacity="0.15" filter="url(#iter3-lightGlow)"/>
+
+        <!-- Additional Lily Pads (Lighter Greens) -->
+        <ellipse cx="150" cy="500" rx="60" ry="25" fill="#2e7d32" fill-opacity="0.7"/>
+        <ellipse cx="580" cy="380" rx="45" ry="18" fill="#388e3c" fill-opacity="0.6"/>
+        <ellipse cx="720" cy="250" rx="35" ry="14" fill="#1b5e20" fill-opacity="0.8"/>
+        <ellipse cx="320" cy="220" rx="25" ry="10" fill="#4caf50" fill-opacity="0.5"/>
+
+        <!-- Impressionistic "Brushstrokes" on water -->
+        <rect x="100" y="300" width="40" height="4" rx="2" fill="#80deea" fill-opacity="0.4" filter="url(#iter3-softBlur)"/>
+        <rect x="400" y="180" width="60" height="5" rx="2" fill="#b2dfdb" fill-opacity="0.3" filter="url(#iter3-softBlur)"/>
+        <rect x="600" y="520" width="80" height="6" rx="3" fill="#cfd8dc" fill-opacity="0.3" filter="url(#iter3-softBlur)"/>
+        <rect x="50" y="120" width="50" height="4" rx="2" fill="#e1f5fe" fill-opacity="0.4" filter="url(#iter3-softBlur)"/>
+
+        <!-- First hints of flowers (Water Lilies) -->
+        <circle cx="120" cy="490" r="8" fill="#ffffff" fill-opacity="0.9" filter="url(#iter3-softBlur)"/>
+        <circle cx="125" cy="488" r="5" fill="#f8bbd0" fill-opacity="0.8" filter="url(#iter3-softBlur)"/>
+
+        <circle cx="620" cy="370" r="7" fill="#ffffff" fill-opacity="0.9" filter="url(#iter3-softBlur)"/>
+        <circle cx="622" cy="368" r="4" fill="#fce4ec" fill-opacity="0.8" filter="url(#iter3-softBlur)"/>
+
+        <circle cx="410" cy="205" r="5" fill="#fff9c4" fill-opacity="0.8" filter="url(#iter3-softBlur)"/>
+  </g>
+  <g id="layer-4">
+    <!-- Shadows/reflections under pad clusters -->
+      <ellipse cx="200" cy="520" rx="120" ry="30" fill="url(#iter4-padShadow)" />
+      <ellipse cx="600" cy="380" rx="100" ry="25" fill="url(#iter4-padShadow)" />
+      <ellipse cx="400" cy="450" rx="150" ry="40" fill="url(#iter4-padShadow)" />
+
+      <!-- Dense lily pad clusters - Midground -->
+      <g opacity="0.8">
+        <ellipse cx="450" cy="360" rx="45" ry="12" fill="#2d5a27" />
+        <ellipse cx="480" cy="370" rx="50" ry="15" fill="#38761d" />
+        <ellipse cx="420" cy="375" rx="40" ry="10" fill="#1e4620" />
+
+        <ellipse cx="150" cy="410" rx="60" ry="18" fill="#2d5a27" />
+        <ellipse cx="100" cy="425" rx="55" ry="16" fill="#38761d" />
+        <ellipse cx="180" cy="430" rx="50" ry="14" fill="#4f772d" />
+      </g>
+
+      <!-- Dappled light highlights -->
+      <g filter="url(#iter4-softBlur)" opacity="0.6">
+        <ellipse cx="300" cy="480" rx="80" ry="4" fill="#fff9c4" />
+        <ellipse cx="550" cy="320" rx="100" ry="5" fill="#e1f5fe" />
+        <ellipse cx="700" cy="450" rx="60" ry="3" fill="#f3e5f5" />
+        <ellipse cx="100" cy="350" rx="40" ry="2" fill="#fff9c4" />
+      </g>
+
+      <!-- Foreground lily pads (larger) -->
+      <g>
+        <ellipse cx="650" cy="530" rx="85" ry="25" fill="#1b4332" />
+        <ellipse cx="710" cy="510" rx="75" ry="22" fill="#2d6a4f" />
+        <ellipse cx="600" cy="550" rx="90" ry="28" fill="#40916c" />
+      </g>
+
+      <!-- Water Lily Flowers - Pink/White clusters -->
+      <g>
+        <!-- Flower 1 (left) -->
+        <ellipse cx="140" cy="415" rx="8" ry="12" fill="url(#iter4-lilyPink)" transform="rotate(-15, 140, 415)" />
+        <ellipse cx="140" cy="415" rx="8" ry="12" fill="url(#iter4-lilyPink)" transform="rotate(45, 140, 415)" />
+        <ellipse cx="140" cy="415" rx="6" ry="10" fill="#ffffff" />
+
+        <!-- Flower 2 (center) -->
+        <ellipse cx="460" cy="365" rx="7" ry="10" fill="url(#iter4-lilyPink)" transform="rotate(10, 460, 365)" />
+        <ellipse cx="460" cy="365" rx="7" ry="10" fill="url(#iter4-lilyPink)" transform="rotate(-40, 460, 365)" />
+        <ellipse cx="460" cy="365" rx="5" ry="9" fill="#ffffff" opacity="0.9" />
+
+        <!-- Flower 3 (right foreground) -->
+        <ellipse cx="660" cy="515" rx="12" ry="18" fill="url(#iter4-lilyPink)" transform="rotate(-20, 660, 515)" />
+        <ellipse cx="660" cy="515" rx="12" ry="18" fill="url(#iter4-lilyPink)" transform="rotate(30, 660, 515)" />
+        <ellipse cx="660" cy="515" rx="8" ry="15" fill="#ffffff" />
+      </g>
+  </g>
+  <g id="layer-5">
+    <!-- Background lily pads (smaller for perspective) -->
+        <g opacity="0.6">
+            <ellipse cx="200" cy="150" rx="30" ry="8" fill="#1b3d2f" />
+            <ellipse cx="240" cy="145" rx="25" ry="6" fill="#2d5a27" />
+            <ellipse cx="500" cy="180" rx="40" ry="10" fill="#244d3a" />
+            <ellipse cx="560" cy="175" rx="35" ry="9" fill="#1b3d2f" />
+            <ellipse cx="700" cy="220" rx="45" ry="12" fill="#2d5a27" />
+        </g>
+
+        <!-- Midground lushness -->
+        <g>
+            <ellipse cx="350" cy="380" rx="60" ry="15" fill="#3a6332" opacity="0.8" />
+            <ellipse cx="410" cy="390" rx="70" ry="18" fill="#2d5a27" opacity="0.8" />
+            <ellipse cx="380" cy="410" rx="55" ry="14" fill="#1b3d2f" opacity="0.7" />
+            <!-- Highlights on pads -->
+            <ellipse cx="360" cy="375" rx="30" ry="8" fill="url(#iter5-lilyHighlight)" />
+            <ellipse cx="150" cy="510" rx="40" ry="10" fill="url(#iter5-lilyHighlight)" />
+        </g>
+
+        <!-- Impressionist "Light" strokes (horizontal reflections) -->
+        <rect x="100" y="250" width="120" height="4" rx="2" fill="#add8e6" opacity="0.3" />
+        <rect x="450" y="320" width="180" height="6" rx="3" fill="#fafad2" opacity="0.2" />
+        <rect x="600" y="450" width="100" height="4" rx="2" fill="#e6e6fa" opacity="0.4" />
+        <rect x="50" y="420" width="150" height="5" rx="2.5" fill="#add8e6" opacity="0.2" />
+
+        <!-- Flower clusters -->
+        <g transform="translate(370, 365)">
+            <ellipse cx="0" cy="0" rx="8" ry="12" fill="url(#iter5-flowerGlow)" transform="rotate(-20)" />
+            <ellipse cx="5" cy="-2" rx="6" ry="10" fill="url(#iter5-flowerGlow)" transform="rotate(10)" />
+            <ellipse cx="-4" cy="-3" rx="7" ry="11" fill="white" opacity="0.6" />
+        </g>
+
+        <g transform="translate(680, 520)">
+            <ellipse cx="0" cy="0" rx="10" ry="15" fill="url(#iter5-flowerGlow)" transform="rotate(15)" />
+            <ellipse cx="-6" cy="-2" rx="8" ry="13" fill="url(#iter5-flowerGlow)" transform="rotate(-15)" />
+            <ellipse cx="4" cy="-4" rx="9" ry="14" fill="white" opacity="0.7" />
+        </g>
+
+        <g transform="translate(180, 480)">
+            <ellipse cx="0" cy="0" rx="7" ry="10" fill="url(#iter5-flowerGlow)" />
+            <ellipse cx="4" cy="2" rx="5" ry="8" fill="white" opacity="0.8" />
+        </g>
+  </g>
+  <g id="layer-6">
+    <!-- Distant, small lily pads for depth -->
+      <ellipse cx="150" cy="180" rx="15" ry="5" fill="#2d4d42" opacity="0.4" />
+      <ellipse cx="280" cy="160" rx="12" ry="4" fill="#2d4d42" opacity="0.4" />
+      <ellipse cx="450" cy="190" rx="18" ry="6" fill="#2d4d42" opacity="0.5" />
+      <ellipse cx="600" cy="175" rx="14" ry="4" fill="#2d4d42" opacity="0.4" />
+
+      <!-- Mid-ground shimmer and light -->
+      <rect x="100" y="250" width="120" height="4" rx="2" fill="#bbdefb" opacity="0.2" filter="url(#iter6-softBlur)" />
+      <rect x="550" y="280" width="150" height="3" rx="1.5" fill="#fff9c4" opacity="0.3" filter="url(#iter6-softBlur)" />
+      <rect x="300" y="320" width="200" height="5" rx="2.5" fill="#e1f5fe" opacity="0.2" filter="url(#iter6-softBlur)" />
+      <rect x="50" y="400" width="180" height="4" rx="2" fill="#f3e5f5" opacity="0.3" filter="url(#iter6-softBlur)" />
+
+      <!-- More substantial foreground pad clusters -->
+      <g transform="translate(150, 480)">
+        <ellipse cx="0" cy="0" rx="45" ry="15" fill="#2e7d32" opacity="0.7" />
+        <ellipse cx="20" cy="10" rx="40" ry="12" fill="#1b5e20" opacity="0.7" />
+        <!-- Flower detail -->
+        <ellipse cx="10" cy="-5" rx="6" ry="10" fill="#fff5f5" />
+        <ellipse cx="6" cy="-2" rx="4" ry="8" fill="#f8bbd0" opacity="0.8" />
+      </g>
+
+      <g transform="translate(500, 420)">
+        <ellipse cx="0" cy="0" rx="50" ry="18" fill="#388e3c" opacity="0.6" />
+        <ellipse cx="-25" cy="8" rx="35" ry="12" fill="#2e7d32" opacity="0.8" />
+        <!-- Flower detail -->
+        <ellipse cx="-15" cy="-8" rx="5" ry="9" fill="#ffffff" />
+        <ellipse cx="-12" cy="-4" rx="4" ry="7" fill="#fff9c4" opacity="0.7" />
+      </g>
+
+      <!-- Sky reflection patches -->
+      <ellipse cx="650" cy="150" rx="100" ry="40" fill="#80deea" opacity="0.1" filter="url(#iter6-softBlur)" />
+      <ellipse cx="200" cy="100" rx="120" ry="50" fill="#b2ebf2" opacity="0.1" filter="url(#iter6-softBlur)" />
+  </g>
+  <g id="layer-7">
+    <!-- Background distant pads -->
+      <ellipse cx="200" cy="180" rx="15" ry="5" fill="#2d5a44" opacity="0.6" />
+      <ellipse cx="250" cy="160" rx="12" ry="4" fill="#3d6a54" opacity="0.5" />
+      <ellipse cx="550" cy="190" rx="18" ry="6" fill="#2d5a44" opacity="0.6" />
+      <ellipse cx="600" cy="170" rx="14" ry="4" fill="#3a634a" opacity="0.5" />
+      <ellipse cx="700" cy="220" rx="20" ry="7" fill="#2a4d3a" opacity="0.6" />
+
+      <!-- Mid-ground clusters and density -->
+      <ellipse cx="450" cy="350" rx="40" ry="12" fill="url(#iter7-lilyPadGrad)" />
+      <ellipse cx="480" cy="360" rx="35" ry="10" fill="#3a634a" opacity="0.8" />
+      <ellipse cx="150" cy="450" rx="55" ry="15" fill="#2d5a44" opacity="0.7" />
+      <ellipse cx="120" cy="460" rx="45" ry="12" fill="#1e3d2b" opacity="0.6" />
+
+      <!-- Horizontal shimmer/light strokes -->
+      <rect x="300" y="280" width="120" height="3" rx="1.5" fill="#e6e6fa" opacity="0.4" filter="url(#iter7-softBlur)" />
+      <rect x="500" y="420" width="150" height="4" rx="2" fill="#fffacd" opacity="0.3" filter="url(#iter7-softBlur)" />
+      <rect x="100" y="380" width="80" height="2" rx="1" fill="#b0c4de" opacity="0.4" filter="url(#iter7-softBlur)" />
+      <rect x="650" y="320" width="100" height="3" rx="1.5" fill="#fdf5e6" opacity="0.3" filter="url(#iter7-softBlur)" />
+      <rect x="50" y="250" width="60" height="2" rx="1" fill="#e0ffff" opacity="0.4" filter="url(#iter7-softBlur)" />
+
+      <!-- Multi-petal Lily Flowers -->
+      <g transform="translate(450, 345)">
+        <ellipse cx="0" cy="0" rx="6" ry="10" fill="white" opacity="0.9" transform="rotate(-20)" />
+        <ellipse cx="4" cy="0" rx="5" ry="9" fill="#fff0f5" opacity="0.9" transform="rotate(20)" />
+        <ellipse cx="2" cy="-4" rx="4" ry="8" fill="#ffebef" opacity="1" />
+      </g>
+
+      <g transform="translate(170, 440)">
+        <ellipse cx="0" cy="0" rx="5" ry="9" fill="white" opacity="0.9" transform="rotate(-15)" />
+        <ellipse cx="3" cy="0" rx="4" ry="8" fill="#fffafa" opacity="0.9" transform="rotate(15)" />
+        <ellipse cx="1" cy="-3" rx="3" ry="7" fill="#fff5ee" opacity="1" />
+      </g>
+
+      <g transform="translate(680, 520)">
+        <ellipse cx="0" cy="0" rx="7" ry="11" fill="white" opacity="0.8" transform="rotate(-25)" />
+        <ellipse cx="5" cy="0" rx="6" ry="10" fill="#f8f8ff" opacity="0.8" transform="rotate(25)" />
+        <ellipse cx="2" cy="-5" rx="5" ry="9" fill="white" opacity="0.9" />
+      </g>
+
+      <!-- Shadows/Depth strokes -->
+      <ellipse cx="480" cy="375" rx="50" ry="5" fill="#0b1a13" opacity="0.3" filter="url(#iter7-softBlur)" />
+      <ellipse cx="150" cy="480" rx="70" ry="8" fill="#0b1a13" opacity="0.3" filter="url(#iter7-softBlur)" />
+  </g>
+  <g id="layer-8">
+    <!-- Background density - Small distant pads -->
+      <g opacity="0.6">
+        <ellipse cx="150" cy="180" rx="20" ry="5" fill="#2d4d3b" />
+        <ellipse cx="180" cy="175" rx="15" ry="4" fill="#3a5a40" />
+        <ellipse cx="550" cy="190" rx="25" ry="6" fill="#2d4d3b" />
+        <ellipse cx="620" cy="210" rx="18" ry="5" fill="#4a6a50" />
+        <ellipse cx="400" cy="160" rx="12" ry="3" fill="#3a5a40" />
+        <ellipse cx="700" cy="170" rx="22" ry="6" fill="#2d4d3b" />
+      </g>
+
+      <!-- Midground shimmer strokes -->
+      <ellipse cx="300" cy="280" rx="120" ry="2" fill="#e0e0ff" opacity="0.3" filter="url(#iter8-blur)" />
+      <ellipse cx="500" cy="320" rx="150" ry="3" fill="#fff9e6" opacity="0.2" filter="url(#iter8-blur)" />
+      <ellipse cx="450" cy="450" rx="200" ry="2" fill="#f0e6ff" opacity="0.2" filter="url(#iter8-blur)" />
+      <ellipse cx="200" cy="350" rx="100" ry="2" fill="#e6f7ff" opacity="0.3" filter="url(#iter8-blur)" />
+
+      <!-- Midground lily clusters -->
+      <g>
+        <ellipse cx="580" cy="380" rx="40" ry="10" fill="#3d6349" opacity="0.8" />
+        <ellipse cx="610" cy="390" rx="35" ry="8" fill="#4d7359" opacity="0.8" />
+        <ellipse cx="550" cy="400" rx="45" ry="12" fill="#2d4d3b" opacity="0.8" />
+        <!-- Flower on this cluster -->
+        <ellipse cx="590" cy="380" rx="6" ry="8" fill="url(#iter8-lilyFlower)" />
+        <ellipse cx="585" cy="382" rx="4" ry="6" fill="white" opacity="0.8" />
+      </g>
+
+      <!-- Additional reflections and surface details -->
+      <ellipse cx="100" cy="420" rx="60" ry="2" fill="#fff9e6" opacity="0.4" />
+      <ellipse cx="700" cy="500" rx="80" ry="3" fill="#e0e0ff" opacity="0.3" />
+
+      <!-- Shadow strokes -->
+      <ellipse cx="580" cy="410" rx="60" ry="4" fill="#002222" opacity="0.3" filter="url(#iter8-blur)" />
+      <ellipse cx="200" cy="530" rx="100" ry="6" fill="#002222" opacity="0.3" filter="url(#iter8-blur)" />
+
+      <!-- More flowers scattered -->
+      <ellipse cx="420" cy="360" rx="5" ry="7" fill="url(#iter8-lilyFlower)" />
+      <ellipse cx="390" cy="220" rx="4" ry="6" fill="white" opacity="0.6" />
+      <ellipse cx="120" cy="480" rx="5" ry="7" fill="url(#iter8-lilyFlower)" />
+      <ellipse cx="650" cy="250" rx="4" ry="5" fill="#fff0f5" opacity="0.7" />
+  </g>
+  <g id="layer-9">
+    <!-- Distant Background Pads -->
+      <g opacity="0.4" filter="url(#iter9-softBlur)">
+        <ellipse cx="600" cy="150" rx="30" ry="8" fill="#2d4a3e" />
+        <ellipse cx="550" cy="180" rx="25" ry="6" fill="#1e3a2f" />
+        <ellipse cx="700" cy="160" rx="40" ry="10" fill="#2d4a3e" />
+        <ellipse cx="650" cy="220" rx="35" ry="9" fill="#3a5a40" />
+        <ellipse cx="480" cy="240" rx="45" ry="12" fill="#2d4a3e" />
+        <ellipse cx="100" cy="200" rx="20" ry="5" fill="#1e3a2f" />
+        <ellipse cx="200" cy="140" rx="25" ry="7" fill="#2d4a3e" />
+      </g>
+
+      <!-- Mid-ground Shimmers (Horizontal Light) -->
+      <rect x="100" y="350" width="200" height="3" fill="#fff9e6" opacity="0.2" rx="2" />
+      <rect x="450" y="320" width="150" height="2" fill="#e6f2ff" opacity="0.2" rx="1" />
+      <rect x="300" y="480" width="300" height="4" fill="#f2e6ff" opacity="0.15" rx="2" />
+      <rect x="550" y="420" width="120" height="2" fill="#fff9e6" opacity="0.2" rx="1" />
+      <rect x="50" y="440" width="180" height="3" fill="#e6f2ff" opacity="0.15" rx="2" />
+
+      <!-- Additional Lily Pad Clusters (Right and Mid-Ground) -->
+      <g opacity="0.7">
+        <ellipse cx="680" cy="380" rx="60" ry="15" fill="#2d5a40" />
+        <ellipse cx="720" cy="390" rx="50" ry="12" fill="#1b4332" />
+        <ellipse cx="640" cy="400" rx="55" ry="14" fill="#40916c" />
+
+        <ellipse cx="400" cy="520" rx="70" ry="18" fill="#1b4332" />
+        <ellipse cx="450" cy="535" rx="60" ry="15" fill="#2d6a4f" />
+      </g>
+
+      <!-- Flower Clusters (White/Yellow/Pink) -->
+      <g>
+        <!-- On the new right-side pads -->
+        <ellipse cx="680" cy="375" rx="5" ry="8" fill="#ffffff" opacity="0.9" />
+        <ellipse cx="685" cy="378" rx="4" ry="7" fill="#fff9e6" opacity="0.8" />
+        <ellipse cx="675" cy="378" rx="4" ry="7" fill="#ffe6f2" opacity="0.8" />
+
+        <!-- On the mid-ground pads -->
+        <ellipse cx="420" cy="515" rx="6" ry="10" fill="#ffffff" opacity="0.9" />
+        <ellipse cx="425" cy="518" rx="5" ry="8" fill="#fff9e6" opacity="0.8" />
+
+        <!-- Cluster in background -->
+        <ellipse cx="520" cy="245" rx="3" ry="5" fill="#ffffff" opacity="0.7" />
+        <ellipse cx="525" cy="247" rx="2" ry="4" fill="#ffe6f2" opacity="0.6" />
+      </g>
+  </g>
+  <g id="layer-10">
+    <!-- Distant, small lily pads for depth -->
+    <ellipse cx="100" cy="150" rx="15" ry="4" fill="#2d4d3a" opacity="0.4" />
+    <ellipse cx="150" cy="130" rx="12" ry="3" fill="#3a5a40" opacity="0.4" />
+    <ellipse cx="300" cy="140" rx="18" ry="5" fill="#2d4d3a" opacity="0.4" />
+    <ellipse cx="450" cy="120" rx="10" ry="3" fill="#3a5a40" opacity="0.4" />
+    <ellipse cx="550" cy="160" rx="20" ry="6" fill="#2d4d3a" opacity="0.4" />
+    <ellipse cx="650" cy="135" rx="15" ry="4" fill="#3a5a40" opacity="0.4" />
+    <ellipse cx="720" cy="155" rx="12" ry="3" fill="#2d4d3a" opacity="0.4" />
+
+    <!-- Mid-ground lily pad clusters on the right side -->
+    <ellipse cx="600" cy="350" rx="40" ry="12" fill="#2d5a27" opacity="0.6" />
+    <ellipse cx="630" cy="360" rx="35" ry="10" fill="#3a6a35" opacity="0.6" />
+    <ellipse cx="660" cy="340" rx="45" ry="14" fill="#244d1e" opacity="0.6" />
+    <ellipse cx="580" cy="370" rx="30" ry="8" fill="#4a7a45" opacity="0.6" />
+
+    <!-- Horizontal "shimmer" brushstrokes -->
+    <rect x="50" y="220" width="120" height="3" rx="1.5" fill="#e0fbfc" opacity="0.3" filter="url(#iter10-softBlur)" />
+    <rect x="250" y="280" width="180" height="4" rx="2" fill="#fff3b0" opacity="0.4" filter="url(#iter10-softBlur)" />
+    <rect x="450" y="320" width="140" height="3" rx="1.5" fill="#e2eafc" opacity="0.3" filter="url(#iter10-softBlur)" />
+    <rect x="100" y="420" width="200" height="5" rx="2.5" fill="#fdf0d5" opacity="0.4" filter="url(#iter10-softBlur)" />
+    <rect x="500" y="480" width="160" height="4" rx="2" fill="#d8e2dc" opacity="0.3" filter="url(#iter10-softBlur)" />
+    <rect x="300" y="520" width="220" height="6" rx="3" fill="#faf9f6" opacity="0.5" filter="url(#iter10-softBlur)" />
+
+    <!-- More water lily flowers (detailed clusters) -->
+    <g transform="translate(620,340)">
+      <ellipse cx="0" cy="0" rx="6" ry="10" fill="#ffffff" opacity="0.9" />
+      <ellipse cx="4" cy="2" rx="4" ry="7" fill="#ffefef" opacity="0.8" />
+      <ellipse cx="-4" cy="2" rx="4" ry="7" fill="#ffefef" opacity="0.8" />
+    </g>
+    <g transform="translate(550,450)">
+      <ellipse cx="0" cy="0" rx="5" ry="8" fill="#fffcf2" opacity="0.9" />
+      <ellipse cx="3" cy="1" rx="3" ry="6" fill="#fefae0" opacity="0.8" />
+    </g>
+    <g transform="translate(200,550)">
+      <ellipse cx="0" cy="0" rx="7" ry="12" fill="#ffffff" opacity="0.9" />
+      <ellipse cx="5" cy="3" rx="4" ry="8" fill="#ffe5ec" opacity="0.8" />
+      <ellipse cx="-5" cy="3" rx="4" ry="8" fill="#ffe5ec" opacity="0.8" />
+    </g>
+
+    <!-- Dark shadow strokes under clusters -->
+    <ellipse cx="610" cy="375" rx="60" ry="10" fill="#0b1d15" opacity="0.3" filter="url(#iter10-softBlur)" />
+    <ellipse cx="250" cy="565" rx="80" ry="12" fill="#0b1d15" opacity="0.3" filter="url(#iter10-softBlur)" />
+    <ellipse cx="420" cy="465" rx="70" ry="10" fill="#0b1d15" opacity="0.3" filter="url(#iter10-softBlur)" />
+  </g>
+  <g id="layer-11">
+    <!-- Atmospheric reflections/shimmer in background -->
+      <ellipse cx="200" cy="150" rx="150" ry="40" fill="#6a7b8e" opacity="0.15" filter="url(#iter11-softBlur)" />
+      <ellipse cx="600" cy="180" rx="120" ry="30" fill="#7a6a8e" opacity="0.12" filter="url(#iter11-softBlur)" />
+      <ellipse cx="400" cy="100" rx="200" ry="50" fill="#e0e0f0" opacity="0.08" filter="url(#iter11-softBlur)" />
+
+      <!-- Dense distant lily pads (background) -->
+      <g opacity="0.5">
+        <ellipse cx="150" cy="220" rx="15" ry="5" fill="#2d4a3e" />
+        <ellipse cx="180" cy="215" rx="12" ry="4" fill="#3a5a4a" />
+        <ellipse cx="220" cy="225" rx="18" ry="6" fill="#1d3a2e" />
+        <ellipse cx="450" cy="210" rx="14" ry="4" fill="#2d4a3e" />
+        <ellipse cx="480" cy="218" rx="16" ry="5" fill="#3a5a4a" />
+        <ellipse cx="520" cy="205" rx="12" ry="4" fill="#1d3a2e" />
+        <ellipse cx="650" cy="230" rx="20" ry="7" fill="#2d4a3e" />
+        <ellipse cx="680" cy="222" rx="15" ry="5" fill="#3a5a4a" />
+      </g>
+
+      <!-- Mid-ground texture and flowers -->
+      <g>
+        <!-- New flower clusters on the right -->
+        <ellipse cx="620" cy="380" rx="4" ry="6" fill="#fffaf0" opacity="0.9" />
+        <ellipse cx="622" cy="382" rx="3" ry="5" fill="#ffd700" opacity="0.6" />
+
+        <ellipse cx="710" cy="420" rx="5" ry="7" fill="#fff0f5" opacity="0.9" />
+        <ellipse cx="708" cy="422" rx="4" ry="6" fill="#ffb6c1" opacity="0.7" />
+
+        <!-- Additional lily pads to fill right-mid space -->
+        <ellipse cx="550" cy="360" rx="45" ry="15" fill="#2e5a40" opacity="0.4" />
+        <ellipse cx="580" cy="375" rx="40" ry="12" fill="#3a6a5a" opacity="0.5" />
+      </g>
+
+      <!-- High-contrast light glints -->
+      <line x1="100" y1="450" x2="250" y2="450" stroke="#fffce0" stroke-width="1.5" opacity="0.4" />
+      <line x1="450" y1="520" x2="600" y2="520" stroke="#f0f8ff" stroke-width="2" opacity="0.3" />
+      <line x1="300" y1="330" x2="500" y2="330" stroke="#fffce0" stroke-width="1" opacity="0.5" />
+      <line x1="50" y1="280" x2="180" y2="280" stroke="#e6e6fa" stroke-width="1.2" opacity="0.4" />
+  </g>
+  <g id="layer-12">
+    <!-- Background distant lily pads -->
+      <ellipse cx="200" cy="180" rx="20" ry="5" fill="#2d4a3e" opacity="0.4" />
+      <ellipse cx="550" cy="160" rx="25" ry="6" fill="#2d4a3e" opacity="0.4" />
+      <ellipse cx="650" cy="190" rx="18" ry="4" fill="#2d4a3e" opacity="0.4" />
+      <ellipse cx="100" cy="220" rx="22" ry="5" fill="#2d4a3e" opacity="0.4" />
+
+      <!-- Mid-ground more dense lily pads -->
+      <ellipse cx="450" cy="380" rx="45" ry="12" fill="url(#iter12-padGrad1)" opacity="0.8" />
+      <ellipse cx="480" cy="390" rx="35" ry="10" fill="#4a7c59" opacity="0.7" />
+      <ellipse cx="520" cy="370" rx="40" ry="11" fill="#31572c" opacity="0.8" />
+      <ellipse cx="250" cy="420" rx="55" ry="15" fill="#2d4a3e" opacity="0.7" />
+      <ellipse cx="220" cy="435" rx="45" ry="12" fill="#4a7c59" opacity="0.6" />
+
+      <!-- Foreground lilies and flowers -->
+      <ellipse cx="600" cy="510" rx="70" ry="20" fill="url(#iter12-padGrad1)" opacity="0.9" />
+      <ellipse cx="550" cy="530" rx="60" ry="18" fill="#31572c" opacity="0.8" />
+
+      <!-- Flowers: clusters of small ellipses -->
+      <g opacity="0.9">
+        <ellipse cx="460" cy="370" rx="5" ry="7" fill="#fff" />
+        <ellipse cx="463" cy="373" rx="4" ry="6" fill="#ffebee" />
+        <ellipse cx="457" cy="372" rx="4" ry="6" fill="#fffde7" />
+      </g>
+      <g opacity="0.9">
+        <ellipse cx="520" cy="495" rx="6" ry="8" fill="#fff" />
+        <ellipse cx="524" cy="498" rx="5" ry="7" fill="#fce4ec" />
+        <ellipse cx="516" cy="497" rx="5" ry="7" fill="#fff" />
+      </g>
+      <g opacity="0.8">
+        <ellipse cx="280" cy="410" rx="4" ry="6" fill="#fff" />
+        <ellipse cx="283" cy="412" rx="3" ry="5" fill="#fff9c4" />
+      </g>
+
+      <!-- More shimmering water strokes -->
+      <rect x="50" y="320" width="250" height="2" fill="url(#iter12-shimmerGrad)" opacity="0.5" />
+      <rect x="400" y="440" width="300" height="3" fill="url(#iter12-shimmerGrad)" opacity="0.4" />
+      <rect x="200" y="550" width="400" height="4" fill="url(#iter12-shimmerGrad)" opacity="0.3" />
+      <rect x="350" y="270" width="150" height="2" fill="#e1f5fe" opacity="0.4" />
+      <rect x="150" y="480" width="200" height="2" fill="#f3e5f5" opacity="0.4" />
+
+      <!-- Darker shadows around lily pads -->
+      <ellipse cx="480" cy="405" rx="60" ry="8" fill="#001510" opacity="0.3" />
+      <ellipse cx="230" cy="450" rx="70" ry="10" fill="#001510" opacity="0.3" />
+  </g>
+  <g id="layer-13">
+    <!-- More lily pads in the mid-ground and foreground -->
+      <ellipse cx="250" cy="450" rx="45" ry="12" fill="#2d5a27" opacity="0.6" />
+      <ellipse cx="550" cy="480" rx="55" ry="15" fill="#3a6b35" opacity="0.6" />
+      <ellipse cx="680" cy="420" rx="40" ry="10" fill="#2d5a27" opacity="0.5" />
+      <ellipse cx="150" cy="520" rx="60" ry="18" fill="#3a6b35" opacity="0.6" />
+
+      <!-- More small flowers and flower details -->
+      <g opacity="0.9">
+        <ellipse cx="460" cy="445" rx="5" ry="8" fill="#fffaf0" />
+        <ellipse cx="463" cy="448" rx="3" ry="5" fill="#ffefd5" />
+        <ellipse cx="457" cy="448" rx="3" ry="5" fill="#fff5ee" />
+      </g>
+      <g opacity="0.9">
+        <ellipse cx="610" cy="475" rx="4" ry="7" fill="#fffaf0" />
+        <ellipse cx="613" cy="478" rx="3" ry="4" fill="#ffebcd" />
+        <ellipse cx="607" cy="478" rx="3" ry="4" fill="#fff0f5" />
+      </g>
+      <g opacity="0.9">
+        <ellipse cx="210" cy="505" rx="5" ry="8" fill="#ffffff" />
+        <ellipse cx="213" cy="508" rx="3" ry="5" fill="#fdf5e6" />
+        <ellipse cx="207" cy="508" rx="3" ry="5" fill="#fff5ee" />
+      </g>
+
+      <!-- More horizontal shimmer lines -->
+      <rect x="100" y="460" width="120" height="2" fill="#fffacd" opacity="0.4" rx="1" />
+      <rect x="400" y="490" width="150" height="3" fill="#e6e6fa" opacity="0.3" rx="1" />
+      <rect x="580" y="440" width="100" height="2" fill="#f0f8ff" opacity="0.4" rx="1" />
+      <rect x="250" y="530" width="180" height="2" fill="#fff8dc" opacity="0.3" rx="1" />
+
+      <!-- Darker shadows within clusters -->
+      <ellipse cx="380" cy="500" rx="50" ry="10" fill="#0b1a14" opacity="0.4" />
+      <ellipse cx="650" cy="520" rx="60" ry="12" fill="#0b1a14" opacity="0.4" />
+  </g>
+  <g id="layer-14">
+    <!-- Distant Background Pads -->
+      <ellipse cx="100" cy="150" rx="15" ry="5" fill="#2f4f4f" opacity="0.4" />
+      <ellipse cx="300" cy="120" rx="12" ry="4" fill="#3b5323" opacity="0.3" />
+      <ellipse cx="500" cy="140" rx="18" ry="6" fill="#4a5d23" opacity="0.4" />
+      <ellipse cx="700" cy="160" rx="14" ry="5" fill="#2f4f4f" opacity="0.3" />
+      <ellipse cx="250" cy="180" rx="20" ry="7" fill="#556b2f" opacity="0.4" />
+      <ellipse cx="550" cy="170" rx="15" ry="5" fill="#3b5323" opacity="0.4" />
+
+      <!-- Mid-ground Shimmer and Texture -->
+      <rect x="50" y="250" width="120" height="2" fill="#fafad2" opacity="0.4" rx="1" />
+      <rect x="400" y="280" width="150" height="1.5" fill="#e6e6fa" opacity="0.5" rx="1" />
+      <rect x="600" y="230" width="80" height="2" fill="#f0f8ff" opacity="0.4" rx="1" />
+      <rect x="200" y="320" width="200" height="3" fill="#fffacd" opacity="0.3" rx="1.5" />
+      <rect x="450" y="350" width="180" height="2" fill="#fffafa" opacity="0.4" rx="1" />
+
+      <!-- Additional Lily Pad Clusters (Right and Center) -->
+      <ellipse cx="650" cy="400" rx="45" ry="12" fill="#4a5d23" opacity="0.6" />
+      <ellipse cx="680" cy="410" rx="40" ry="10" fill="#3b5323" opacity="0.7" />
+      <ellipse cx="620" cy="420" rx="50" ry="15" fill="#2f4f4f" opacity="0.5" />
+      <ellipse cx="400" cy="480" rx="60" ry="18" fill="#556b2f" opacity="0.6" />
+      <ellipse cx="430" cy="490" rx="55" ry="16" fill="#3b5323" opacity="0.7" />
+
+      <!-- Refined Flower Clusters -->
+      <g filter="url(#iter14-softGlow)">
+        <ellipse cx="660" cy="395" rx="4" ry="6" fill="#ffffff" opacity="0.9" />
+        <ellipse cx="663" cy="393" rx="3" ry="5" fill="#fffacd" opacity="0.8" />
+        <ellipse cx="657" cy="397" rx="3" ry="5" fill="#ffe4e1" opacity="0.8" />
+      </g>
+      <g filter="url(#iter14-softGlow)">
+        <ellipse cx="420" cy="475" rx="5" ry="7" fill="#ffffff" opacity="0.9" />
+        <ellipse cx="424" cy="472" rx="3" ry="5" fill="#fff0f5" opacity="0.8" />
+        <ellipse cx="416" cy="478" rx="4" ry="6" fill="#f0fff0" opacity="0.7" />
+      </g>
+      <g filter="url(#iter14-softGlow)">
+        <ellipse cx="780" cy="500" rx="4" ry="6" fill="#fffafa" opacity="0.9" />
+        <ellipse cx="783" cy="498" rx="3" ry="5" fill="#fafad2" opacity="0.8" />
+      </g>
+
+      <!-- Foreground Highlights and Shadows -->
+      <rect x="100" y="520" width="300" height="1" fill="#ffffff" opacity="0.2" rx="0.5" />
+      <rect x="400" y="550" width="250" height="1.5" fill="#fafad2" opacity="0.3" rx="0.5" />
+      <ellipse cx="200" cy="560" rx="80" ry="20" fill="#1a2a2a" opacity="0.3" />
+      <ellipse cx="600" cy="540" rx="100" ry="25" fill="#1a2a2a" opacity="0.2" />
+
+      <!-- Final Dappled Light Strokes -->
+      <line x1="50" y1="380" x2="150" y2="380" stroke="#e6e6fa" stroke-width="1.5" opacity="0.4" stroke-linecap="round" />
+      <line x1="650" y1="300" x2="750" y2="300" stroke="#fffacd" stroke-width="1" opacity="0.5" stroke-linecap="round" />
+      <line x1="300" y1="450" x2="500" y2="450" stroke="#f0f8ff" stroke-width="2" opacity="0.3" stroke-linecap="round" />
+  </g>
+  <g id="layer-15">
+    <!-- Background distant pads -->
+      <ellipse cx="600" cy="180" rx="15" ry="5" fill="#3a4d3e" opacity="0.4" filter="url(#iter15-softBlur)" />
+      <ellipse cx="550" cy="160" rx="12" ry="4" fill="#2d3d32" opacity="0.4" filter="url(#iter15-softBlur)" />
+      <ellipse cx="680" cy="190" rx="18" ry="6" fill="#4a5d4e" opacity="0.5" filter="url(#iter15-softBlur)" />
+      <ellipse cx="720" cy="170" rx="10" ry="3" fill="#3a4d3e" opacity="0.3" filter="url(#iter15-softBlur)" />
+
+      <!-- Shimmer and sky reflections -->
+      <line x1="0" y1="210" x2="800" y2="210" stroke="#e6e6fa" stroke-width="1.5" opacity="0.2" />
+      <line x1="150" y1="230" x2="650" y2="230" stroke="#fffacd" stroke-width="2" opacity="0.15" />
+      <line x1="500" y1="270" x2="780" y2="270" stroke="#87ceeb" stroke-width="1.5" opacity="0.25" />
+      <line x1="50" y1="410" x2="350" y2="410" stroke="#fff" stroke-width="1" opacity="0.3" filter="url(#iter15-sparkleBlur)" />
+
+      <!-- Right-side lily clusters -->
+      <ellipse cx="680" cy="450" rx="45" ry="12" fill="#2d4a3e" opacity="0.6" />
+      <ellipse cx="730" cy="440" rx="40" ry="10" fill="#3d5a4e" opacity="0.5" />
+      <ellipse cx="700" cy="460" rx="50" ry="15" fill="#1d3a2e" opacity="0.4" />
+
+      <!-- New flower highlights -->
+      <g filter="url(#iter15-sparkleBlur)">
+        <ellipse cx="690" cy="445" rx="4" ry="6" fill="#fff" opacity="0.9" />
+        <ellipse cx="694" cy="447" rx="3" ry="5" fill="#ffffed" opacity="0.8" />
+        <ellipse cx="750" cy="435" rx="4" ry="6" fill="#ffd1dc" opacity="0.8" />
+        <ellipse cx="580" cy="380" rx="3" ry="5" fill="#fff" opacity="0.9" />
+        <ellipse cx="220" cy="520" rx="4" ry="7" fill="#fff" opacity="0.9" />
+      </g>
+
+      <!-- Deep water accents -->
+      <ellipse cx="400" cy="550" rx="300" ry="40" fill="#1a0a24" opacity="0.2" filter="url(#iter15-softBlur)" />
+      <ellipse cx="600" cy="350" rx="200" ry="30" fill="#002b36" opacity="0.15" filter="url(#iter15-softBlur)" />
+
+      <!-- Final bright sparkles -->
+      <circle cx="120" cy="480" r="1.5" fill="#fff" opacity="0.8" filter="url(#iter15-sparkleBlur)" />
+      <circle cx="780" cy="550" r="2" fill="#fffacd" opacity="0.8" filter="url(#iter15-sparkleBlur)" />
+      <circle cx="450" cy="280" r="1.5" fill="#fff" opacity="0.7" />
+  </g>
+</svg>

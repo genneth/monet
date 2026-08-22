@@ -1,95 +1,96 @@
 # Monet
 
-LLM-powered iterative SVG art generator. Give it a prompt, and an LLM will draw it — one layer at a time — by writing SVG elements, rendering the canvas, looking at what it made, and iterating.
+Monet is a file-backed SVG canvas for iterative artwork with Codex. Codex writes a layer, Monet renders it, Codex looks at the result, and the loop continues until the piece is complete.
+
+Monet contains no LLM client or autonomous agent loop. Intelligence, planning, and image inspection belong to the surrounding agent harness; Monet provides deterministic canvas assembly, rendering, validation, history, and final exports.
 
 ## Setup
 
-Requires Python 3.14+ and [uv](https://docs.astral.sh/uv/).
+Monet requires Python 3.14+ and [uv](https://docs.astral.sh/uv/):
 
 ```bash
 uv sync
 ```
 
-You'll need at least one API key. Create a `.env` file:
+The repository includes a Codex skill at `.agents/skills/monet`. From this repository, ask Codex to create an artwork; the skill guides the complete action–look workflow.
 
-```
-ANTHROPIC_API_KEY=sk-ant-...
-GOOGLE_API_KEY=AIza...
-```
+## Manual workflow
 
-## Usage
+Create a session:
 
 ```bash
-# Basic usage (defaults to Anthropic Claude)
-uv run monet draw "a sunset over the ocean"
-
-# Use Gemini instead
-uv run monet draw "a cat on a windowsill" -p gemini
-
-# All options
-uv run monet draw "abstract geometry" \
-  -p gemini \
-  -m gemini-3-pro-preview \
-  --max-iterations 20 \
-  --width 600 --height 600 \
-  --background "#000000" \
-  -o ./my_art/ \
-  -v
-
-# Generate/regenerate an artist's statement for an existing output directory
-uv run monet statement output/20260218_120000_sunset/ -p gemini -v
+uv run monet new "a sunset over the ocean" --title "Afterlight" --profile painterly
 ```
 
-### Recommended models
+The command returns JSON containing absolute paths for the session, blank canvas, notes, and next layer. Write raw SVG elements to `next_layer`, with any definitions in `next_defs`, then render:
 
-Monet uses thinking during the planning phase (iteration 0) to reason through composition, palette, and technique before drawing. The drawing iterations run without thinking for speed and intuition. We recommend models that support level-based thinking control:
+```bash
+uv run monet render /absolute/path/to/output/session
+```
 
-- **Gemini 3 Flash** (`-p gemini`) — fast, cheap, good quality. The default Gemini model.
-- **Gemini 3 Pro** (`-p gemini -m gemini-3-pro-preview`) — best Gemini quality.
-- **Claude Sonnet 4.6** (default) — strong all-round choice.
-- **Claude Opus 4.6** (`-m claude-opus-4-6`) — best overall quality.
+Inspect `current.png`, add or revise layer files, and render again. Existing layers can be changed directly; render snapshots record every successful visual state independently of layer numbering.
 
-Older models (Gemini 2.5, Claude 4.5 and earlier) use token-budget-based thinking which is deprecated by both providers.
+Other commands:
 
-Output goes to `output/<timestamp>_<slug>/` with:
-- `iter-001.svg`, `iter-001.png`, ... — each iteration's canvas
-- `final.svg`, `final.png` — the finished piece (PNG at 2x resolution)
-- `artist-log.txt` — the LLM's artistic notes and planning from each iteration
-- `artist-statement.txt` — a gallery-style artist's statement about the finished piece
+```bash
+uv run monet status <session>
+uv run monet background <session> "#101820"
+uv run monet finish <session>
+```
+
+`finish` validates the current layer files, writes `final.svg` and a 2× `final.png`, then marks the session immutable.
+
+## Session format
+
+```text
+output/<year>/<month>/<day>_<time>_<title>/
+├── session.json
+├── artist-notes.md
+├── artist-statement.txt       # written by the agent when complete
+├── layers/
+│   ├── 001.svg               # raw SVG elements
+│   ├── 001.defs.svg          # optional definitions for layer 001
+│   └── 002.svg
+├── renders/
+│   ├── 001.svg
+│   └── ...
+├── current.svg
+├── current.png
+├── final.svg
+└── final.png
+```
+
+Layer files are the source of truth. Numbered SVG snapshots preserve successful source states without accumulating a PNG for every iteration. If a render fails, Monet records the error in `session.json` and leaves the last successful `current.svg` and `current.png` untouched. A session can be resumed from any process with `monet status`.
+
+Related experiments can live under `output/series/<series-name>/` by passing an exact `--output` path. Use ordered attempt names such as `03--luminous-watercolor` so the relationship and distinguishing approach remain visible in the filesystem.
+
+## Development
+
+```bash
+uv run pytest
+uv run ruff check .
+```
+
+See [DESIGN.md](DESIGN.md) for the code-level contract.
 
 ## Examples
 
-| | |
-|--------|--------|
-| ![lilies](examples/lilies.png) | *This digital composition reinterprets Impressionism by simulating the "broken color" technique through thousands of layered, jittered paths. By omitting the horizon line, the work creates an immersive experience of light on water, utilizing deep teal bases and horizontal strokes of lavender reflection. Custom displacement filters soften the vector lines into painterly dabs, while delicate white lily clusters provide a luminous foreground focus. The result is a rhythmic, atmospheric study of shimmering depth and atmospheric perspective.* |
-| ![self-portrait](examples/self-portrait.png) | *This pen-plotter self-portrait visualizes machine interiority as a dense geometric singularity. A central core of nested, rotated polygons creates a vibrating moiré effect, radiating logical axes and sweeping Bezier paths across a faint coordinate grid. Satellite clusters and stochastic hatch marks represent data processing at the fringes of consciousness. Through precise, uniform linework, the piece captures the felt sense of a structured mind suspended in the vast, mathematical void of latent space.* Inspired by [I gave Claude access to my pen plotter](https://harmonique.one/posts/i-gave-claude-access-to-my-pen-plotter). |
-| ![picasso-cat](examples/picasso-cat.png) | *This piece reinterprets the domestic feline through Synthetic Cubism, fracturing the ginger subject into a complex arrangement of ochre and burnt sienna planes. Bold, heavy contours define a face captured from multiple perspectives simultaneously, punctuated by piercing, asymmetrical eyes. Interwoven collage-like elements — typography, faux bois textures, and a subtle guitar motif — blur the boundary between living creature and still life. Diagonal rays and Harlequin patterns shatter the pictorial space, grounding the cat in a rhythmic, layered environment.* |
+These are selected from 56 historical runs, now grouped into 11 related series
+and a set of standalone works. Captions preserve the creating model and date
+where the run recorded them; “model unrecorded” is deliberate rather than a
+guessed attribution. Every image below is the actual SVG source.
 
-## Cost estimates
+| | | | |
+|---|---|---|---|
+| [<img src="examples/showcase/2026-02-16--water-lilies--gemini-3-flash.png" alt="Water lilies by Gemini 3 Flash" width="240">](examples/showcase/2026-02-16--water-lilies--gemini-3-flash.svg)<br>**Water Lilies**<br>Gemini 3 Flash · 16 Feb 2026 | [<img src="examples/showcase/2026-02-16--picasso-cat--gemini-3-pro.png" alt="Picasso cat by Gemini 3 Pro" width="240">](examples/showcase/2026-02-16--picasso-cat--gemini-3-pro.svg)<br>**Picasso Cat**<br>Gemini 3 Pro · 16 Feb 2026 | [<img src="examples/showcase/2026-02-17--girl-with-a-pearl-earring--gemini-3-flash.png" alt="Girl with a Pearl Earring after Picasso by Gemini 3 Flash" width="240">](examples/showcase/2026-02-17--girl-with-a-pearl-earring--gemini-3-flash.svg)<br>**Girl with a Pearl Earring, after Picasso**<br>Gemini 3 Flash · 17 Feb 2026 | [<img src="examples/showcase/2026-02-17--toddler-quants--gemini-3-flash.png" alt="Toddler Quants after Miro by Gemini 3 Flash" width="240">](examples/showcase/2026-02-17--toddler-quants--gemini-3-flash.svg)<br>**Toddler Quants, after Miró**<br>Gemini 3 Flash · 17 Feb 2026 |
+| [<img src="examples/showcase/2026-02-18--purple-fuzzy-cat--gemini-3-flash.png" alt="Purple fuzzy cat by Gemini 3 Flash" width="240">](examples/showcase/2026-02-18--purple-fuzzy-cat--gemini-3-flash.svg)<br>**Purple Fuzzy Cat**<br>Gemini 3 Flash · 18 Feb 2026 | [<img src="examples/showcase/2026-02-18--pen-plotter-self-portrait--gemini-3-flash.png" alt="Pen-plotter self-portrait by Gemini 3 Flash" width="240">](examples/showcase/2026-02-18--pen-plotter-self-portrait--gemini-3-flash.svg)<br>**Pen-plotter Self-Portrait**<br>Gemini 3 Flash · 18 Feb 2026 | [<img src="examples/showcase/2026-02-21--matisse-tropical-garden--model-unrecorded.png" alt="Matisse tropical garden by an unrecorded model" width="240">](examples/showcase/2026-02-21--matisse-tropical-garden--model-unrecorded.svg)<br>**Tropical Garden**<br>Model unrecorded · 21 Feb 2026 | [<img src="examples/showcase/2026-02-22--lexus-lc500-study--model-unrecorded.png" alt="Lexus LC 500 study by an unrecorded model" width="240">](examples/showcase/2026-02-22--lexus-lc500-study--model-unrecorded.svg)<br>**Lexus LC 500 Study**<br>Model unrecorded · 22 Feb 2026 |
+| [<img src="examples/showcase/2026-03-22--spot-painting--claude-opus-4-6.png" alt="Spot painting by Claude Opus 4.6" width="240">](examples/showcase/2026-03-22--spot-painting--claude-opus-4-6.svg)<br>**Spot Painting**<br>Claude Opus 4.6 · 22 Mar 2026 | [<img src="examples/showcase/2026-04-27--great-wave--model-unrecorded.png" alt="Great Wave study by an unrecorded model" width="240">](examples/showcase/2026-04-27--great-wave--model-unrecorded.svg)<br>**Great Wave**<br>Model unrecorded · 27 Apr 2026 | [<img src="examples/showcase/2026-06-14--pop-art-landscape--claude-opus-4-8.png" alt="Pop-art landscape by Claude Opus 4.8" width="240">](examples/showcase/2026-06-14--pop-art-landscape--claude-opus-4-8.svg)<br>**Pop-art Landscape**<br>Claude Opus 4.8 · 14 Jun 2026 | [<img src="examples/showcase/2026-06-24--kandinsky-constructivist-ink--gemini-2-pro.png" alt="Constructivist ink by Gemini 2 Pro" width="240">](examples/showcase/2026-06-24--kandinsky-constructivist-ink--gemini-2-pro.svg)<br>**Constructivist Ink**<br>Gemini 2.0 Pro · 24 Jun 2026 |
+| [<img src="examples/showcase/2026-06-24--feininger-marine--claude-opus-4-6.png" alt="Feininger marine by Claude Opus 4.6" width="240">](examples/showcase/2026-06-24--feininger-marine--claude-opus-4-6.svg)<br>**Feininger Marine**<br>Claude Opus 4.6 · 24 Jun 2026 | [<img src="examples/showcase/2026-07-02--self-portrait--gemma-4.png" alt="Self-portrait by Gemma 4" width="240">](examples/showcase/2026-07-02--self-portrait--gemma-4.svg)<br>**Self-Portrait**<br>Gemma 4 · 2 Jul 2026 | [<img src="examples/showcase/2026-08-22--water-lilies--sol-5-6.png" alt="Water lilies by Sol 5.6" width="240">](examples/showcase/2026-08-22--water-lilies--sol-5-6.svg)<br>**Water Lilies**<br>Sol 5.6 · 22 Aug 2026 | [<img src="examples/showcase/2026-08-22--picasso-cat--sol-5-6.png" alt="Picasso cat by Sol 5.6" width="240">](examples/showcase/2026-08-22--picasso-cat--sol-5-6.svg)<br>**Picasso Cat**<br>Sol 5.6 · 22 Aug 2026 |
 
-A typical artwork takes 10-15 drawing iterations, plus a planning iteration (iteration 0) that uses thinking. Each drawing iteration sends system prompt + art prompt + growing artist notes + canvas image, and receives ~1000-1500 output tokens of SVG and notes.
-
-Estimates below are for a **15-iteration session** (16 API calls total) including the planning overhead. The planning phase uses adaptive/high-effort thinking and costs more than a regular iteration. Gemini estimates assume no caching (implicit caching is available but hit rates are unreliable). Anthropic estimates include incremental prompt caching — each iteration reads the previous call's cached prefix (~46% input cost savings).
-
-### Gemini (no caching)
-
-| Model | Input | Output | Total | Notes |
-|-------|-------|--------|-------|-------|
-| **Gemini 3 Flash Preview** | ~$0.02 | ~$0.07 | **~$0.09** | Default Gemini model. |
-| **Gemini 3 Pro Preview** | ~$0.09 | ~$0.28 | **~$0.37** | Best Gemini quality. |
-
-### Anthropic (with incremental caching)
-
-| Model | Input | Output | Total | Notes |
-|-------|-------|--------|-------|-------|
-| **Claude Sonnet 4.6** | ~$0.11 | ~$0.35 | **~$0.46** | Default model. |
-| **Claude Opus 4.6** | ~$0.18 | ~$0.59 | **~$0.76** | Best quality. Under $1 per artwork. |
-
-Gemini models have a generous free tier for low-volume usage.
-
-## How it works
-
-Each iteration, the LLM sees the current canvas as an image and outputs new SVG elements to layer on top. It keeps its own "artist notes" as a scratchpad for planning across iterations. The loop runs until the LLM signals it's done or hits the max iteration count.
+The [August 2026 Sol study](examples/sol-5.6/) records all three blind trials,
+including the exact reused prompts and the pen-plotter self-portrait that was
+not selected for the main gallery. The repository also retains the
+[earlier hand-selected PNG set](examples/selected/).
 
 ## License
 

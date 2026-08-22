@@ -1,0 +1,203 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="100%" height="100%" fill="#121212"/>
+  <defs>
+    <filter id="iter1-grain">
+    <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" result="noise"/>
+    <feDiffuseLighting in="noise" lighting-color="#fff" surfaceScale="2">
+      <feDistantLight azimuth="45" elevation="35"/>
+    </feDiffuseLighting>
+    <feComposite operator="in" in2="SourceGraphic"/>
+  </filter>
+    <radialGradient id="iter6-pearlGrad" cx="30%" cy="30%" r="50%">
+    <stop offset="0%" stop-color="#ffffff" />
+    <stop offset="70%" stop-color="#e0e0e0" />
+    <stop offset="100%" stop-color="#a0a0a0" />
+  </radialGradient>
+    <filter id="iter7-glow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur" />
+        <feOffset in="blur" dx="0" dy="0" result="offsetBlur" />
+        <feFlood flood-color="#ffffff" flood-opacity="0.5" result="offsetColor" />
+        <feComposite in="offsetColor" in2="offsetBlur" operator="in" result="glow" />
+        <feMerge>
+            <feMergeNode in="glow" />
+            <feMergeNode in="SourceGraphic" />
+        </feMerge>
+    </filter>
+    <filter id="iter8-canvasTexture" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" result="noise" />
+    <feColorMatrix in="noise" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0" />
+    <feBlend mode="multiply" in="SourceGraphic" />
+  </filter>
+    <filter id="iter9-canvasTexture" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" result="noise" />
+    <feDiffuseLighting in="noise" lighting-color="#ffffff" surfaceScale="1" result="diffuse">
+      <feDistantLight azimuth="45" elevation="55" />
+    </feDiffuseLighting>
+    <feComposite operator="in" in="diffuse" in2="SourceGraphic" />
+  </filter>
+  <linearGradient id="iter9-pearlGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#e0e0e0;stop-opacity:0.8" />
+  </linearGradient>
+  </defs>
+  <g id="layer-1">
+    <!-- Main silhouette block for the head/turban area -->
+      <path d="M320,100 L550,150 L580,450 L280,480 L250,250 Z" fill="#1a1a1a" stroke="#000" stroke-width="2" />
+
+      <!-- Shoulder and torso block -->
+      <path d="M250,450 L650,550 L600,600 L150,600 L200,500 Z" fill="#221e1b" stroke="#000" stroke-width="2" />
+
+      <!-- Subtle geometric background fragments for depth -->
+      <polygon points="0,0 300,0 200,200 0,150" fill="#0d0d0d" />
+      <polygon points="800,0 600,0 650,300 800,400" fill="#151515" />
+      <polygon points="800,600 500,600 700,400 800,450" fill="#0f0f0f" />
+
+      <!-- Initial light blocking for the face plane -->
+      <path d="M380,180 L520,220 L480,430 L340,400 Z" fill="#2d2a28" opacity="0.5" />
+  </g>
+  <g id="layer-2">
+    <!-- Main face plane (frontal/three-quarter) -->
+      <path d="M350,150 L520,180 L550,450 L380,500 L320,380 Z" fill="#fdf5e6" opacity="0.9" />
+
+      <!-- Secondary face plane (profile/shadow side) -->
+      <path d="M350,150 L310,200 L280,350 L320,380 Z" fill="#d2b48c" opacity="0.8" />
+
+      <!-- Chin and jaw fragment -->
+      <path d="M380,500 L500,460 L450,530 L350,540 Z" fill="#a9a9a9" opacity="0.7" />
+
+      <!-- Forehead/Turban base fragment -->
+      <path d="M350,150 L520,180 L480,120 L380,110 Z" fill="#e0d7c6" />
+
+      <!-- Distinct cheek bone plane -->
+      <path d="M420,280 L540,300 L530,420 L400,400 Z" fill="#f5deb3" opacity="0.5" />
+  </g>
+  <g id="layer-3">
+    <!-- Turban - Blue shards -->
+      <path d="M350,150 L480,130 L530,230 L490,280 L440,240 Z" fill="#003366" fill-opacity="0.9" stroke="#000" stroke-width="1"/>
+      <path d="M480,130 L550,160 L600,280 L530,300 L530,230 Z" fill="#004488" fill-opacity="0.85" stroke="#000" stroke-width="1"/>
+      <path d="M330,200 L380,160 L440,185 L400,260 Z" fill="#002244" fill-opacity="0.95" stroke="#000" stroke-width="1"/>
+
+      <!-- Turban - Yellow trailing shards -->
+      <path d="M530,300 L580,320 L560,450 L510,400 Z" fill="#ffcc00" fill-opacity="0.9" stroke="#000" stroke-width="1"/>
+      <path d="M520,280 L540,260 L580,300 L560,330 Z" fill="#eebb00" fill-opacity="0.8" stroke="#000" stroke-width="1"/>
+
+      <!-- Shoulder/Coat planes -->
+      <path d="M300,500 L450,550 L650,600 L180,600 Z" fill="#3d2b1f" stroke="#000" stroke-width="1.5"/>
+      <path d="M350,450 L400,480 L430,550 L320,580 Z" fill="#5c4033" fill-opacity="0.7" stroke="#000" stroke-width="1"/>
+
+      <!-- Connecting the neck area -->
+      <path d="M400,430 L480,450 L460,490 L420,480 Z" fill="#a9a9a9" fill-opacity="0.5" stroke="#000" stroke-width="0.5"/>
+  </g>
+  <g id="layer-4">
+    <!-- White Collar Shards -->
+      <path d="M400 450 L450 480 L380 500 Z" fill="#ffffff" opacity="0.9" stroke="#000000" stroke-width="1"/>
+      <path d="M460 460 L510 490 L440 510 Z" fill="#f0f0f0" opacity="0.8" stroke="#000000" stroke-width="1"/>
+
+      <!-- The Nose: Profile combined with frontal -->
+      <path d="M460 250 L485 360 L440 370 L455 350 Z" fill="#d2b48c" stroke="#000000" stroke-width="2" />
+      <path d="M485 360 L505 385 L475 390 Z" fill="#8b4513" opacity="0.6" stroke="#000000" stroke-width="1.5" />
+
+      <!-- Left Eye: Large, stylized frontal -->
+      <g transform="translate(420, 270) rotate(-10)">
+        <path d="M-30 0 Q0 -25 30 0 Q0 25 -30 0" fill="#ffffff" stroke="#000000" stroke-width="2"/>
+        <circle cx="0" cy="0" r="10" fill="#121212"/>
+        <circle cx="3" cy="-3" r="3" fill="#ffffff"/>
+      </g>
+
+      <!-- Right Eye: Profile/Shifted view -->
+      <g transform="translate(540, 310) rotate(15)">
+        <path d="M-15 0 Q0 -35 25 -5 Q5 20 -15 0" fill="#ffffff" opacity="0.8" stroke="#000000" stroke-width="2"/>
+        <ellipse cx="5" cy="-5" rx="6" ry="10" fill="#121212"/>
+      </g>
+
+      <!-- The Mouth: Abstracted, offset -->
+      <path d="M460 420 Q485 410 510 430 Q485 445 460 425 Z" fill="#a52a2a" stroke="#000000" stroke-width="2" />
+      <line x1="465" y1="427" x2="505" y2="427" stroke="#000000" stroke-width="1.5"/>
+  </g>
+  <g id="layer-5">
+    <!-- The Pearl: A sharp geometric rendition -->
+      <path d="M475,440 L505,480 L485,520 L455,480 Z" fill="url(#iter6-pearlGrad)" stroke="#000000" stroke-width="1" />
+      <circle cx="482" cy="465" r="4" fill="white" opacity="0.8" /> <!-- Highlight -->
+
+      <!-- Extending the Yellow Turban tail -->
+      <path d="M530,300 L610,480 L570,500 L540,430 Z" fill="#e6b800" stroke="#000000" stroke-width="1.5" />
+      <path d="M560,350 L590,460 L575,470 Z" fill="#ffcc00" opacity="0.6" />
+
+      <!-- Adding more depth to the garment/shoulders -->
+      <path d="M220,530 L380,500 L450,580 L250,600 Z" fill="#3d2b1f" stroke="#000000" stroke-width="1" />
+      <path d="M450,580 L720,550 L800,600 L400,600 Z" fill="#2b1d0e" stroke="#000000" stroke-width="1" />
+
+      <!-- Additional blue shard for the turban top-back -->
+      <path d="M440,245 L540,240 L580,310 L520,310 Z" fill="#002244" stroke="#000000" stroke-width="1" />
+  </g>
+  <g id="layer-6">
+    <!-- Heavy Linework for Face and Turban -->
+        <path d="M430 180 L350 300 L430 400" stroke="#000000" stroke-width="4" fill="none" stroke-linecap="round" />
+        <path d="M440 250 L500 240 L560 280" stroke="#000000" stroke-width="5" fill="none" stroke-linecap="round" />
+        <path d="M400 130 C 450 130, 550 150, 580 270" stroke="#000000" stroke-width="6" fill="none" />
+
+        <!-- Turban Highlights and Extensions -->
+        <path d="M540 430 L590 470 L610 380 Z" fill="#e6b800" stroke="#000000" stroke-width="1.5" />
+        <path d="M570 300 L585 400 L550 380 Z" fill="#cc9900" stroke="#000000" stroke-width="1.5" />
+        <polyline points="450,140 500,135 550,160" fill="none" stroke="#4a90e2" stroke-width="3" opacity="0.6" />
+
+        <!-- Bold Structural Lines on Face -->
+        <line x1="432" y1="265" x2="480" y2="405" stroke="#000000" stroke-width="3" />
+        <path d="M465 410 Q 480 430, 500 420" stroke="#000000" stroke-width="4" fill="none" />
+
+        <!-- Garment Refinement -->
+        <path d="M250 500 L400 450 L420 580 L200 600 Z" fill="#2a1b0a" stroke="#000000" stroke-width="2" />
+        <path d="M420 550 L650 580 L750 520 L780 600 L400 600 Z" fill="#1a1107" stroke="#000000" stroke-width="2" />
+
+        <!-- Extra Detail on the Pearl -->
+        <circle cx="488" cy="465" r="3" fill="#ffffff" filter="url(#iter7-glow)" />
+        <path d="M475 450 L488 435 L505 460" stroke="#ffffff" stroke-width="1" fill="none" opacity="0.8" />
+  </g>
+  <g id="layer-7">
+    <!-- Background Texture Overlay -->
+      <rect x="0" y="0" width="800" height="600" fill="transparent" filter="url(#iter8-canvasTexture)" pointer-events="none" />
+
+      <!-- Extending the yellow turban fabric -->
+      <path d="M540 500 L580 620 L610 580 Z" fill="#ffcc00" stroke="#000" stroke-width="1.5" />
+      <path d="M570 550 L610 650 L530 630 Z" fill="#e6b800" stroke="#000" stroke-width="1.5" />
+      <path d="M555 520 L590 580 L560 590 Z" fill="#ffcc00" stroke="#000" stroke-width="1.5" />
+
+      <!-- Enhancing the pearl with a specular highlight -->
+      <path d="M580 750 L600 780 L580 810 L560 780 Z" fill="white" transform="translate(-1, -1) scale(0.4) translate(-580, -780) translate(600, 770)" opacity="0.9" />
+
+      <!-- Bold structural lines for jaw and garment -->
+      <line x1="400" y1="550" x2="480" y2="620" stroke="black" stroke-width="4" stroke-linecap="round" />
+      <line x1="480" y1="620" x2="600" y2="620" stroke="black" stroke-width="4" stroke-linecap="round" />
+      <path d="M350 500 L250 550 L200 650" fill="none" stroke="black" stroke-width="5" stroke-linejoin="round" />
+
+      <!-- Secondary color planes in the garment -->
+      <path d="M250 580 L350 620 L300 650 Z" fill="#4a2c1a" opacity="0.6" />
+      <path d="M600 600 L750 630 L650 680 Z" fill="#333" stroke="#000" stroke-width="1" />
+
+      <!-- Subtle facial highlight to define the bridge of the nose/eye socket -->
+      <path d="M550 450 L560 550 L540 530 Z" fill="white" opacity="0.15" />
+  </g>
+  <g id="layer-8">
+    <!-- More yellow shards for the turban tail -->
+      <polygon points="560,400 610,480 580,550" fill="#eec900" opacity="0.9" />
+      <polygon points="570,520 620,620 540,650" fill="#ffcc00" opacity="0.8" />
+      <polygon points="530,450 560,530 520,580" fill="#d4af37" opacity="0.7" />
+
+      <!-- Pearl refinement: specularity -->
+      <path d="M465,495 L475,510 L465,525 L455,510 Z" fill="url(#iter9-pearlGlow)" filter="drop-shadow(2px 2px 2px rgba(0,0,0,0.5))" />
+      <circle cx="465" cy="505" r="3" fill="#ffffff" />
+
+      <!-- Additional garment planes -->
+      <polygon points="250,550 450,600 200,600" fill="#3d2b1f" stroke="#000000" stroke-width="1" />
+      <polygon points="500,580 750,600 800,550" fill="#2b1d0e" stroke="#000000" stroke-width="1" />
+
+      <!-- Final structural linework -->
+      <line x1="390" y1="200" x2="480" y2="450" stroke="#000000" stroke-width="3" />
+      <line x1="430" y1="350" x2="520" y2="380" stroke="#000000" stroke-width="2" />
+      <path d="M500,200 Q550,250 540,350" fill="none" stroke="#000000" stroke-width="4" stroke-linecap="round" />
+      <line x1="465" y1="530" x2="465" y2="580" stroke="#000000" stroke-width="1.5" stroke-dasharray="5,2" />
+
+      <!-- Subtle texture overlay -->
+      <rect width="800" height="600" fill="transparent" filter="url(#iter9-canvasTexture)" opacity="0.07" pointer-events="none" />
+  </g>
+</svg>

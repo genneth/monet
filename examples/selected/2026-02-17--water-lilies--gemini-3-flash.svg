@@ -1,0 +1,598 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="100%" height="100%" fill="#1B4F72"/>
+  <defs>
+    <linearGradient id="iter1-waterBase" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" style="stop-color:#1B4F72;stop-opacity:1" />
+    <stop offset="50%" style="stop-color:#145A32;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#154360;stop-opacity:1" />
+  </linearGradient>
+
+  <filter id="iter1-roughEdge">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" />
+  </filter>
+
+  <radialGradient id="iter1-skyReflection" cx="50%" cy="50%" r="50%">
+    <stop offset="0%" style="stop-color:#AED6F1;stop-opacity:0.4" />
+    <stop offset="100%" style="stop-color:#AED6F1;stop-opacity:0" />
+  </radialGradient>
+
+  <linearGradient id="iter1-willowReflection" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" style="stop-color:#7D6608;stop-opacity:0.3" />
+    <stop offset="100%" style="stop-color:#1D8348;stop-opacity:0" />
+  </linearGradient>
+    <filter id="iter3-brushFilter" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+    <feGaussianBlur stdDeviation="0.8" />
+  </filter>
+
+  <linearGradient id="iter3-lavenderReflection" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" stop-color="#D2B4DE" stop-opacity="0" />
+    <stop offset="50%" stop-color="#D2B4DE" stop-opacity="0.4" />
+    <stop offset="100%" stop-color="#D2B4DE" stop-opacity="0" />
+  </linearGradient>
+    <filter id="iter4-softBurlap" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+
+  <linearGradient id="iter4-padGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" style="stop-color:#1E8449;stop-opacity:0.8" />
+    <stop offset="100%" style="stop-color:#145A32;stop-opacity:0.9" />
+  </linearGradient>
+    <filter id="iter5-roughPads" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" />
+  </filter>
+
+  <linearGradient id="iter5-padGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" style="stop-color:#229954;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#145A32;stop-opacity:1" />
+  </linearGradient>
+    <filter id="iter6-roughness" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" seed="66" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="G" />
+  </filter>
+
+  <linearGradient id="iter6-lilyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stop-color="#FDFEFE" />
+    <stop offset="100%" stop-color="#F5B7B1" />
+  </linearGradient>
+    <filter id="iter7-glow" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur" />
+    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+  </filter>
+  <filter id="iter7-rough" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+  </filter>
+    <filter id="iter7-glowFilter" x="-20%" y="-20%" width="140%" height="140%">
+  <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur" />
+  <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" result="noise" />
+  <feDisplacementMap in="blur" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+</filter>
+
+<filter id="iter7-petalFilter" x="-10%" y="-10%" width="120%" height="120%">
+  <feTurbulence type="turbulence" baseFrequency="0.1" numOctaves="2" result="t" />
+  <feDisplacementMap in="SourceGraphic" in2="t" scale="2" />
+</filter>
+    <filter id="iter9-bloom" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur" />
+    <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" result="noise" />
+    <feDisplacementMap in="blur" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+    <feMerge>
+      <feMergeNode />
+      <feMergeNode in="SourceGraphic" />
+    </feMerge>
+  </filter>
+    <filter id="iter10-thickPaint" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.08" numOctaves="4" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+    <feGaussianBlur stdDeviation="0.5" />
+  </filter>
+  <filter id="iter10-bloom" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur stdDeviation="1.5" result="blur" />
+    <feComposite in="SourceGraphic" in2="blur" operator="over" />
+  </filter>
+    <filter id="iter11-paintGlow" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.1" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+    <feGaussianBlur stdDeviation="1.5" />
+  </filter>
+    <filter id="iter11-oilPaint" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="4" seed="111" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+    <feGaussianBlur stdDeviation="0.5" />
+  </filter>
+    <filter id="iter13-painterly" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" seed="13" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G"/>
+    <feGaussianBlur stdDeviation="0.5" />
+</filter>
+    <filter id="iter14-texturedBrush" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="4" seed="14" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+    <feGaussianBlur stdDeviation="0.5" />
+  </filter>
+    <filter id="iter15-sparkleGlow" x="-20%" y="-20%" width="140%" height="140%">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="1.5" result="blur" />
+    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" result="glow"/>
+    <feComposite in="SourceGraphic" in2="glow" operator="over" />
+  </filter>
+  </defs>
+  <g id="layer-1">
+    <!-- Base gradient layer for depth -->
+      <rect width="800" height="600" fill="url(#iter1-waterBase)" />
+
+      <!-- Broad sky reflections -->
+      <ellipse cx="200" cy="150" rx="300" ry="150" fill="url(#iter1-skyReflection)" filter="url(#iter1-roughEdge)" />
+      <ellipse cx="600" cy="450" rx="400" ry="200" fill="url(#iter1-skyReflection)" filter="url(#iter1-roughEdge)" />
+
+      <!-- Broad tree/willow reflections -->
+      <rect width="800" height="300" fill="url(#iter1-willowReflection)" filter="url(#iter1-roughEdge)" />
+
+      <!-- Initial horizontal "water" strokes to break up the surface -->
+      <path d="M 50,100 Q 200,90 350,110 T 750,100" stroke="#2E86C1" stroke-width="4" fill="none" opacity="0.3" filter="url(#iter1-roughEdge)" />
+      <path d="M 0,250 Q 250,260 500,240 T 800,255" stroke="#28B463" stroke-width="6" fill="none" opacity="0.2" filter="url(#iter1-roughEdge)" />
+      <path d="M 100,450 Q 300,440 500,460 T 700,450" stroke="#5DADE2" stroke-width="3" fill="none" opacity="0.3" filter="url(#iter1-roughEdge)" />
+      <path d="M -50,550 Q 400,570 850,540" stroke="#1D8348" stroke-width="8" fill="none" opacity="0.1" filter="url(#iter1-roughEdge)" />
+  </g>
+  <g id="layer-2">
+    <!-- Atmospheric Reflections (Sky/Lavender) -->
+      <path d="M 100 150 Q 400 140 700 160" stroke="url(#iter3-lavenderReflection)" stroke-width="25" fill="none" filter="url(#iter3-brushFilter)" opacity="0.6" />
+      <path d="M 50 450 Q 350 460 750 440" stroke="url(#iter3-lavenderReflection)" stroke-width="15" fill="none" filter="url(#iter3-brushFilter)" opacity="0.4" />
+
+      <!-- Deep Green Willow Reflections -->
+      <path d="M 550 50 L 580 250" stroke="#1D8348" stroke-width="40" fill="none" filter="url(#iter3-brushFilter)" opacity="0.2" />
+      <path d="M 620 20 L 640 200" stroke="#1D8348" stroke-width="30" fill="none" filter="url(#iter3-brushFilter)" opacity="0.15" />
+
+      <!-- Water Surface "Dabs" (Texture) -->
+      <g filter="url(#iter3-brushFilter)">
+        <path d="M 200 320 H 280" stroke="#5DADE2" stroke-width="4" stroke-linecap="round" opacity="0.5" />
+        <path d="M 220 330 H 300" stroke="#AED6F1" stroke-width="3" stroke-linecap="round" opacity="0.4" />
+        <path d="M 450 380 H 550" stroke="#2E86C1" stroke-width="5" stroke-linecap="round" opacity="0.3" />
+        <path d="M 150 500 H 300" stroke="#1B4F72" stroke-width="8" stroke-linecap="round" opacity="0.4" />
+        <path d="M 500 480 H 650" stroke="#154360" stroke-width="6" stroke-linecap="round" opacity="0.4" />
+      </g>
+
+      <!-- Shadow spots for future lily pads (Darker Green/Brown) -->
+      <ellipse cx="250" cy="400" rx="60" ry="15" fill="#0E2F44" filter="url(#iter3-brushFilter)" opacity="0.3" />
+      <ellipse cx="600" cy="500" rx="90" ry="25" fill="#0E2F44" filter="url(#iter3-brushFilter)" opacity="0.3" />
+      <ellipse cx="400" cy="250" rx="40" ry="10" fill="#0E2F44" filter="url(#iter3-brushFilter)" opacity="0.3" />
+  </g>
+  <g id="layer-3">
+    <!-- Distant, small lily pads (muted green/teal) -->
+      <g filter="url(#iter4-softBurlap)" opacity="0.7">
+        <ellipse cx="200" cy="180" rx="25" ry="8" fill="#1D8348" />
+        <ellipse cx="240" cy="175" rx="20" ry="6" fill="#145A32" />
+        <ellipse cx="600" cy="210" rx="30" ry="10" fill="#1D8348" />
+        <ellipse cx="560" cy="205" rx="15" ry="5" fill="#0E6251" />
+      </g>
+
+      <!-- Horizontal "brushstrokes" for reflections (Lavender and Sky Blue) -->
+      <path d="M 100 250 Q 400 245 700 250" stroke="#D2B4DE" stroke-width="2" fill="none" opacity="0.3" filter="url(#iter4-softBurlap)" />
+      <path d="M 50 320 Q 350 315 750 320" stroke="#AED6F1" stroke-width="3" fill="none" opacity="0.2" filter="url(#iter4-softBurlap)" />
+      <path d="M 150 450 Q 450 445 650 450" stroke="#D7BDE2" stroke-width="2" fill="none" opacity="0.4" filter="url(#iter4-softBurlap)" />
+
+      <!-- Mid-ground lily pads (Larger, more defined) -->
+      <g filter="url(#iter4-softBurlap)">
+        <!-- Cluster 1 -->
+        <path d="M 380 350 a 45 15 0 1 0 90 0 a 45 15 0 1 0 -90 0" fill="url(#iter4-padGrad)" opacity="0.9" transform="rotate(-2, 425, 350)"/>
+        <path d="M 440 360 a 35 12 0 1 0 70 0 a 35 12 0 1 0 -70 0" fill="#1D8348" opacity="0.8" />
+        <!-- Small notch/cut in the lily pad to make it more realistic -->
+        <path d="M 425 335 L 435 350 L 425 365" fill="#1B4F72" opacity="0.5" />
+      </g>
+
+      <!-- Surface Shimmer -->
+      <path d="M 300 280 L 500 280" stroke="#FBFCFC" stroke-width="1.5" stroke-dasharray="10 20" opacity="0.4" filter="url(#iter4-softBurlap)" />
+      <path d="M 200 400 L 400 400" stroke="#FBFCFC" stroke-width="1" stroke-dasharray="15 25" opacity="0.3" filter="url(#iter4-softBurlap)" />
+
+      <!-- Submerged dark greens -->
+      <path d="M 600 500 Q 650 450 700 500" stroke="#0B5345" stroke-width="15" fill="none" opacity="0.4" filter="url(#iter4-softBurlap)" />
+  </g>
+  <g id="layer-4">
+    <!-- Shadows for upcoming middle-ground pads -->
+      <ellipse cx="300" cy="350" rx="45" ry="12" fill="#0E2F44" opacity="0.4" filter="url(#iter5-roughPads)" />
+      <ellipse cx="550" cy="420" rx="60" ry="15" fill="#0E2F44" opacity="0.4" filter="url(#iter5-roughPads)" />
+      <ellipse cx="180" cy="480" rx="70" ry="18" fill="#0E2F44" opacity="0.4" filter="url(#iter5-roughPads)" />
+
+      <!-- Middle-ground Lily Pads -->
+      <g filter="url(#iter5-roughPads)">
+        <path d="M260 350 Q300 335 340 350 Q340 365 300 365 Q260 365 260 350" fill="url(#iter5-padGrad)" opacity="0.8" />
+        <path d="M500 420 Q550 400 600 420 Q600 440 550 440 Q500 440 500 420" fill="#1D8348" opacity="0.8" />
+        <path d="M120 480 Q180 455 240 480 Q240 505 180 505 Q120 505 120 480" fill="#277D4E" opacity="0.9" />
+        <path d="M620 320 Q645 310 670 320 Q670 330 645 330 Q620 330 620 320" fill="#145A32" opacity="0.7" />
+      </g>
+
+      <!-- Distant Lily Flower Dabs -->
+      <circle cx="240" cy="295" r="3" fill="#FADBD8" opacity="0.8" filter="url(#iter5-roughPads)" />
+      <circle cx="255" cy="290" r="2.5" fill="#FDEDEC" opacity="0.9" filter="url(#iter5-roughPads)" />
+      <circle cx="730" cy="345" r="3" fill="#FBFCFC" opacity="0.7" filter="url(#iter5-roughPads)" />
+
+      <!-- Light Surface Glazes -->
+      <path d="M100 380 L700 380" stroke="#D2B4DE" stroke-width="1.5" stroke-dasharray="20,15" opacity="0.3" filter="url(#iter5-roughPads)" />
+      <path d="M50 450 L750 450" stroke="#F7DC6F" stroke-width="1" stroke-dasharray="40,30" opacity="0.2" filter="url(#iter5-roughPads)" />
+      <path d="M200 520 L600 520" stroke="#AED6F1" stroke-width="2" stroke-dasharray="10,50" opacity="0.3" filter="url(#iter5-roughPads)" />
+
+      <!-- Submerged texture -->
+      <rect x="0" y="200" width="800" height="400" fill="none" stroke="#1D8348" stroke-width="0.5" opacity="0.1" filter="url(#iter5-roughPads)" />
+  </g>
+  <g id="layer-5">
+    <!-- Foreground Lily Pads (Lower Left) -->
+      <path d="M120,460 Q180,440 280,470 Q240,520 150,510 Z" fill="#1D8348" opacity="0.8" filter="url(#iter6-roughness)" />
+      <path d="M140,475 Q190,465 250,485 Q220,505 160,500 Z" fill="#2ECC71" opacity="0.4" filter="url(#iter6-roughness)" />
+
+      <!-- Foreground Lily Pads (Lower Right) -->
+      <path d="M550,480 Q650,460 750,500 Q700,560 580,540 Z" fill="#145A32" opacity="0.8" filter="url(#iter6-roughness)" />
+      <path d="M580,495 Q640,485 710,510 Q680,535 600,530 Z" fill="#1D8348" opacity="0.5" filter="url(#iter6-roughness)" />
+
+      <!-- Mid-ground Lily Pads -->
+      <ellipse cx="400" cy="380" rx="60" ry="15" fill="#196F3D" opacity="0.7" filter="url(#iter6-roughness)" />
+      <ellipse cx="680" cy="350" rx="45" ry="12" fill="#1D8348" opacity="0.6" filter="url(#iter6-roughness)" />
+
+      <!-- First significant Water Lilies (Flowers) -->
+      <!-- Flower 1: Middle-Left -->
+      <g transform="translate(350, 365)" filter="url(#iter6-roughness)">
+        <ellipse cx="0" cy="0" rx="8" ry="4" fill="url(#iter6-lilyGrad)" />
+        <ellipse cx="-4" cy="-3" rx="6" ry="3" fill="#FBFCFC" opacity="0.9" />
+        <ellipse cx="4" cy="-2" rx="6" ry="3" fill="#FADBD8" opacity="0.9" />
+        <circle cx="0" cy="0" r="2" fill="#F7DC6F" />
+      </g>
+
+      <!-- Flower 2: Foreground-Right -->
+      <g transform="translate(620, 490)" filter="url(#iter6-roughness)">
+        <ellipse cx="0" cy="0" rx="12" ry="6" fill="url(#iter6-lilyGrad)" />
+        <path d="M-8,-2 Q0,-10 8,-2" fill="none" stroke="#F5B7B1" stroke-width="1" />
+        <circle cx="0" cy="-2" r="3" fill="#F1C40F" />
+      </g>
+
+      <!-- Warm Reflected Light "Brushstrokes" -->
+      <path d="M50,250 L250,250" stroke="#F9E79F" stroke-width="2" opacity="0.3" filter="url(#iter6-roughness)" />
+      <path d="M400,220 L600,220" stroke="#FAD7A0" stroke-width="3" opacity="0.2" filter="url(#iter6-roughness)" />
+      <path d="M200,550 L500,550" stroke="#AED6F1" stroke-width="2" opacity="0.4" filter="url(#iter6-roughness)" />
+
+      <!-- Shadows under foreground pads -->
+      <ellipse cx="200" cy="515" rx="100" ry="10" fill="#154360" opacity="0.3" filter="url(#iter6-roughness)" />
+      <ellipse cx="650" cy="545" rx="120" ry="12" fill="#1B4F72" opacity="0.4" filter="url(#iter6-roughness)" />
+  </g>
+  <g id="layer-6">
+    <!-- Foreground Lily Pads Detail -->
+      <path d="M150 480 Q 220 460 300 490 Q 250 550 160 540 Z" fill="#229954" opacity="0.6" filter="url(#iter7-rough)" />
+      <path d="M680 500 Q 750 490 780 540 Q 700 580 650 540 Z" fill="#196F3D" opacity="0.6" filter="url(#iter7-rough)" />
+
+      <!-- Water Lilies (Flowers) - Foreground -->
+      <g filter="url(#iter7-glow)">
+        <!-- Flower Cluster 1 (Left Foreground) -->
+        <ellipse cx="220" cy="495" rx="12" ry="6" fill="#FBFCFC" />
+        <ellipse cx="225" cy="492" rx="10" ry="5" fill="#FADBD8" opacity="0.8" />
+        <circle cx="222" cy="494" r="3" fill="#F7DC6F" />
+
+        <!-- Flower Cluster 2 (Right Foreground) -->
+        <ellipse cx="730" cy="525" rx="15" ry="7" fill="#FBFCFC" />
+        <ellipse cx="735" cy="522" rx="12" ry="6" fill="#F5B7B1" opacity="0.9" />
+        <circle cx="732" cy="524" r="4" fill="#F1C40F" />
+      </g>
+
+      <!-- Water Lilies - Mid-ground -->
+      <g filter="url(#iter7-glow)">
+        <ellipse cx="450" cy="380" rx="8" ry="3" fill="#FBFCFC" />
+        <ellipse cx="470" cy="390" rx="6" ry="2.5" fill="#FADBD8" />
+        <ellipse cx="350" cy="360" rx="7" ry="3" fill="#FBFCFC" />
+      </g>
+
+      <!-- High-key Surface Highlights -->
+      <path d="M50 320 L 150 320" stroke="#FFF9C4" stroke-width="1.5" opacity="0.4" filter="url(#iter7-glow)" />
+      <path d="M400 350 L 550 350" stroke="#AED6F1" stroke-width="2" opacity="0.3" filter="url(#iter7-glow)" />
+      <path d="M200 420 L 350 420" stroke="#FFF9C4" stroke-width="1" opacity="0.5" filter="url(#iter7-glow)" />
+      <path d="M600 450 L 780 450" stroke="#FBFCFC" stroke-width="1.5" opacity="0.4" filter="url(#iter7-glow)" />
+
+      <!-- Warm Reflected Light Strokes -->
+      <path d="M300 200 Q 320 205 340 200" stroke="#F9E79F" stroke-width="3" opacity="0.2" filter="url(#iter7-rough)" />
+      <path d="M310 215 Q 330 220 350 215" stroke="#F9E79F" stroke-width="2" opacity="0.15" filter="url(#iter7-rough)" />
+
+      <!-- Dark Accent Ripples -->
+      <path d="M100 500 H 200" stroke="#1B4F72" stroke-width="2" opacity="0.4" filter="url(#iter7-rough)" />
+      <path d="M600 560 H 750" stroke="#154360" stroke-width="2" opacity="0.5" filter="url(#iter7-rough)" />
+  </g>
+  <g id="layer-7">
+    <!-- Foreground Flowers (Right) -->
+    <g filter="url(#iter7-petalFilter)">
+      <ellipse cx="730" cy="510" rx="12" ry="6" fill="#FBFCFC" opacity="0.9" />
+      <ellipse cx="735" cy="508" rx="10" ry="5" fill="#FADBD8" opacity="0.8" />
+      <circle cx="732" cy="509" r="2.5" fill="#F4D03F" />
+    </g>
+    <g filter="url(#iter7-petalFilter)">
+      <ellipse cx="620" cy="495" rx="10" ry="5" fill="#FBFCFC" opacity="0.9" />
+      <ellipse cx="615" cy="497" rx="8" ry="4" fill="#FDEDEC" opacity="0.8" />
+      <circle cx="618" cy="496" r="2" fill="#F1C40F" />
+    </g>
+
+    <!-- Foreground Flowers (Left) -->
+    <g filter="url(#iter7-petalFilter)">
+      <ellipse cx="220" cy="495" rx="14" ry="7" fill="#FBFCFC" opacity="0.9" />
+      <ellipse cx="215" cy="492" rx="10" ry="5" fill="#F5EEF8" opacity="0.7" />
+      <circle cx="218" cy="494" r="3" fill="#F7DC6F" />
+    </g>
+
+    <!-- Middle-ground Flowers -->
+    <g filter="url(#iter7-petalFilter)" opacity="0.7">
+      <ellipse cx="450" cy="360" rx="6" ry="3" fill="#FBFCFC" />
+      <ellipse cx="445" cy="358" rx="5" ry="2.5" fill="#FADBD8" />
+      <ellipse cx="530" cy="375" rx="7" ry="3.5" fill="#FBFCFC" />
+      <ellipse cx="525" cy="377" rx="6" ry="3" fill="#FDEDEC" />
+    </g>
+
+    <!-- Bright Surface Highlights (Gleams) -->
+    <path d="M 180 510 L 260 510" stroke="#FFF9C4" stroke-width="1.5" opacity="0.6" filter="url(#iter7-glowFilter)" />
+    <path d="M 680 520 L 780 520" stroke="#FFFFFF" stroke-width="1" opacity="0.5" filter="url(#iter7-glowFilter)" />
+    <path d="M 400 380 L 480 380" stroke="#D6EAF8" stroke-width="2" opacity="0.4" filter="url(#iter7-glowFilter)" />
+    <path d="M 500 395 L 600 395" stroke="#E8DAEF" stroke-width="1.5" opacity="0.4" filter="url(#iter7-glowFilter)" />
+
+    <!-- Horizontal Sky Reflections -->
+    <path d="M 100 250 Q 400 240 700 250" fill="none" stroke="#AED6F1" stroke-width="0.8" opacity="0.3" stroke-dasharray="20 15" />
+    <path d="M 50 310 Q 350 300 750 310" fill="none" stroke="#D2B4DE" stroke-width="1" opacity="0.2" stroke-dasharray="30 10" />
+
+    <!-- Adding some warmth to the pads -->
+    <path d="M 150 520 C 180 530 250 530 280 515" fill="none" stroke="#7D6608" stroke-width="2" opacity="0.3" filter="url(#iter7-petalFilter)" />
+    <path d="M 650 540 C 700 550 800 540 820 520" fill="none" stroke="#4D5656" stroke-width="3" opacity="0.4" filter="url(#iter7-petalFilter)" />
+  </g>
+  <g id="layer-8">
+    <!-- Refined Water Lilies (Flowers) - Foreground Left -->
+      <g filter="url(#iter9-bloom)">
+        <ellipse cx="270" cy="495" rx="8" ry="4" fill="#FBFCFC" opacity="0.9" />
+        <ellipse cx="275" cy="492" rx="7" ry="3" fill="#FADBD8" opacity="0.8" />
+        <ellipse cx="265" cy="493" rx="6" ry="3" fill="#FDFEFE" opacity="0.9" />
+        <circle cx="271" cy="494" r="2" fill="#F4D03F" />
+      </g>
+
+      <!-- Refined Water Lilies (Flowers) - Foreground Right -->
+      <g filter="url(#iter9-bloom)">
+        <ellipse cx="770" cy="535" rx="10" ry="5" fill="#FBFCFC" opacity="0.9" />
+        <ellipse cx="765" cy="538" rx="8" ry="4" fill="#F5EEF8" opacity="0.8" />
+        <ellipse cx="775" cy="533" rx="7" ry="3" fill="#FADBD8" opacity="0.9" />
+        <circle cx="770" cy="536" r="2.5" fill="#F1C40F" />
+
+        <ellipse cx="910" cy="520" rx="9" ry="4" fill="#FBFCFC" opacity="0.9" /> <!-- Extending off right -->
+      </g>
+
+      <!-- Sky Reflections on Water -->
+      <path d="M 50 350 Q 200 345 350 350" stroke="#D7BDE2" stroke-width="2" fill="none" opacity="0.4" filter="url(#iter9-bloom)" />
+      <path d="M 400 380 Q 550 375 700 380" stroke="#AED6F1" stroke-width="2" fill="none" opacity="0.5" filter="url(#iter9-bloom)" />
+      <path d="M 150 420 Q 300 415 450 420" stroke="#D2B4DE" stroke-width="1.5" fill="none" opacity="0.4" filter="url(#iter9-bloom)" />
+      <path d="M 550 460 Q 650 455 750 460" stroke="#D6EAF8" stroke-width="2.5" fill="none" opacity="0.3" filter="url(#iter9-bloom)" />
+
+      <!-- Sunlight Gleams (Bright horizontal dabs) -->
+      <line x1="430" y1="395" x2="460" y2="395" stroke="#FEF9E7" stroke-width="3" opacity="0.7" stroke-linecap="round" filter="url(#iter9-bloom)" />
+      <line x1="470" y1="415" x2="490" y2="415" stroke="#FFFFFF" stroke-width="2" opacity="0.8" stroke-linecap="round" filter="url(#iter9-bloom)" />
+      <line x1="280" y1="510" x2="320" y2="510" stroke="#FEF9E7" stroke-width="2" opacity="0.6" stroke-linecap="round" filter="url(#iter9-bloom)" />
+      <line x1="680" y1="485" x2="720" y2="485" stroke="#FFFFFF" stroke-width="1.5" opacity="0.7" stroke-linecap="round" filter="url(#iter9-bloom)" />
+
+      <!-- Mid-ground Lily Clusters -->
+      <g filter="url(#iter9-bloom)">
+        <ellipse cx="550" cy="405" rx="5" ry="2" fill="#FBFCFC" opacity="0.8" />
+        <ellipse cx="555" cy="406" rx="4" ry="2" fill="#FADBD8" opacity="0.7" />
+        <circle cx="552" cy="405" r="1.2" fill="#F4D03F" />
+      </g>
+
+      <!-- Deep "Crevice" Shadows in Water -->
+      <path d="M 100 550 Q 300 545 500 550" stroke="#1B2631" stroke-width="1" fill="none" opacity="0.3" />
+      <path d="M 450 440 Q 600 435 750 440" stroke="#1B2631" stroke-width="1" fill="none" opacity="0.2" />
+  </g>
+  <g id="layer-9">
+    <!-- Sky Reflections: Lavenders and Pinks -->
+      <g filter="url(#iter10-thickPaint)" opacity="0.6">
+        <path d="M100 450 h80 M300 470 h120 M500 430 h90 M50 520 h150 M600 500 h100" stroke="#D7BDE2" stroke-width="3" fill="none" />
+        <path d="M150 480 h100 M400 530 h130 M650 460 h70 M200 550 h120" stroke="#FADBD8" stroke-width="2" fill="none" />
+        <path d="M50 420 h60 M700 410 h50 M350 440 h80" stroke="#AED6F1" stroke-width="4" fill="none" />
+      </g>
+
+      <!-- Foreground Lily Detail (Left) -->
+      <g filter="url(#iter10-bloom)">
+        <circle cx="215" cy="510" r="4" fill="#F7DC6F" opacity="0.9" />
+        <path d="M210 505 q5 -10 10 0 q10 5 0 10 q-10 5 -10 -5 Z" fill="#FBFCFC" opacity="0.9" />
+        <path d="M215 508 q8 -5 5 5 q-3 8 -8 2 Z" fill="#FADBD8" opacity="0.7" />
+
+        <circle cx="280" cy="512" r="3" fill="#F4D03F" />
+        <ellipse cx="280" cy="512" rx="7" ry="4" fill="white" opacity="0.8" />
+      </g>
+
+      <!-- Foreground Lily Detail (Right) -->
+      <g filter="url(#iter10-bloom)">
+        <circle cx="715" cy="525" r="5" fill="#F7DC6F" />
+        <path d="M710 520 c-5 -10 15 -10 10 0 c5 10 -15 10 -10 0" fill="#FBFCFC" opacity="0.9" />
+        <circle cx="810" cy="545" r="4" fill="#F7DC6F" />
+        <path d="M805 540 q5 -12 12 0 q0 12 -12 0" fill="white" opacity="0.8" />
+        <circle cx="850" cy="565" r="4" fill="#F4D03F" />
+        <path d="M845 560 q8 -10 15 5 q-5 10 -15 -5" fill="#FBFCFC" opacity="0.9" />
+      </g>
+
+      <!-- Gleams and Shimmers -->
+      <g filter="url(#iter10-thickPaint)">
+        <path d="M200 515 h40 M260 518 h30 M680 535 h50 M780 550 h60" stroke="#FEF9E7" stroke-width="1.5" fill="none" />
+        <path d="M210 508 h15 M710 522 h20 M840 562 h25" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none" />
+      </g>
+
+      <!-- Lily Pad Highlights (Ochre/Light Green) -->
+      <g filter="url(#iter10-thickPaint)" opacity="0.5">
+        <path d="M150 530 q30 -10 100 5" stroke="#7D6608" stroke-width="2" fill="none" />
+        <path d="M650 560 q50 -5 120 10" stroke="#7D6608" stroke-width="2" fill="none" />
+        <path d="M180 520 l20 5 M700 540 l30 5" stroke="#A9DFBF" stroke-width="1.5" fill="none" />
+      </g>
+  </g>
+  <g id="layer-10">
+    <!-- More detailed flowers in the foreground clusters -->
+      <g filter="url(#iter11-paintGlow)">
+        <!-- Bottom left cluster -->
+        <path d="M265,515 Q270,505 280,515 Q275,525 265,515" fill="#FBFCFC" opacity="0.9" />
+        <path d="M272,518 Q282,508 290,518 Q282,528 272,518" fill="#FADBD8" opacity="0.8" />
+        <circle cx="275" cy="515" r="3" fill="#F7DC6F" />
+
+        <path d="M245,535 Q250,525 260,535 Q255,545 245,535" fill="#FFFFFF" opacity="0.95" />
+        <circle cx="253" cy="535" r="2.5" fill="#F4D03F" />
+
+        <!-- Bottom right cluster -->
+        <path d="M890,555 Q900,545 910,555 Q900,565 890,555" fill="#FBFCFC" opacity="0.9" transform="translate(-100, 0)" />
+        <path d="M795,575 Q805,565 815,575 Q805,585 795,575" fill="#FADBD8" opacity="0.8" />
+        <circle cx="805" cy="575" r="3" fill="#F7DC6F" />
+
+        <path d="M765,525 Q775,515 785,525 Q775,535 765,525" fill="#FFFFFF" opacity="0.95" />
+        <circle cx="775" cy="525" r="2.5" fill="#F4D03F" />
+      </g>
+
+      <!-- Sky Reflections (Lavender and Blue) -->
+      <g opacity="0.4">
+        <path d="M100,450 L300,450" stroke="#D7BDE2" stroke-width="4" stroke-linecap="round" stroke-dasharray="10,20" />
+        <path d="M400,480 L700,480" stroke="#AED6F1" stroke-width="3" stroke-linecap="round" stroke-dasharray="30,15" />
+        <path d="M50,520 L250,520" stroke="#D7BDE2" stroke-width="5" stroke-linecap="round" opacity="0.5" />
+        <path d="M500,550 L750,550" stroke="#E8DAEF" stroke-width="6" stroke-linecap="round" opacity="0.4" />
+        <path d="M200,380 L450,380" stroke="#AED6F1" stroke-width="2" stroke-linecap="round" />
+      </g>
+
+      <!-- Sun Gleams (Short white/yellow strokes) -->
+      <g filter="url(#iter11-paintGlow)">
+        <line x1="270" y1="510" x2="310" y2="510" stroke="#FEF9E7" stroke-width="2" opacity="0.8" />
+        <line x1="780" y1="570" x2="830" y2="570" stroke="#FFFFFF" stroke-width="2.5" opacity="0.9" />
+        <line x1="430" y1="410" x2="460" y2="410" stroke="#FEF9E7" stroke-width="1.5" opacity="0.7" />
+        <line x1="550" y1="435" x2="590" y2="435" stroke="#FFFFFF" stroke-width="2" opacity="0.8" />
+        <line x1="330" y1="495" x2="380" y2="495" stroke="#FEF9E7" stroke-width="2" opacity="0.6" />
+      </g>
+
+      <!-- Refined Lily Pad Highlights -->
+      <g>
+        <path d="M180,520 Q230,515 280,520" fill="none" stroke="#82E0AA" stroke-width="2" opacity="0.4" />
+        <path d="M720,530 Q780,525 840,530" fill="none" stroke="#D4AC0D" stroke-width="1.5" opacity="0.3" />
+        <path d="M480,415 Q520,410 560,415" fill="none" stroke="#A9DFBF" stroke-width="1.5" opacity="0.4" />
+      </g>
+  </g>
+  <g id="layer-11">
+    <!-- Atmospheric horizontal strokes (Broken Color) -->
+      <g filter="url(#iter11-oilPaint)">
+        <path d="M150 420 Q 250 415 350 420" stroke="#D2B4DE" stroke-width="4" fill="none" opacity="0.4" />
+        <path d="M450 480 Q 550 475 650 480" stroke="#AED6F1" stroke-width="3" fill="none" opacity="0.5" />
+        <path d="M100 520 Q 400 515 700 520" stroke="#FADBD8" stroke-width="2" fill="none" opacity="0.3" />
+        <path d="M50 450 Q 200 445 350 450" stroke="#D7BDE2" stroke-width="3" fill="none" opacity="0.4" />
+
+        <!-- Bright Shimmers/Gleams -->
+        <path d="M250 540 h40" stroke="white" stroke-width="1.5" opacity="0.8" />
+        <path d="M720 530 h30" stroke="#FEF9E7" stroke-width="2" opacity="0.9" />
+        <path d="M430 460 h25" stroke="white" stroke-width="1.2" opacity="0.7" />
+        <path d="M300 485 h35" stroke="#FFF9C4" stroke-width="1.5" opacity="0.6" />
+
+        <!-- Foreground Water Lily Details (Petal clusters) -->
+        <g transform="translate(270, 525)">
+          <ellipse cx="0" cy="0" rx="6" ry="3" fill="#FBFCFC" opacity="0.9" />
+          <ellipse cx="4" cy="-2" rx="5" ry="2" fill="white" opacity="0.8" />
+          <ellipse cx="-4" cy="-2" rx="5" ry="2" fill="#FADBD8" opacity="0.8" />
+          <circle cx="0" cy="-1" r="2" fill="#F4D03F" />
+        </g>
+
+        <g transform="translate(750, 545)">
+          <ellipse cx="0" cy="0" rx="7" ry="3" fill="#FBFCFC" opacity="0.9" />
+          <ellipse cx="5" cy="-3" rx="6" ry="2.5" fill="white" opacity="0.8" />
+          <ellipse cx="-5" cy="-3" rx="6" ry="2.5" fill="#FADBD8" opacity="0.8" />
+          <circle cx="0" cy="-2" r="2.5" fill="#F7DC6F" />
+        </g>
+
+        <g transform="translate(710, 535)">
+          <ellipse cx="0" cy="0" rx="5" ry="2" fill="white" opacity="0.7" />
+          <circle cx="0" cy="-1" r="1.5" fill="#F4D03F" />
+        </g>
+
+        <!-- Middle ground lily accents -->
+        <circle cx="435" cy="455" r="3" fill="white" opacity="0.6" />
+        <circle cx="650" cy="425" r="2.5" fill="#FDF2E9" opacity="0.5" />
+      </g>
+  </g>
+  <g id="layer-12">
+    <!-- Broken Color: Lavender and Sky Blue reflections in the water -->
+    <g filter="url(#iter13-painterly)">
+        <path d="M 150 480 h 60 M 250 510 h 40 M 400 450 h 70 M 550 490 h 50 M 100 530 h 80" stroke="#D2B4DE" stroke-width="3" opacity="0.6" fill="none" />
+        <path d="M 200 460 h 50 M 350 520 h 60 M 600 470 h 40 M 700 500 h 70" stroke="#AED6F1" stroke-width="2" opacity="0.5" fill="none" />
+        <path d="M 300 440 h 40 M 450 480 h 50 M 500 540 h 60 M 50 500 h 40" stroke="#FADBD8" stroke-width="2" opacity="0.4" fill="none" />
+
+        <!-- Foreground Water Lily Refinement (Detailed Petals) -->
+        <!-- Left foreground cluster -->
+        <path d="M 265 515 q 5 -5 10 0 q 5 5 0 10 q -5 5 -10 0 z" fill="#FBFCFC" opacity="0.9" />
+        <path d="M 275 518 q 5 -5 10 0 q 5 5 0 10 q -5 5 -10 0 z" fill="#FDF2E9" opacity="0.9" />
+        <circle cx="275" cy="522" r="2" fill="#F4D03F" />
+
+        <!-- Right foreground cluster -->
+        <path d="M 890 560 q 5 -5 10 0 q 5 5 0 10 q -5 5 -10 0 z" fill="#FBFCFC" opacity="0.9" transform="translate(-150, -20)" />
+        <path d="M 905 565 q 5 -5 10 0 q 5 5 0 10 q -5 5 -10 0 z" fill="#FADBD8" opacity="0.8" transform="translate(-150, -20)" />
+        <circle cx="755" cy="545" r="2" fill="#F4D03F" />
+
+        <!-- Scintillation/Gleams (High-key highlights) -->
+        <path d="M 250 525 h 30 M 740 555 h 40 M 420 445 h 20" stroke="white" stroke-width="1.5" opacity="0.8" fill="none" />
+        <path d="M 260 530 h 15 M 760 560 h 20" stroke="#FEF9E7" stroke-width="1" opacity="0.9" fill="none" />
+
+        <!-- Middle ground additions -->
+        <ellipse cx="450" cy="400" rx="15" ry="4" fill="#145A32" opacity="0.4" />
+        <circle cx="452" cy="398" r="3" fill="#FBFCFC" opacity="0.7" />
+        <ellipse cx="580" cy="415" rx="12" ry="3" fill="#145A32" opacity="0.4" />
+    </g>
+  </g>
+  <g id="layer-13">
+    <!-- Broken color reflections in the water -->
+      <path d="M150 420 h60 M250 435 h40 M400 410 h70 M550 440 h50 M100 460 h80 M300 470 h90 M600 455 h60" stroke="#D2B4DE" stroke-width="3" opacity="0.6" filter="url(#iter14-texturedBrush)" fill="none" />
+      <path d="M180 430 h50 M320 445 h60 M480 425 h40 M620 465 h70 M120 480 h90 M350 490 h100 M650 475 h50" stroke="#AED6F1" stroke-width="2.5" opacity="0.5" filter="url(#iter14-texturedBrush)" fill="none" />
+      <path d="M200 450 h70 M380 460 h50 M520 440 h60 M140 500 h110 M400 510 h80 M700 495 h40" stroke="#FADBD8" stroke-width="2" opacity="0.4" filter="url(#iter14-texturedBrush)" fill="none" />
+
+      <!-- Refining foreground lily flowers with more petals and centers -->
+      <g filter="url(#iter14-texturedBrush)">
+        <!-- Left foreground cluster -->
+        <ellipse cx="270" cy="825" rx="8" ry="4" fill="#FBFCFC" transform="translate(0, -305)" />
+        <ellipse cx="275" cy="822" rx="6" ry="3" fill="#FDF2E9" transform="translate(0, -305)" />
+        <circle cx="272" cy="823" r="1.5" fill="#F4D03F" transform="translate(0, -305)" />
+
+        <ellipse cx="345" cy="855" rx="7" ry="3" fill="#FBFCFC" transform="translate(0, -305)" />
+        <circle cx="345" cy="855" r="1" fill="#F4D03F" transform="translate(0, -305)" />
+
+        <!-- Right foreground cluster -->
+        <ellipse cx="910" cy="855" rx="9" ry="4" fill="#FBFCFC" transform="translate(-140, -305)" />
+        <ellipse cx="915" cy="852" rx="7" ry="3" fill="#FADBD8" transform="translate(-140, -305)" />
+        <circle cx="912" cy="853" r="2" fill="#F4D03F" transform="translate(-140, -305)" />
+
+        <ellipse cx="950" cy="890" rx="10" ry="5" fill="#FBFCFC" transform="translate(-140, -305)" />
+        <circle cx="950" cy="890" r="1.5" fill="#F7DC6F" transform="translate(-140, -305)" />
+      </g>
+
+      <!-- Bright scintillation/glints on the water -->
+      <g filter="url(#iter14-texturedBrush)">
+        <path d="M260 525 h15 M330 555 h20 M750 560 h25 M800 590 h20" stroke="white" stroke-width="1.5" opacity="0.8" fill="none" transform="translate(0, -5)" />
+        <path d="M280 528 h10 M350 558 h15 M770 563 h15 M820 593 h15" stroke="#FEF9E7" stroke-width="1" opacity="0.9" fill="none" transform="translate(0, -5)" />
+      </g>
+
+      <!-- Middle-ground transition flowers -->
+      <g opacity="0.6" filter="url(#iter14-texturedBrush)">
+        <circle cx="440" cy="405" r="3" fill="white" />
+        <circle cx="570" cy="425" r="2.5" fill="#FADBD8" />
+        <circle cx="660" cy="415" r="2" fill="white" />
+      </g>
+  </g>
+  <g id="layer-14">
+    <!-- Final Vigor: Reflected Sky Strokes -->
+      <path d="M 150 480 Q 250 475 350 482" stroke="#E8DAEF" stroke-width="3" fill="none" opacity="0.6" stroke-dasharray="5,15" filter="url(#iter15-sparkleGlow)" />
+      <path d="M 450 510 Q 550 505 650 512" stroke="#FADBD8" stroke-width="2" fill="none" opacity="0.5" stroke-dasharray="10,20" />
+      <path d="M 100 540 Q 300 535 500 542" stroke="#AED6F1" stroke-width="4" fill="none" opacity="0.4" stroke-dasharray="2,10" />
+
+      <!-- High-Contrast Glints -->
+      <line x1="200" y1="380" x2="300" y2="380" stroke="white" stroke-width="1.5" opacity="0.8" filter="url(#iter15-sparkleGlow)" />
+      <line x1="400" y1="420" x2="480" y2="420" stroke="#FEF9E7" stroke-width="2" opacity="0.9" />
+      <line x1="550" y1="360" x2="620" y2="360" stroke="white" stroke-width="1" opacity="0.7" />
+
+      <!-- Final Water Lily Accents (Foreground Left) -->
+      <circle cx="265" cy="815" r="4" fill="#FFFFFF" transform="translate(0,-300)" filter="url(#iter15-sparkleGlow)" />
+      <circle cx="275" cy="825" r="3" fill="#F7DC6F" transform="translate(0,-300)" />
+      <path d="M 285 535 L 295 535" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.9" />
+
+      <!-- Final Water Lily Accents (Foreground Right) -->
+      <circle cx="915" cy="865" r="4" fill="#FFFFFF" transform="translate(-100,-300)" filter="url(#iter15-sparkleGlow)" />
+      <circle cx="925" cy="875" r="3" fill="#F7DC6F" transform="translate(-100,-300)" />
+      <path d="M 720 575 L 740 575" stroke="#FDEDEC" stroke-width="4" stroke-linecap="round" opacity="0.8" />
+
+      <!-- Deep Shadow Accents -->
+      <path d="M 180 560 Q 250 565 320 562" stroke="#0E3642" stroke-width="2" fill="none" opacity="0.6" />
+      <path d="M 680 585 Q 750 590 820 587" stroke="#1A2421" stroke-width="3" fill="none" opacity="0.5" />
+  </g>
+</svg>
